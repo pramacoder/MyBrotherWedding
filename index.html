@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Wedding of Guswik &amp; Fitri | 30.10.2026</title>
+  
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="Pawiwahan &amp; Resepsi Pernikahan I Gusti Made Dwi Jayantara, S.T. &amp; Ni Komang Fitri, S.M. - Jumat, 30 Oktober 2026">
+  <meta property="og:title" content="The Wedding of Guswik &amp; Fitri">
+  <meta property="og:description" content="Atas asung kerta wara nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri Pawiwahan kami.">
+  <meta property="og:image" content="Image/image1.jpeg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Image/Beige.png">
+
+  <!-- Preload Essential Cover Assets -->
+  <link rel="preload" href="assets/Background.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/floral1.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/floral4.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/floralwithflower.webp" as="image" type="image/webp">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+  <!-- Desktop Outer Viewport -->
+  <div class="app-viewport">
+    
+    <!-- Subtle Background Texture -->
+    <div class="bg-texture-layer"></div>
+
+    <!-- Falling Petals & Gold Dust Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Background Audio -->
+    <audio id="bg-audio" src="music.mp3" loop preload="auto"></audio>
+
+    <!-- Floating Music Disc Controller -->
+    <button id="music-controller" class="music-controller" aria-label="Putar / Jeda Musik" title="Musik Pernikahan">
+      <svg class="disc-icon" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>
+      </svg>
+    </button>
+
+    <!-- ====================================================================
+         1. SAMPUL UNDANGAN (COVER / PAGE AWAL SESUAI DESIGN.MD & ANIMATION.MD)
+         ==================================================================== -->
+    <section class="cover" id="cover" aria-label="Sampul undangan">
+      <!-- L0 Background Ilustrasi Gapura Bali (Wash-to-clear) -->
+      <img class="bg" src="assets/Background.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
+      
+      <!-- L1 Kilau Emas Pita Atas -->
+      <div class="shine" aria-hidden="true"></div>
+
+      <!-- L2 & L3 Rumpun Dedaunan Depan (Tumbuh dari sudut bawah) -->
+      <div class="fg fg--bc" data-origin="50% 100%"><img src="assets/floralwithflower.webp" alt="" aria-hidden="true" loading="eager" decoding="async"></div>
+      <div class="fg fg--bl" data-origin="0% 100%"><img src="assets/floral1.webp" alt="" aria-hidden="true" loading="eager" decoding="async"></div>
+      <div class="fg fg--br" data-origin="100% 100%"><img src="assets/floral4.webp" alt="" aria-hidden="true" loading="eager" decoding="async"></div>
+
+      <!-- L3b Daun Melayang -->
+      <div class="drift" aria-hidden="true"></div>
+
+      <!-- Kertas Surat & Hiasan Tinta -->
+      <div class="letter-wrapper">
+        <!-- L4 Kertas Surat -->
+        <article class="letter" aria-label="Undangan pernikahan Guswik dan Fitri">
+          <p class="letter__eyebrow">The Wedding of</p>
+          <h1 class="letter__names">
+            <span class="w w--1">Guswik</span>
+            <span class="w w--amp" aria-hidden="true">&amp;</span>
+            <span class="w w--2">Fitri</span>
+          </h1>
+          <p class="letter__tagline">Two hearts, one forever</p>
+          
+          <!-- Sapaan Tamu Undangan Personalisasi -->
+          <div class="letter__guest">
+            <p class="letter__guest-intro">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <div id="guest-name-display" class="letter__guest-name">Tamu Undangan</div>
+          </div>
+
+          <!-- Bayangan Daun Realistis di Permukaan Kertas -->
+          <span class="letter__leafshadow" aria-hidden="true"></span>
+        </article>
+
+        <!-- L5 Bunga Kecil di Sudut Kertas -->
+        <div class="letter-flowers" aria-hidden="true">
+          <img class="letter-flower flower--tl" src="assets/whiteflowers.webp" alt="">
+          <img class="letter-flower flower--br" src="assets/flower2.webp" alt="">
+          <img class="letter-flower flower--bl" src="assets/flower4.webp" alt="">
+        </div>
+
+        <!-- L6 Tempat Tinta & Bulu Pena -->
+        <img class="ink" src="assets/ink.webp" alt="" aria-hidden="true">
+      </div>
+
+      <!-- L7 Tombol Call to Action -->
+      <button id="btn-open-invitation" class="cta" type="button" aria-label="Buka Undangan">
+        Buka Undangan
+      </button>
+
+      <!-- Veil Transisi Buka Gapura -->
+      <div class="veil" aria-hidden="true"></div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 2: KONTEN UTAMA UNDANGAN PERNIKAHAN
+         ==================================================================== -->
+    <main id="page-2" class="page-content">
+
+      <!-- ====================================================================
+           2. PAMBUKA & HITUNG MUNDUR (HERO & COUNTDOWN SECTION)
+           ==================================================================== -->
+      <section id="hero-section" class="section hero-section">
+        <div class="section-card fade-in-element">
+          
+          <p class="section-eyebrow">The Wedding of</p>
+          <h2 class="section-script-title">Guswik &amp; Fitri</h2>
+          <p class="guest-note" style="color: var(--text-gold); margin-bottom: 24px; font-weight: 500;">#WeddingFitriGuswik</p>
+
+          <!-- Hero Photo in Golden Arch -->
+          <div class="hero-arch-container">
+            <img src="Image/butterfly.gif" alt="Butterfly" class="hero-butterfly-badge">
+            <div class="hero-arch-image-wrap">
+              <img src="Image/image1.jpeg" alt="Guswik &amp; Fitri Beach Pre-wedding">
+            </div>
+          </div>
+
+          <div class="hero-date-badge">Jumat, 30 Oktober 2026</div>
+
+          <!-- Wiwaha Spiritual Hindu Quote -->
+          <div class="quote-box">
+            <p>
+              &ldquo;Atas anugerah Ida Sang Hyang Widhi Wasa, kami dipersatukan dalam ikatan suci Wiwaha. Semoga perjalanan ini senantiasa dipenuhi cinta kasih, keharmonisan, kesetiaan, dan kebijaksanaan, menuju keluarga yang bahagia lahir dan batin.&rdquo;
+            </p>
+          </div>
+
+          <!-- Countdown Timer -->
+          <div class="countdown-wrap">
+            <div class="countdown-grid">
+              <div class="countdown-box">
+                <div id="cd-days" class="countdown-number">00</div>
+                <div class="countdown-label">Hari</div>
+              </div>
+              <div class="countdown-box">
+                <div id="cd-hours" class="countdown-number">00</div>
+                <div class="countdown-label">Jam</div>
+              </div>
+              <div class="countdown-box">
+                <div id="cd-minutes" class="countdown-number">00</div>
+                <div class="countdown-label">Menit</div>
+              </div>
+              <div class="countdown-box">
+                <div id="cd-seconds" class="countdown-number">00</div>
+                <div class="countdown-label">Detik</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Calendar Button -->
+          <a id="btn-add-calendar" href="#" class="btn-calendar" role="button">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+            </svg>
+            Simpan Tanggal
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. PROFIL MEMPELAI (BRIDE & GROOM SECTION)
+           ==================================================================== -->
+      <section id="profile-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Pawiwahan</p>
+          <h2 class="section-title">Bride &amp; Groom</h2>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <!-- Opening Prayer -->
+          <div class="holy-prayer-box">
+            <p>
+              &ldquo;Atas Asung Kerta Wara Nugraha Ida Sang Hyang Widhi Wasa, dengan penuh rasa syukur kami melangsungkan Upacara Pawiwahan sebagai awal perjalanan hidup bersama. Semoga Ida Sang Hyang Widhi Wasa senantiasa melimpahkan kerahayuan, keharmonisan, dan kebahagiaan kepada keluarga yang kami bina.&rdquo;
+            </p>
+          </div>
+
+          <!-- Profil Mempelai Wanita -->
+          <div class="profile-card">
+            <div class="profile-photo-arch">
+              <div class="profile-photo-arch-inner">
+                <img src="Image/image5.jpg" alt="Ni Komang Fitri, S.M.">
+              </div>
+            </div>
+            <h3 class="profile-nickname">Fitri</h3>
+            <h4 class="profile-fullname">Ni Komang Fitri, S.M.</h4>
+            <p class="profile-parents-intro">Putri Bungsu dari Pasangan:</p>
+            <p class="profile-parents-name">Bapak I Komang Darma, S.P<br>&amp; Ibu Ni Ketut Sumitri</p>
+            <a href="https://www.instagram.com/nonomotoo/" target="_blank" rel="noopener" class="profile-social-link">
+              <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              @fitri_komang
+            </a>
+          </div>
+
+          <!-- Ampersand Divider -->
+          <div class="couple-ampersand-divider">
+            <div class="ampersand-circle">&amp;</div>
+          </div>
+
+          <!-- Profil Mempelai Pria -->
+          <div class="profile-card">
+            <div class="profile-photo-arch">
+              <div class="profile-photo-arch-inner">
+                <img src="Image/image0.jpg" alt="I Gusti Made Dwi Jayantara, S.T.">
+              </div>
+            </div>
+            <h3 class="profile-nickname">Guswik</h3>
+            <h4 class="profile-fullname">I Gusti Made Dwi Jayantara, S.T.</h4>
+            <p class="profile-parents-intro">Putra Kedua dari Pasangan:</p>
+            <p class="profile-parents-name">Bapak I Gusti Made Dwipa<br>&amp; Ibu Ni Made Arsaniati</p>
+            <a href="https://www.instagram.com/nonomotoo/" target="_blank" rel="noopener" class="profile-social-link">
+              <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              @guswik_dwi
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           4. DETAIL ACARA (EVENT DETAILS SECTION)
+           ==================================================================== -->
+      <section id="event-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Agenda Pernikahan</p>
+          <h2 class="section-title">Detail Acara</h2>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <!-- Sesi 1 - Pawiwahan -->
+          <div class="event-card">
+            <div class="event-session-badge">Sesi 1</div>
+            <h3 class="event-title">Pawiwahan</h3>
+            <div class="event-date-row">
+              <span>Jumat, 30 Oktober 2026</span>
+            </div>
+            <div class="event-time-row">Pukul : 08:00 s/d 10:00 WITA</div>
+            
+            <div class="event-venue-box">
+              <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Bertempat di:</p>
+              <h4 class="venue-name">Toko Sumber Rejeki</h4>
+              <p class="venue-address">
+                Jl. Masuk Pantai Ujung Suso,<br>
+                Desa Lambarese, Kec. Burau
+              </p>
+            </div>
+
+            <a href="https://maps.app.goo.gl/HSnm6nbpoWQqx1me7" target="_blank" rel="noopener" class="btn-gmaps">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Petunjuk Google Maps
+            </a>
+          </div>
+
+          <!-- Sesi 2 - Resepsi -->
+          <div class="event-card">
+            <div class="event-session-badge">Sesi 2</div>
+            <h3 class="event-title">Resepsi</h3>
+            <div class="event-date-row">
+              <span>Jumat, 30 Oktober 2026</span>
+            </div>
+            <div class="event-time-row">Pukul : 11:00 WITA s/d Selesai</div>
+            
+            <div class="event-venue-box">
+              <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Bertempat di:</p>
+              <h4 class="venue-name">Toko Sumber Rejeki</h4>
+              <p class="venue-address">
+                Jl. Masuk Pantai Ujung Suso,<br>
+                Desa Lambarese, Kec. Burau
+              </p>
+            </div>
+
+            <a href="https://maps.app.goo.gl/HSnm6nbpoWQqx1me7" target="_blank" rel="noopener" class="btn-gmaps">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Petunjuk Google Maps
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           5. KETERLIBATAN DIGITAL (DIGITAL ENGAGEMENT SECTION)
+           ==================================================================== -->
+      <section id="digital-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Virtual &amp; Social</p>
+          <h2 class="section-title">Keterlibatan Digital</h2>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <div class="digital-grid">
+            <!-- Live Streaming -->
+            <div class="digital-card">
+              <div class="digital-icon-wrap youtube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </div>
+              <h3 class="digital-card-title">Live Streaming</h3>
+              <p class="digital-card-desc">
+                Jika berhalangan hadir, pernikahan kami dapat disaksikan secara langsung melalui tautan YouTube di bawah ini:
+              </p>
+              <a href="https://www.youtube.com" target="_blank" rel="noopener" class="btn-action-youtube">
+                <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24"><path d="M10 8.64L15.27 12 10 15.36V8.64M8 5v14l11-7L8 5z"/></svg>
+                Saksikan di YouTube
+              </a>
+            </div>
+
+            <!-- Filter Instagram Stories -->
+            <div class="digital-card">
+              <div class="digital-icon-wrap instagram">
+                <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              </div>
+              <h3 class="digital-card-title">Filter Instagram</h3>
+              <p class="digital-card-desc">
+                Mari bantu kami mengabadikan momen spesial ini dengan menggunakan filter Instagram khusus pernikahan kami di Instagram Stories Anda:
+              </p>
+              <a href="https://www.instagram.com/nonomotoo/" target="_blank" rel="noopener" class="btn-action-instagram">
+                <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24"><path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+                Save Filter
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           6. GALERI (WEDDING GALLERY SECTION)
+           ==================================================================== -->
+      <section id="gallery-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Our Moments</p>
+          <h2 class="section-title">Wedding Gallery</h2>
+          <p class="section-desc">Untaian rasa dan senyuman dalam bingkai kebersamaan kami menuju gerbang pelaminan.</p>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <!-- Gallery Grid with Lightbox Trigger -->
+          <div class="gallery-grid">
+            <div class="gallery-item span-2">
+              <img src="Image/image1.jpeg" alt="Guswik &amp; Fitri Sunset Beach">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img src="Image/image2.jpg" alt="Guswik &amp; Fitri Royal Balinese Gate">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img src="Image/image3.jpg" alt="Guswik &amp; Fitri Palace Seated">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img src="Image/image4.jpg" alt="Guswik &amp; Fitri Night Temple">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img src="Image/Fitri-Guswik-1.jpg" alt="Guswik &amp; Fitri Photo 1">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img src="Image/Fitri-Guswik-3.jpg" alt="Guswik &amp; Fitri Photo 3">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img src="Image/Fitri-Guswik-6.jpg" alt="Guswik &amp; Fitri Photo 6">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item span-2">
+              <img src="Image/Fitri-Guswik-8.jpg" alt="Guswik &amp; Fitri Photo 8">
+              <div class="gallery-overlay">
+                <div class="gallery-zoom-icon">
+                  <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Lightbox Modal -->
+      <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Pratinjau Foto">
+        <div class="lightbox-content">
+          <button id="lightbox-close" class="lightbox-close" aria-label="Tutup">&times;</button>
+          <button id="lightbox-prev" class="lightbox-nav prev" aria-label="Sebelumnya">&#10094;</button>
+          <img id="lightbox-img" class="lightbox-img" src="" alt="Pratinjau Foto">
+          <button id="lightbox-next" class="lightbox-nav next" aria-label="Selanjutnya">&#10095;</button>
+          <div id="lightbox-counter" class="lightbox-counter">1 / 8</div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           7. KISAH CINTA (LOVE STORY TIMELINE)
+           ==================================================================== -->
+      <section id="story-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Perjalanan Rasa</p>
+          <h2 class="section-title">Our Love Story</h2>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <div class="timeline-wrap">
+            <div class="timeline-line"></div>
+
+            <!-- 2019 -->
+            <div class="timeline-item">
+              <div class="timeline-node"></div>
+              <span class="timeline-year-badge">2019</span>
+              <div class="timeline-card">
+                <h3 class="timeline-title">It Started with a Simple Hello</h3>
+                <p class="timeline-text">Sebuah sapaan sederhana menjadi awal kisah yang membawa kami hingga hari ini.</p>
+              </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="timeline-item">
+              <div class="timeline-node"></div>
+              <span class="timeline-year-badge">2020</span>
+              <div class="timeline-card">
+                <h3 class="timeline-title">Distance Became Part of Our Story</h3>
+                <p class="timeline-text">Kota yang berbeda dan rindu yang disampaikan lewat layar mengajarkan kami bahwa jarak tak pernah menghentikan kami untuk saling memilih.</p>
+              </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="timeline-item">
+              <div class="timeline-node"></div>
+              <span class="timeline-year-badge">2025</span>
+              <div class="timeline-card">
+                <h3 class="timeline-title">From &ldquo;When Will We Meet?&rdquo; to &ldquo;When Will We Get Married?&rdquo;</h3>
+                <p class="timeline-text">Setelah begitu banyak pertemuan singkat dan perpisahan di bandara, kami memilih untuk berhenti menghitung jarak dan mulai merencanakan masa depan bersama.</p>
+              </div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="timeline-item">
+              <div class="timeline-node"></div>
+              <span class="timeline-year-badge">2026</span>
+              <div class="timeline-card">
+                <h3 class="timeline-title">No More Goodbyes at the Airport</h3>
+                <p class="timeline-text">Kini, bukan lagi tentang dua pulau dan jadwal penerbangan, melainkan tentang satu rumah, satu kehidupan, dan perjalanan yang akan kami lalui bersama.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="timeline-quote-closing">
+            &ldquo;Our long-distance story is finally coming home.&rdquo;
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           8. HADIAH DIGITAL (WEDDING GIFT / CASHLESS SECTION)
+           ==================================================================== -->
+      <section id="gift-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Tanda Kasih</p>
+          <h2 class="section-title">Wedding Gift</h2>
+          <p class="section-desc">
+            Kehadiran dan doa restu Anda adalah hadiah terindah bagi kami. Namun jika Anda bermaksud memberikan tanda kasih berupa kado atau hadiah digital, silakan ketuk tombol di bawah ini:
+          </p>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <div class="gift-trigger-wrap">
+            <button id="btn-toggle-gift" class="btn-toggle-gift">
+              <svg viewBox="0 0 512 512"><path d="M496 160h-56v-48c0-26.51-21.49-48-48-48h-80c-26.51 0-48 21.49-48 48v48H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h16v224c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V224h16c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zm-184-48c0-8.82 7.18-16 16-16h80c8.82 0 16 7.18 16 16v48h-112v-48zm120 336H80V224h352v224z"/></svg>
+              Kirim Gift
+            </button>
+          </div>
+
+          <!-- Collapsible Gift Cards Panel -->
+          <div id="gift-content-panel" class="gift-content-panel">
+            
+            <!-- Transfer Bank BRI -->
+            <div class="bank-card">
+              <span class="bank-logo-badge">BRI</span>
+              <p class="bank-acc-label">No. Rekening Transfer</p>
+              <div class="bank-acc-number">746801008325532</div>
+              <p class="bank-acc-name">Atas Nama: <strong>Komang Fitri</strong></p>
+              <button class="btn-copy" data-copy="746801008325532" data-label="Nomor rekening BRI">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                Salin No. Rekening
+              </button>
+            </div>
+
+            <!-- Kado Fisik -->
+            <div class="physical-gift-card">
+              <div class="gift-box-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76V14h2V8.76L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+              </div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--royal-maroon); margin-bottom: 4px;">Kado Fisik</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Penerima: <strong>Komang Fitri / Cinta Aura</strong></p>
+              <div class="address-text">
+                Toko Sumber Rejeki, Jl. Masuk Pantai Ujung Suso,<br>
+                Desa Lambarese, Kec. Burau, Kab. Luwu Timur,<br>
+                Sulawesi Selatan
+              </div>
+              <button class="btn-copy" data-copy="Toko Sumber Rejeki, Jl. Masuk Pantai Ujung Suso, Desa Lambarese, Kec. Burau, Kab. Luwu Timur" data-label="Alamat pengiriman kado">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                Salin Alamat
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           9. KEHADIRAN & BUKU TAMU (RSVP & WEDDING WISHES)
+           ==================================================================== -->
+      <section id="rsvp-section" class="section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Buku Tamu</p>
+          <h2 class="section-title">Wedding Wishes &amp; RSVP</h2>
+          <p class="section-desc">Mohon konfirmasikan kehadiran dan sampaikan doa restu Anda untuk kedua mempelai.</p>
+          
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <!-- Statistics Badges -->
+          <div class="rsvp-stats-grid">
+            <div class="rsvp-stat-box">
+              <div id="stat-total" class="stat-number total">5</div>
+              <div class="stat-label">Ucapan</div>
+            </div>
+            <div class="rsvp-stat-box">
+              <div id="stat-hadir" class="stat-number present">4</div>
+              <div class="stat-label">Hadir</div>
+            </div>
+            <div class="rsvp-stat-box">
+              <div id="stat-tidak" class="stat-number absent">0</div>
+              <div class="stat-label">Tidak Hadir</div>
+            </div>
+            <div class="rsvp-stat-box">
+              <div id="stat-ragu" class="stat-number unsure">1</div>
+              <div class="stat-label">Masih Ragu</div>
+            </div>
+          </div>
+
+          <!-- RSVP Form -->
+          <form id="rsvp-form" class="rsvp-form">
+            <div class="form-group">
+              <label for="rsvp-name" class="form-label">Nama Lengkap *</label>
+              <input type="text" id="rsvp-name" class="form-control" placeholder="Nama Anda" required minlength="2">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Konfirmasi Kehadiran *</label>
+              <div class="segmented-radio-group">
+                <div class="radio-card">
+                  <input type="radio" id="att-hadir" name="attendance" value="hadir" checked>
+                  <label for="att-hadir" class="radio-label">Hadir</label>
+                </div>
+                <div class="radio-card">
+                  <input type="radio" id="att-tidak" name="attendance" value="tidak-hadir">
+                  <label for="att-tidak" class="radio-label">Tidak Hadir</label>
+                </div>
+                <div class="radio-card">
+                  <input type="radio" id="att-ragu" name="attendance" value="ragu">
+                  <label for="att-ragu" class="radio-label">Masih Ragu</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvp-message" class="form-label">Ucapan &amp; Doa Restu *</label>
+              <textarea id="rsvp-message" class="form-control" rows="3" placeholder="Tuliskan ucapan dan doa terbaik Anda..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-rsvp">
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              Kirim Ucapan &amp; RSVP
+            </button>
+          </form>
+
+          <!-- Message Board -->
+          <div class="wishes-board">
+            <div id="wishes-list-container" class="wishes-list">
+              <!-- Rendered by JavaScript -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           10. PENUTUP & FOOTER (CLOSING & BACKGROUND SYSTEM)
+           ==================================================================== -->
+      <section id="closing-section" class="section closing-section">
+        <div class="section-card fade-in-element">
+          <p class="section-eyebrow">Matur Suksma</p>
+          <h2 class="section-title">Kami Yang Berbahagia</h2>
+          
+          <h3 class="closing-script-names">Guswik &amp; Fitri</h3>
+          <p class="guest-note" style="color: var(--text-gold); font-weight: 500;">#WeddingFitriGuswik</p>
+
+          <div class="balinese-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+          </div>
+
+          <p class="section-desc" style="max-width: 380px; margin: 0 auto;">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.<br><br>
+            Atas kehadiran dan doa restunya, kami ucapkan terima kasih yang setulus-tulusnya.
+          </p>
+
+          <p class="closing-salutation">
+            Om Shanti Shanti Shanti Om
+          </p>
+
+          <!-- Vendor & Credits -->
+          <div class="credits-wrap">
+            <p class="credits-text">Created with &hearts; for Guswik &amp; Fitri</p>
+            <div class="credits-links">
+              <a href="https://www.instagram.com/nonomotoo/" target="_blank" rel="noopener" class="credit-btn">
+                <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                Instagram
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=6281234567890&text=Halo%2C%20saya%20tertarik%20dengan%20undangan%20digital%20ini" target="_blank" rel="noopener" class="credit-btn">
+                <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global Toast Notice -->
+    <div id="toast-notice" class="toast-notice" role="alert">
+      <svg viewBox="0 0 20 20">
+        <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+      </svg>
+      <span id="toast-message">Teks berhasil disalin!</span>
+    </div>
+
+  </div>
+
+  <!-- GSAP Library -->
+  <script src="gsap.min.js"></script>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

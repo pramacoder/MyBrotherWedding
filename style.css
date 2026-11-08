@@ -1,0 +1,2067 @@
+/* ==========================================================================
+   THE WEDDING OF GUSWIK & FITRI — SISTEM DESAIN & ANIMASI (DESIGN.MD & ANIMATION.MD)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  /* DS-11 Netral Hangat — dari Background.jpg */
+  --cream-50:  #FBF3E4;  /* latar halaman */
+  --cream-100: #F6E7D0;  /* langit ilustrasi */
+  --peach-200: #EBC9A0;  /* kabut dedaunan peach */
+  --sage-300:  #B9BCA8;  /* siluet palem */
+  --stone-500: #8D775F;  /* batu gapura */
+
+  /* Emas — pita atas & penjor */
+  --gold-300: #E3B766;   /* highlight, shimmer */
+  --gold-500: #C58A3C;   /* emas utama */
+  --gold-700: #A8732F;   /* emas bayangan */
+  --gold-gradient: linear-gradient(135deg, #F7DFA5 0%, #C58A3C 50%, #8F6A15 100%);
+  --gold-gradient-soft: linear-gradient(135deg, rgba(236,200,118,0.2) 0%, rgba(197,155,39,0.3) 100%);
+
+  /* Tropis — dedaunan depan */
+  --leaf-600: #3F7A3A;
+  --leaf-800: #2C5230;
+  --coral-500: #C4474B;  /* bunga merah */
+
+  /* Kertas surat — dari card.png */
+  --paper:          #F4EFE6;
+  --paper-edge:     #E6DED0;
+  --ink-terracotta: #B84A2A;  /* tulisan tangan nama */
+  --ink-tagline:    #6B4A33;  /* tagline kecil */
+
+  /* Cokelat — dari template (page berikutnya, teks) */
+  --cocoa-900: #2B1D14;
+  --cocoa-800: #3B2A1E;
+  --cocoa-600: #5A4332;
+
+  --royal-maroon: #541723;
+  --royal-maroon-dark: #380d16;
+  --royal-maroon-light: #7c2637;
+
+  --bg-cream: #faf6f0;
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --border-gold: rgba(197, 138, 60, 0.35);
+  --border-gold-strong: rgba(197, 138, 60, 0.7);
+  --shadow-soft: 0 10px 30px rgba(59, 42, 30, 0.08);
+  --shadow-gold: 0 8px 25px rgba(197, 138, 60, 0.25);
+
+  /* DS-20 Tipografi */
+  --font-cover:   'Pinyon Script', 'Great Vibes', cursive;
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Cormorant Garamond', 'Poppins', serif;
+  --font-accent:  'Pinyon Script', cursive;
+  --font-heading: 'Playfair Display', serif;
+
+  /* A-10 Token Gerak */
+  --d-xs: 240ms;  --d-sm: 450ms;  --d-md: 800ms;
+  --d-lg: 1200ms; --d-xl: 2000ms;
+
+  --ease-out:     cubic-bezier(.22, 1, .36, 1);   /* tumbuh, mendarat */
+  --ease-inout:   cubic-bezier(.65, 0, .35, 1);   /* transisi kamera */
+  --ease-write:   cubic-bezier(.4, 0, .2, 1);     /* tulisan tangan */
+  --ease-settle:  cubic-bezier(.34, 1.3, .64, 1); /* sedikit overshoot */
+
+  --max-w: 480px;
+  --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Base & Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--cocoa-900);
+  background-color: #1a1512;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(197, 138, 60, 0.15), transparent 70%),
+    radial-gradient(circle at 50% 100%, rgba(59, 42, 30, 0.25), transparent 70%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+body.locked {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Outer Desktop Frame */
+.app-viewport {
+  width: 100%;
+  max-width: var(--max-w);
+  min-height: 100vh;
+  background-color: var(--bg-cream);
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(197, 138, 60, 0.2);
+  overflow-x: hidden;
+}
+
+.bg-texture-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(#9e7518 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+}
+
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-w);
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* ==========================================================================
+   1. SAMPUL UNDANGAN (COVER SECTION — DESIGN.MD & ANIMATION.MD)
+   ========================================================================== */
+.cover {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-w);
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: var(--cream-50);
+  user-select: none;
+  cursor: pointer;
+}
+
+/* L0-bg: Ilustrasi Gapura Bali (Wash-to-clear) */
+.cover .bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+  transform-origin: 50% 40%;
+  will-change: transform, opacity, filter;
+}
+
+/* L1-shine: Kilau Emas Pita Atas */
+.cover .shine {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 17vw;
+  max-height: 120px;
+  z-index: 5;
+  background: linear-gradient(100deg, transparent 35%, var(--gold-300) 50%, transparent 65%);
+  mix-blend-mode: overlay;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* L2 & L3: Rumpun Dedaunan Depan */
+.cover .fg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cover .fg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cover .fg--bc {
+  left: 50%;
+  bottom: -10vw;
+  transform: translateX(-50%);
+  width: 44vw;
+  max-width: 220px;
+  z-index: 10;
+  transform-origin: 50% 100%;
+}
+
+.cover .fg--bl {
+  left: -14vw;
+  bottom: -6vw;
+  width: 62vw;
+  max-width: 300px;
+  z-index: 12;
+  transform-origin: 0% 100%;
+}
+
+.cover .fg--br {
+  right: -16vw;
+  bottom: -8vw;
+  width: 66vw;
+  max-width: 320px;
+  z-index: 12;
+  transform-origin: 100% 100%;
+}
+
+/* L3b-drift: Daun Melayang */
+.cover .drift {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 14;
+  overflow: hidden;
+}
+
+.drift-leaf {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* L4-paper: Kertas Surat (DS-50) */
+.cover .letter-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 42svh;
+  top: 42vh;
+  transform: translate(-50%, -50%);
+  width: min(58vw, 260px);
+  aspect-ratio: 2 / 3;
+  z-index: 20;
+  will-change: transform, opacity;
+}
+
+.cover .letter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-1.2deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,0) 45%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .33  0 0 0 0 .25  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    var(--paper);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 var(--paper-edge) inset,
+    0 2px 4px rgba(43,29,20,.18),
+    0 14px 28px -8px rgba(43,29,20,.35),
+    0 30px 50px -20px rgba(43,29,20,.30);
+  overflow: hidden;
+  padding: 16px 14px;
+}
+
+.letter__eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: .30em;
+  text-transform: uppercase;
+  color: var(--ink-tagline);
+  margin: 0 0 0.8em;
+  will-change: letter-spacing, opacity;
+}
+
+.letter__names {
+  margin: 0;
+  font-family: var(--font-cover);
+  font-weight: 400;
+  font-size: clamp(42px, 13.5vw, 60px);
+  line-height: 0.95;
+  color: var(--ink-terracotta);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter__names .w {
+  display: inline-block;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
+          mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
+  -webkit-mask-size: 250% 100%;
+          mask-size: 250% 100%;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  transform: translateY(6px);
+}
+
+.letter__names .w.is-writing {
+  animation: writeName var(--dur, 1100ms) var(--ease-write) var(--delay, 0ms) forwards;
+}
+
+@keyframes writeName {
+  to {
+    -webkit-mask-position: 0 0;
+            mask-position: 0 0;
+    transform: translateY(0);
+  }
+}
+
+.w--1 { --dur: 1100ms; --delay: 0ms; }
+.w--amp { --dur: 400ms; --delay: 1100ms; font-size: 0.7em; margin: 0.05em 0; }
+.w--2 { --dur: 1100ms; --delay: 1500ms; }
+
+.letter__tagline {
+  margin: 1.2em 0 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: .12em;
+  color: var(--ink-tagline);
+}
+
+/* Sapaan Tamu pada Kertas Surat */
+.letter__guest {
+  margin-top: 1em;
+  padding: 5px 12px;
+  background: rgba(184, 74, 42, 0.05);
+  border-radius: 4px;
+  border-top: 1px dashed rgba(197, 138, 60, 0.3);
+  border-bottom: 1px dashed rgba(197, 138, 60, 0.3);
+  width: 90%;
+}
+
+.letter__guest-intro {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-tagline);
+  margin-bottom: 2px;
+}
+
+.letter__guest-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-terracotta);
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  word-break: break-word;
+}
+
+/* Bayangan Daun di Permukaan Kertas (DS-53) */
+.letter__leafshadow {
+  position: absolute;
+  inset: -10% -10% auto auto;
+  width: 90%;
+  aspect-ratio: 1;
+  background: url('assets/leave3.png') center / contain no-repeat;
+  filter: brightness(0) blur(7px);
+  opacity: .10;
+  mix-blend-mode: multiply;
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+/* L5-paper-flowers: Bunga Kecil Sudut Kertas (DS-54) */
+.letter-flowers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 22;
+}
+
+.letter-flower {
+  position: absolute;
+  display: block;
+}
+
+.flower--tl {
+  top: -6%;
+  left: -14%;
+  width: 34%;
+}
+
+.flower--br {
+  bottom: -4%;
+  right: -12%;
+  width: 30%;
+}
+
+.flower--bl {
+  bottom: 6%;
+  left: -16%;
+  width: 24%;
+}
+
+/* L6-ink: Tempat Tinta & Pena (DS-54, A-25) */
+.cover .ink {
+  position: absolute;
+  bottom: -8%;
+  right: -22%;
+  width: 16vw;
+  max-width: 75px;
+  transform: rotate(8deg);
+  z-index: 24;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* L7-ui: Tombol Buka Undangan (DS-55, A-26) */
+.cover .cta {
+  position: absolute;
+  left: 50%;
+  top: 72svh;
+  top: 72vh;
+  transform: translateX(-50%);
+  background: var(--cocoa-800);
+  color: var(--cream-50);
+  border: 1px solid var(--gold-500);
+  height: 44px;
+  border-radius: 999px;
+  padding: 0 28px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .20em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 30;
+  box-shadow: 0 4px 15px rgba(43, 29, 20, 0.25);
+  transition: all .25s ease;
+  white-space: nowrap;
+  outline: none;
+}
+
+.cover .cta:hover,
+.cover .cta:focus {
+  background: var(--cocoa-900);
+  border-color: var(--gold-300);
+  transform: translateX(-50%) scale(0.97);
+  outline: 2px solid var(--gold-300);
+  outline-offset: 3px;
+}
+
+.cover .cta.is-ready {
+  animation: ctaPulse 2800ms ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(197, 138, 60, 0); }
+  50%      { box-shadow: 0 0 0 8px rgba(197, 138, 60, 0.22); }
+}
+
+/* Veil Transisi Buka Gapura (A-30) */
+.cover .veil {
+  position: absolute;
+  inset: 0;
+  background: var(--cocoa-800);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.8s var(--ease-inout);
+}
+
+/* ==========================================================================
+   A-27 IDLE ANIMATIONS
+   ========================================================================== */
+.cover.is-idle .fg--bl {
+  animation: swayBL 5.5s ease-in-out infinite alternate;
+}
+.cover.is-idle .fg--br {
+  animation: swayBR 7s ease-in-out infinite alternate;
+}
+.cover.is-idle .fg--bc {
+  animation: swayBC 6.2s ease-in-out infinite alternate;
+}
+.cover.is-idle .letter-wrapper {
+  animation: floatPaper 6s ease-in-out infinite alternate;
+}
+.cover.is-idle .ink {
+  animation: wobbleInk 5s ease-in-out infinite alternate;
+}
+
+@keyframes swayBL {
+  0%   { transform: rotate(-1.2deg); }
+  100% { transform: rotate(1.2deg); }
+}
+
+@keyframes swayBR {
+  0%   { transform: rotate(1.2deg); }
+  100% { transform: rotate(-1.2deg); }
+}
+
+@keyframes swayBC {
+  0%   { transform: translateX(-50%) translateY(0px) rotate(-0.8deg); }
+  100% { transform: translateX(-50%) translateY(-3px) rotate(0.8deg); }
+}
+
+@keyframes floatPaper {
+  0%   { transform: translate(-50%, -50%) translateY(0px) rotate(-1.2deg); }
+  100% { transform: translate(-50%, -50%) translateY(-3px) rotate(-0.9deg); }
+}
+
+@keyframes wobbleInk {
+  0%   { transform: rotate(7deg) translateY(0); }
+  100% { transform: rotate(9.5deg) translateY(-2px); }
+}
+
+/* ==========================================================================
+   FLOATING MUSIC PLAYER CONTROLLER
+   ========================================================================== */
+.music-controller {
+  position: fixed;
+  bottom: 24px;
+  right: calc(50% - (var(--max-w) / 2) + 20px);
+  z-index: 800;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 15px rgba(197, 138, 60, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #fff;
+  transition: var(--transition);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.7);
+}
+
+@media (max-width: 480px) {
+  .music-controller {
+    right: 20px;
+  }
+}
+
+.music-controller.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.music-controller .disc-icon {
+  width: 22px;
+  height: 22px;
+  fill: var(--cocoa-900);
+}
+
+.music-controller.playing .disc-icon {
+  animation: spinSlow 4s linear infinite;
+}
+
+.music-controller:hover {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   GENERAL SECTION & CONTAINER STYLES
+   ========================================================================== */
+.section {
+  position: relative;
+  padding: 60px 20px;
+  z-index: 10;
+}
+
+.section-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 36px 22px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  text-align: center;
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gold-gradient);
+}
+
+.balinese-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+  color: var(--gold-500);
+}
+
+.balinese-divider::before,
+.balinese-divider::after {
+  content: '';
+  height: 1px;
+  width: 50px;
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+}
+
+.balinese-divider svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--cocoa-800);
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.section-script-title {
+  font-family: var(--font-cover);
+  font-size: 3.2rem;
+  color: var(--gold-700);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--cocoa-600);
+  line-height: 1.65;
+  margin: 0 auto 20px;
+}
+
+/* ==========================================================================
+   2. HERO & COUNTDOWN SECTION (PAMBUKA & HITUNG MUNDUR)
+   ========================================================================== */
+.hero-section {
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.hero-arch-container {
+  position: relative;
+  width: 240px;
+  height: 330px;
+  margin: 0 auto 30px;
+  padding: 8px;
+  border-radius: 120px 120px 20px 20px;
+  background: var(--gold-gradient);
+  box-shadow: 0 15px 35px rgba(59, 42, 30, 0.2);
+}
+
+.hero-arch-container::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 126px 126px 26px 26px;
+  border: 1px dashed var(--gold-500);
+  pointer-events: none;
+}
+
+.hero-arch-image-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 112px 112px 14px 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-arch-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.6s ease;
+}
+
+.hero-arch-container:hover .hero-arch-image-wrap img {
+  transform: scale(1.05);
+}
+
+.hero-butterfly-badge {
+  position: absolute;
+  top: 15px;
+  right: -25px;
+  width: 75px;
+  height: auto;
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: floatSlow 3s ease-in-out infinite alternate;
+}
+
+.hero-date-badge {
+  display: inline-block;
+  background: var(--cocoa-800);
+  color: var(--cream-50);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  padding: 8px 24px;
+  border-radius: 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 15px rgba(59, 42, 30, 0.25);
+  border: 1px solid var(--gold-500);
+}
+
+.quote-box {
+  position: relative;
+  padding: 24px 20px;
+  background: rgba(197, 138, 60, 0.08);
+  border-radius: 16px;
+  border-left: 3px solid var(--gold-500);
+  border-right: 3px solid var(--gold-500);
+  margin: 0 auto 30px;
+}
+
+.quote-box p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--cocoa-900);
+}
+
+/* Countdown Grid */
+.countdown-wrap {
+  margin: 30px 0 25px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.countdown-box {
+  background: linear-gradient(180deg, #fff 0%, #faf6f0 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 14px 6px;
+  box-shadow: 0 4px 15px rgba(197, 138, 60, 0.12);
+  transition: var(--transition);
+}
+
+.countdown-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-500);
+  box-shadow: var(--shadow-gold);
+}
+
+.countdown-number {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold-700);
+  font-weight: 600;
+}
+
+/* Calendar Button */
+.btn-calendar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  color: var(--cocoa-800);
+  border: 1.5px solid var(--gold-500);
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(197, 138, 60, 0.15);
+}
+
+.btn-calendar:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-calendar svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   3. PROFIL MEMPELAI (BRIDE & GROOM SECTION)
+   ========================================================================== */
+.holy-prayer-box {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.holy-prayer-box p {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--cocoa-600);
+  font-style: italic;
+}
+
+.profile-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(59, 42, 30, 0.06);
+  transition: var(--transition);
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-500);
+  box-shadow: var(--shadow-gold);
+}
+
+.profile-photo-arch {
+  position: relative;
+  width: 160px;
+  height: 220px;
+  margin: 0 auto 20px;
+  padding: 5px;
+  border-radius: 80px 80px 14px 14px;
+  background: var(--gold-gradient);
+  box-shadow: 0 8px 25px rgba(59, 42, 30, 0.15);
+}
+
+.profile-photo-arch-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 75px 75px 10px 10px;
+  overflow: hidden;
+}
+
+.profile-photo-arch-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.profile-nickname {
+  font-family: var(--font-cover);
+  font-size: 2.8rem;
+  color: var(--gold-700);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.profile-fullname {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  margin-bottom: 8px;
+}
+
+.profile-parents-intro {
+  font-size: 0.85rem;
+  color: var(--gold-700);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.profile-parents-name {
+  font-size: 0.95rem;
+  color: var(--cocoa-900);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.profile-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: rgba(197, 138, 60, 0.1);
+  color: var(--cocoa-800);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 1px solid var(--border-gold);
+}
+
+.profile-social-link:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+}
+
+.profile-social-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.couple-ampersand-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0 25px;
+}
+
+.ampersand-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-cover);
+  font-size: 2rem;
+  color: var(--cocoa-900);
+  box-shadow: 0 4px 15px rgba(197, 138, 60, 0.4);
+}
+
+/* ==========================================================================
+   4. DETAIL ACARA (EVENT DETAILS SECTION)
+   ========================================================================== */
+.event-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 32px 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 25px rgba(59, 42, 30, 0.06);
+  text-align: center;
+  overflow: hidden;
+}
+
+.event-session-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(197, 138, 60, 0.25);
+}
+
+.event-title {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  margin-bottom: 14px;
+}
+
+.event-date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cocoa-900);
+  margin-bottom: 6px;
+}
+
+.event-time-row {
+  font-size: 0.95rem;
+  color: var(--gold-700);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.event-venue-box {
+  background: rgba(250, 246, 240, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.venue-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  margin-bottom: 6px;
+}
+
+.venue-address {
+  font-size: 0.9rem;
+  color: var(--cocoa-600);
+  line-height: 1.5;
+}
+
+.btn-gmaps {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--cocoa-800);
+  color: var(--cream-50);
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(59, 42, 30, 0.25);
+  border: 1px solid var(--gold-500);
+}
+
+.btn-gmaps:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gmaps svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   5. KETERLIBATAN DIGITAL (DIGITAL ENGAGEMENT SECTION)
+   ========================================================================== */
+.digital-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.digital-card {
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(59, 42, 30, 0.05);
+  transition: var(--transition);
+}
+
+.digital-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-500);
+}
+
+.digital-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.digital-icon-wrap.youtube {
+  background: #ff0000;
+  color: #fff;
+}
+
+.digital-icon-wrap.instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+}
+
+.digital-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.digital-card-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  margin-bottom: 8px;
+}
+
+.digital-card-desc {
+  font-size: 0.88rem;
+  color: var(--cocoa-600);
+  margin-bottom: 18px;
+  line-height: 1.55;
+}
+
+.btn-action-youtube {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ff0000;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.btn-action-youtube:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+}
+
+.btn-action-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+}
+
+.btn-action-instagram:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   6. WEDDING GALLERY SECTION (GALERI FOTO PRE-WEDDING)
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-gold);
+  background: #e9e0d5;
+}
+
+.gallery-item.span-2 {
+  grid-column: span 2;
+  aspect-ratio: 16/10;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(59, 42, 30, 0.6) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-zoom-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cocoa-900);
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(236, 200, 118, 0.4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-nav:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+}
+
+.lightbox-nav.prev { left: -55px; }
+.lightbox-nav.next { right: -55px; }
+
+@media (max-width: 600px) {
+  .lightbox-nav.prev { left: 10px; }
+  .lightbox-nav.next { right: 10px; }
+  .lightbox-close { top: 15px; right: 15px; position: fixed; }
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-300);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   7. KISAH CINTA (LOVE STORY TIMELINE)
+   ========================================================================== */
+.timeline-wrap {
+  position: relative;
+  padding: 20px 0;
+  margin-top: 15px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 20px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold-300) 0%, var(--gold-500) 50%, var(--cocoa-800) 100%);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-node {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px rgba(197, 138, 60, 0.6);
+  z-index: 2;
+}
+
+.timeline-year-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--cocoa-800);
+  background: rgba(197, 138, 60, 0.15);
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  border: 1px solid var(--border-gold);
+}
+
+.timeline-card {
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 15px rgba(59, 42, 30, 0.04);
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  margin-bottom: 6px;
+}
+
+.timeline-text {
+  font-size: 0.9rem;
+  color: var(--cocoa-600);
+  line-height: 1.6;
+}
+
+.timeline-quote-closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--gold-700);
+  margin-top: 25px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   8. HADIAH DIGITAL (WEDDING GIFT / CASHLESS SECTION)
+   ========================================================================== */
+.gift-trigger-wrap {
+  margin: 15px 0 20px;
+}
+
+.btn-toggle-gift {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+  transition: var(--transition);
+}
+
+.btn-toggle-gift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 138, 60, 0.5);
+}
+
+.btn-toggle-gift svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.gift-content-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+}
+
+.gift-content-panel.expanded {
+  max-height: 1200px;
+  opacity: 1;
+  margin-top: 25px;
+}
+
+.bank-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #faf6f0 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(59, 42, 30, 0.08);
+  text-align: center;
+}
+
+.bank-logo-badge {
+  display: inline-block;
+  background: #00529c;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 4px 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.bank-acc-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--cocoa-600);
+  margin-bottom: 4px;
+}
+
+.bank-acc-number {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  user-select: all;
+}
+
+.bank-acc-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cocoa-900);
+  margin-bottom: 16px;
+}
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--cocoa-800);
+  border: 1.5px solid var(--gold-500);
+  padding: 9px 22px;
+  border-radius: 25px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-copy:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.btn-copy svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.physical-gift-card {
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 25px rgba(59, 42, 30, 0.08);
+  text-align: center;
+}
+
+.gift-box-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(197, 138, 60, 0.15);
+  color: var(--gold-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.gift-box-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.address-text {
+  font-size: 0.92rem;
+  color: var(--cocoa-900);
+  line-height: 1.6;
+  margin: 8px 0 16px;
+  padding: 10px;
+  background: rgba(250, 246, 240, 0.8);
+  border-radius: 10px;
+}
+
+.toast-notice {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: var(--cocoa-900);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--gold-500);
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.toast-notice.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-notice svg {
+  width: 16px;
+  height: 16px;
+  fill: #4cd964;
+}
+
+/* ==========================================================================
+   9. KEHADIRAN & BUKU TAMU (RSVP & WEDDING WISHES)
+   ========================================================================== */
+.rsvp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.rsvp-stat-box {
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 12px 4px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-number.total { color: var(--cocoa-800); }
+.stat-number.present { color: #2e7d32; }
+.stat-number.absent { color: #c62828; }
+.stat-number.unsure { color: #ef6c00; }
+
+.stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cocoa-600);
+  font-weight: 600;
+}
+
+.rsvp-form {
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 20px rgba(59, 42, 30, 0.05);
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cocoa-800);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(197, 138, 60, 0.3);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--cocoa-900);
+  background: #faf8f5;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--gold-500);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(197, 138, 60, 0.15);
+}
+
+.segmented-radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.radio-card {
+  position: relative;
+}
+
+.radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px;
+  border: 1.5px solid rgba(197, 138, 60, 0.3);
+  border-radius: 10px;
+  background: #faf8f5;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+  color: var(--cocoa-600);
+}
+
+.radio-card input[type="radio"]:checked + .radio-label {
+  background: var(--cocoa-800);
+  color: #fff;
+  border-color: var(--cocoa-800);
+  box-shadow: 0 4px 12px rgba(59, 42, 30, 0.25);
+}
+
+.btn-submit-rsvp {
+  width: 100%;
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  padding: 14px;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-submit-rsvp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 138, 60, 0.5);
+}
+
+.btn-submit-rsvp svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.wishes-board {
+  text-align: left;
+}
+
+.wishes-list {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wishes-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.wishes-list::-webkit-scrollbar-track {
+  background: rgba(197, 138, 60, 0.1);
+  border-radius: 10px;
+}
+
+.wishes-list::-webkit-scrollbar-thumb {
+  background: var(--gold-500);
+  border-radius: 10px;
+}
+
+.wish-item {
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+}
+
+.wish-item:hover {
+  border-color: var(--gold-500);
+}
+
+.wish-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.wish-author-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wish-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wish-author-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cocoa-800);
+}
+
+.wish-time {
+  font-size: 0.75rem;
+  color: var(--cocoa-600);
+}
+
+.badge-attendance {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-attendance.hadir {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-attendance.tidak-hadir {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.badge-attendance.ragu {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.badge-attendance svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+}
+
+.wish-message {
+  font-size: 0.9rem;
+  color: var(--cocoa-900);
+  line-height: 1.55;
+  margin-bottom: 10px;
+  white-space: pre-line;
+}
+
+.wish-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn-like-wish {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  color: var(--cocoa-600);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition);
+}
+
+.btn-like-wish:hover,
+.btn-like-wish.liked {
+  color: #e91e63;
+}
+
+.btn-like-wish svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   10. PENUTUP & FOOTER (CLOSING & BACKGROUND SYSTEM)
+   ========================================================================== */
+.closing-section {
+  padding-bottom: 80px;
+}
+
+.closing-script-names {
+  font-family: var(--font-cover);
+  font-size: 3.5rem;
+  color: var(--gold-700);
+  line-height: 1.1;
+  margin: 15px 0 10px;
+  text-shadow: 0 2px 10px rgba(197, 138, 60, 0.3);
+}
+
+.closing-salutation {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--cocoa-800);
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.credits-wrap {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 1px dashed var(--border-gold);
+  text-align: center;
+}
+
+.credits-text {
+  font-size: 0.85rem;
+  color: var(--cocoa-600);
+  margin-bottom: 12px;
+}
+
+.credits-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.credit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cocoa-800);
+  background: #fff;
+  border: 1px solid var(--border-gold);
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.credit-btn:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  transform: translateY(-2px);
+}
+
+.credit-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   ANIMATIONS & REDUCED MOTION (A-50)
+   ========================================================================== */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatSlow {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(4deg); }
+}
+
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fade-in-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover .bg,
+  .cover .fg,
+  .cover .letter-wrapper,
+  .cover .ink,
+  .cover .cta,
+  .letter__eyebrow,
+  .letter__tagline {
+    animation: none !important;
+    transition: opacity 400ms linear !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .letter__names .w {
+    -webkit-mask: none !important;
+    mask: none !important;
+    transform: none !important;
+  }
+  .cover .drift,
+  .cover .shine {
+    display: none !important;
+  }
+}
