@@ -859,6 +859,13 @@ body.locked {
   display: block;
   filter: drop-shadow(0 3px 8px rgba(197, 138, 60, 0.22));
   pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+/* Pembatas Membuka Section (Diputar 180 Derajat) */
+.section-divider-pembatas.pembatas-open img,
+.pembatas-open img {
+  transform: rotate(180deg);
 }
 
 .section-eyebrow {
