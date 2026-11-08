@@ -428,10 +428,13 @@ body.locked {
 /* L7-ui: Tombol Buka Undangan (DS-55, A-26) */
 .cover .cta {
   position: absolute;
-  left: 50%;
-  top: 72svh;
-  top: 72vh;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: max-content;
+  bottom: calc(16vh);
+  transform: none;
   background: var(--cocoa-800);
   color: var(--cream-50);
   border: 1px solid var(--gold-500);
@@ -446,7 +449,9 @@ body.locked {
   cursor: pointer;
   z-index: 30;
   box-shadow: 0 4px 15px rgba(43, 29, 20, 0.25);
-  transition: all .25s ease;
+  opacity: 0;
+  pointer-events: none;
+  transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
   white-space: nowrap;
   outline: none;
 }
@@ -455,7 +460,7 @@ body.locked {
 .cover .cta:focus {
   background: var(--cocoa-900);
   border-color: var(--gold-300);
-  transform: translateX(-50%) scale(0.97);
+  transform: scale(0.97);
   outline: 2px solid var(--gold-300);
   outline-offset: 3px;
 }
@@ -1196,67 +1201,99 @@ body.locked {
 }
 
 /* ==========================================================================
-   6. WEDDING GALLERY SECTION (GALERI FOTO PRE-WEDDING)
+   6. WEDDING GALLERY SECTION (DRAGON SCROLL EFFECT — ANIMMASTER)
    ========================================================================== */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 14px;
+.gallery-dragon-section {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
   overflow: hidden;
-  aspect-ratio: 3/4;
+}
+
+.gallery-dragon-header {
+  padding: 0 24px 28px;
+  text-align: center;
+}
+
+.dragon-gallery {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-item {
+  position: relative;
+  width: 100%;
+  height: 125svh;
+  height: 125vh;
+  overflow: hidden;
+  background-color: var(--cocoa-900);
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--border-gold);
-  background: #e9e0d5;
 }
 
-.gallery-item.span-2 {
-  grid-column: span 2;
-  aspect-ratio: 16/10;
+.work-item-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(25% 25%, 75% 40%, 100% 100%, 0% 100%);
+  will-change: clip-path;
 }
 
-.gallery-item img {
+.work-item-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  object-position: center;
+  display: block;
+  filter: brightness(0.88);
+  transition: filter 0.4s ease, transform 0.6s ease;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.08);
+.work-item:hover .work-item-img img {
+  filter: brightness(0.98);
+  transform: scale(1.02);
 }
 
-.gallery-overlay {
+.work-item-name {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(59, 42, 30, 0.6) 0%, transparent 60%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 16px;
-  opacity: 0;
-  transition: var(--transition);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
+.work-item-name .dragon-title {
+  margin: 0;
+  font-family: var(--font-cover); /* 'Pinyon Script', 'Great Vibes', cursive */
+  font-size: clamp(42px, 13vw, 68px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fffdf7;
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.95),
+    0 2px 8px rgba(43, 29, 20, 0.95),
+    0 0 30px rgba(227, 183, 102, 0.7);
+  letter-spacing: 0.02em;
 }
 
-.gallery-zoom-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--gold-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cocoa-900);
+.dragon-char-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.dragon-char {
+  display: inline-block;
+  will-change: transform;
 }
 
 /* Lightbox Modal */

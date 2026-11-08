@@ -213,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Prepare centered transforms for GSAP
     gsap.set('.letter-wrapper', { xPercent: -50, yPercent: -50 });
-    gsap.set('.cta', { xPercent: -50 });
     gsap.set('.fg--bc', { xPercent: -50 });
 
     introTl = gsap.timeline({
@@ -297,11 +296,21 @@ document.addEventListener('DOMContentLoaded', () => {
         { opacity: 1, y: 0, duration: 0.8 }, 
         6.4)
 
-      // 6.8s: Tombol Buka Undangan Muncul
+      // Muncul secara fade setelah 2 detik animasi selesai
       .fromTo('.cta', 
-        { opacity: 0, y: 12 }, 
-        { opacity: 1, y: 0, duration: 0.6 }, 
-        6.8);
+        { opacity: 0 }, 
+        { 
+          opacity: 1, 
+          duration: 0.9, 
+          ease: 'power2.out',
+          onStart: () => {
+            if (btnOpen) {
+              btnOpen.style.pointerEvents = 'auto';
+              btnOpen.classList.add('is-ready');
+            }
+          }
+        }, 
+        '+=2.0');
 
     // Fast-forward on repeat session visits
     if (sessionStorage.getItem('visited_guswik_fitri')) {
@@ -324,7 +333,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     introFinished = true;
     document.querySelectorAll('.letter__names .w').forEach(w => w.classList.add('is-writing'));
-    if (btnOpen) btnOpen.classList.add('is-ready');
+    if (btnOpen) {
+      gsap.to(btnOpen, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+      btnOpen.style.pointerEvents = 'auto';
+      btnOpen.classList.add('is-ready');
+    }
     startIdle();
   }
 
@@ -348,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
       onComplete: showPage2
     });
 
-    tl.to('.cta', { opacity: 0, y: 8, duration: 0.4 }, 0)
+    tl.to('.cta', { opacity: 0, duration: 0.35, ease: 'power2.out' }, 0)
       .to('.letter-wrapper', { y: '-40vh', rotate: -4, opacity: 0, duration: 0.9 }, 0.1)
       .to('.fg--bl', { x: '-35vw', scale: 1.25, opacity: 0, duration: 1.5 }, 0.3)
       .to('.fg--br', { x: '35vw', scale: 1.25, opacity: 0, duration: 1.5 }, 0.3)
@@ -372,6 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (page2 && window.gsap) {
       page2.style.visibility = 'visible';
       gsap.fromTo(page2, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
+    }
+
+    if (window.ScrollTrigger) {
+      setTimeout(() => { ScrollTrigger.refresh(); }, 150);
     }
 
     // Shift accessibility focus to Hero
@@ -532,6 +549,98 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(textArea);
   }
 
+
+  // -------------------------------------------------------------------------
+  // 6b. DRAGON SCROLL EFFECT GALLERY (ANIMMASTER/DRAGON-SCROLL-EFFECT)
+  // -------------------------------------------------------------------------
+  function initDragonScroll() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const items = gsap.utils.toArray('.work-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+      const img = item.querySelector('.work-item-img');
+      const titleH3 = item.querySelector('.work-item-name h3, .work-item-name .dragon-title');
+
+      if (titleH3) {
+        const text = titleH3.textContent.trim();
+        titleH3.innerHTML = '';
+        const chars = [];
+
+        for (let i = 0; i < text.length; i++) {
+          const ch = text[i];
+          const wrap = document.createElement('span');
+          wrap.className = 'dragon-char-wrap';
+
+          const charSpan = document.createElement('span');
+          charSpan.className = 'dragon-char';
+          charSpan.innerHTML = (ch === ' ') ? '&nbsp;' : ch;
+
+          wrap.appendChild(charSpan);
+          titleH3.appendChild(wrap);
+          chars.push(charSpan);
+        }
+
+        gsap.set(chars, { y: '125%' });
+
+        chars.forEach((char, index) => {
+          ScrollTrigger.create({
+            trigger: item,
+            start: `top+=${index * 20 - 200} top`,
+            end: `top+=${index * 20 - 50} top`,
+            scrub: 1,
+            animation: gsap.fromTo(
+              char,
+              { y: '125%' },
+              { y: '0%', ease: 'none' }
+            )
+          });
+        });
+      }
+
+      // Clip-Path Entrance Scrub
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top bottom',
+        end: 'top top',
+        scrub: 0.5,
+        animation: gsap.fromTo(
+          img,
+          {
+            clipPath: 'polygon(25% 25%, 75% 40%, 100% 100%, 0% 100%)'
+          },
+          {
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+            ease: 'none'
+          }
+        )
+      });
+
+      // Clip-Path Exit Scrub
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'bottom bottom',
+        end: 'bottom top',
+        scrub: 0.5,
+        animation: gsap.fromTo(
+          img,
+          {
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+          },
+          {
+            clipPath: 'polygon(0% 0%, 100% 0%, 75% 60%, 25% 75%)',
+            ease: 'none'
+          }
+        )
+      });
+    });
+  }
+
+  // Initialize Dragon Scroll
+  initDragonScroll();
+
   // -------------------------------------------------------------------------
   // 7. PHOTO GALLERY LIGHTBOX MODAL
   // -------------------------------------------------------------------------
@@ -542,7 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxNext = document.getElementById('lightbox-next');
   const lightboxCounter = document.getElementById('lightbox-counter');
 
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryItems = document.querySelectorAll('.work-item, .gallery-item');
   const galleryImages = [];
   galleryItems.forEach(item => {
     const img = item.querySelector('img');
