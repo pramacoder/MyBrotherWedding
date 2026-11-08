@@ -279,72 +279,73 @@
       </section>
 
       <!-- ====================================================================
-           4. DETAIL ACARA (EVENT DETAILS SECTION)
+           4. DETAIL ACARA (EVENT DETAILS SECTION - PAWIWAHAN & RESEPSI BERSATU)
            ==================================================================== -->
       <section id="event-section" class="section">
         <div class="section-card fade-in-element">
           <p class="section-eyebrow">Agenda Pernikahan</p>
-          <h2 class="section-title">Detail Acara</h2>
+          <h2 class="section-title">Pawiwahan &amp; Resepsi</h2>
           
           <div class="balinese-divider">
-            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
           </div>
 
-          <!-- Sesi 1 - Pawiwahan -->
-          <div class="event-card">
-            <div class="event-session-badge">Sesi 1</div>
-            <h3 class="event-title">Pawiwahan</h3>
-            <div class="event-date-row">
+          <!-- Rangkaian Acara Pawiwahan & Resepsi Bersatu -->
+          <div class="event-unified-wrap">
+            
+            <!-- Tanggal Bersama -->
+            <div class="event-unified-date">
+              <svg viewBox="0 0 24 24" class="unified-date-icon"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
               <span>Jumat, 11 Desember 2026</span>
             </div>
-            <div class="event-time-row">Pukul : 08:00 s/d 10:00 WITA</div>
-            
-            <div class="event-venue-box">
-              <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Bertempat di:</p>
+
+            <!-- Sesi 1 & Sesi 2 Berdampingan -->
+            <div class="event-sessions-grid">
+              <!-- Sesi 1: Pawiwahan -->
+              <div class="event-session-box">
+                <span class="event-session-pill">Sesi 1</span>
+                <h3 class="event-session-title">Upacara Pawiwahan</h3>
+                <div class="event-session-time">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+                  <span>Pukul 08:00 – 10:00 WITA</span>
+                </div>
+              </div>
+
+              <!-- Sesi 2: Resepsi -->
+              <div class="event-session-box">
+                <span class="event-session-pill">Sesi 2</span>
+                <h3 class="event-session-title">Resepsi Pernikahan</h3>
+                <div class="event-session-time">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+                  <span>Pukul 11:00 WITA – Selesai</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lokasi & Petunjuk Google Maps Bersama -->
+            <div class="event-venue-unified">
+              <p class="venue-label">Bertempat di:</p>
               <h4 class="venue-name">Community Hall of Sembung Gede Kelod Village</h4>
               <p class="venue-address">
                 Balai Banjar Sembung Gede Kelod,<br>
                 Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali
               </p>
+
+              <!-- Google Maps Embed Iframe -->
+              <div class="maps-embed-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.8082926975134!2d115.08675967664867!3d-8.510021869123346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2300eda0ac65f%3A0xf9898f7339cff7a3!2sCommunity%20hall%20of%20Sembung%20Gede%20Kelod%20Village!5e0!3m2!1sen!2sid!4v1794131331282!5m2!1sen!2sid" width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+
+              <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="btn-gmaps">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Petunjuk Google Maps
+              </a>
             </div>
 
-            <!-- Google Maps Embed Iframe -->
-            <div class="maps-embed-container">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.8082926975134!2d115.08675967664867!3d-8.510021869123346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2300eda0ac65f%3A0xf9898f7339cff7a3!2sCommunity%20hall%20of%20Sembung%20Gede%20Kelod%20Village!5e0!3m2!1sen!2sid!4v1794131331282!5m2!1sen!2sid" width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="btn-gmaps">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              Petunjuk Google Maps
-            </a>
-          </div>
-
-          <!-- Sesi 2 - Resepsi -->
-          <div class="event-card">
-            <div class="event-session-badge">Sesi 2</div>
-            <h3 class="event-title">Resepsi</h3>
-            <div class="event-date-row">
-              <span>Jumat, 11 Desember 2026</span>
-            </div>
-            <div class="event-time-row">Pukul : 11:00 WITA s/d Selesai</div>
-            
-            <div class="event-venue-box">
-              <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Bertempat di:</p>
-              <h4 class="venue-name">Community Hall of Sembung Gede Kelod Village</h4>
-              <p class="venue-address">
-                Balai Banjar Sembung Gede Kelod,<br>
-                Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali
-              </p>
-            </div>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="btn-gmaps">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              Petunjuk Google Maps
-            </a>
           </div>
 
           <!-- Dress Code Section -->
-          <div class="dresscode-card">
+          <div class="dresscode-unified">
             <div class="dresscode-icon-badge">
               <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4c0 1.48.81 2.77 2 3.46V11H8l-6 6v3h20v-3l-6-6h-2V9.46c1.19-.69 2-1.98 2-3.46a4 4 0 0 0-4-4zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>
             </div>
