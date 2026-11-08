@@ -1201,99 +1201,67 @@ body.locked {
 }
 
 /* ==========================================================================
-   6. WEDDING GALLERY SECTION (DRAGON SCROLL EFFECT — ANIMMASTER)
+   6. WEDDING GALLERY SECTION (GALERI FOTO PRE-WEDDING)
    ========================================================================== */
-.gallery-dragon-section {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow: hidden;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
 }
 
-.gallery-dragon-header {
-  padding: 0 24px 28px;
-  text-align: center;
-}
-
-.dragon-gallery {
+.gallery-item {
   position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.work-item {
-  position: relative;
-  width: 100%;
-  height: 125svh;
-  height: 125vh;
+  border-radius: 14px;
   overflow: hidden;
-  background-color: var(--cocoa-900);
+  aspect-ratio: 3/4;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-gold);
+  background: #e9e0d5;
 }
 
-.work-item-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(25% 25%, 75% 40%, 100% 100%, 0% 100%);
-  will-change: clip-path;
+.gallery-item.span-2 {
+  grid-column: span 2;
+  aspect-ratio: 16/10;
 }
 
-.work-item-img img {
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: brightness(0.88);
-  transition: filter 0.4s ease, transform 0.6s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.work-item:hover .work-item-img img {
-  filter: brightness(0.98);
-  transform: scale(1.02);
+.gallery-item:hover img {
+  transform: scale(1.08);
 }
 
-.work-item-name {
+.gallery-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  text-align: center;
-  z-index: 2;
-  pointer-events: none;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(59, 42, 30, 0.6) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: var(--transition);
 }
 
-.work-item-name .dragon-title {
-  margin: 0;
-  font-family: var(--font-cover); /* 'Pinyon Script', 'Great Vibes', cursive */
-  font-size: clamp(42px, 13vw, 68px);
-  font-weight: 400;
-  line-height: 1.1;
-  color: #fffdf7;
-  text-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.95),
-    0 2px 8px rgba(43, 29, 20, 0.95),
-    0 0 30px rgba(227, 183, 102, 0.7);
-  letter-spacing: 0.02em;
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
 }
 
-.dragon-char-wrap {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-}
-
-.dragon-char {
-  display: inline-block;
-  will-change: transform;
+.gallery-zoom-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cocoa-900);
 }
 
 /* Lightbox Modal */
