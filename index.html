@@ -423,169 +423,271 @@
           </div>
         </div>
 
-                <!-- Dragon Scroll Effect Gallery Container -->
-        <!-- Pengguna dapat menduplikasi blok .work-item untuk menambahkan foto lebih banyak -->
-        <div class="dragon-gallery">
+                        <!-- Horizontal Swipeable Gallery Slider -->
+        <div class="gallery-slider-wrapper">
+          <!-- Slider Meta / Swipe Hint & Counter -->
+          <div class="gallery-slider-meta">
+            <span class="gallery-swipe-hint">
+              <svg viewBox="0 0 24 24" class="swipe-icon"><path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"/></svg>
+              Geser ke kanan / kiri
+            </span>
+            <span id="gallery-counter" class="gallery-counter-pill">Foto 1 dari 16</span>
+          </div>
+
+          <!-- Horizontal Scroll Track -->
+          <div class="gallery-slider-track" id="gallery-slider-track">
           <!-- Foto 1 -->
-          <div class="work-item" data-index="0">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="0">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (1).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 1" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">01</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 2 -->
-          <div class="work-item" data-index="1">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="1">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (2).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 2" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">02</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 3 -->
-          <div class="work-item" data-index="2">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="2">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (3).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 3" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">03</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 4 -->
-          <div class="work-item" data-index="3">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="3">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (4).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 4" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">04</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 5 -->
-          <div class="work-item" data-index="4">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="4">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (5).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 5" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">05</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 6 -->
-          <div class="work-item" data-index="5">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="5">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (6).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 6" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">06</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 7 -->
-          <div class="work-item" data-index="6">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="6">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (7).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 7" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">07</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 8 -->
-          <div class="work-item" data-index="7">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="7">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (8).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 8" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">08</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 9 -->
-          <div class="work-item" data-index="8">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="8">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (9).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 9" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">09</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 10 -->
-          <div class="work-item" data-index="9">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="9">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (10).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 10" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">10</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 11 -->
-          <div class="work-item" data-index="10">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="10">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (11).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 11" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">11</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 12 -->
-          <div class="work-item" data-index="11">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="11">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (12).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 12" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">12</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 13 -->
-          <div class="work-item" data-index="12">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="12">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (13).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 13" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">13</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 14 -->
-          <div class="work-item" data-index="13">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="13">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (14).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 14" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">14</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 15 -->
-          <div class="work-item" data-index="14">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="14">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (15).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 15" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">15</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
-
           <!-- Foto 16 -->
-          <div class="work-item" data-index="15">
-            <div class="work-item-img">
+          <div class="gallery-slide-card" data-index="15">
+            <div class="gallery-card-inner">
               <img src="Image/GuswikFitri (16).jpg" alt="The Wedding of Guswik &amp; Fitri - Foto 16" loading="lazy">
-            </div>
-            <div class="work-item-name">
-              <h3 class="dragon-title">Guswik &amp; Fitri</h3>
+              <div class="gallery-card-overlay">
+                <div class="gallery-card-caption">
+                  <span class="gallery-card-badge">16</span>
+                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
+                </div>
+                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
+          </div>
 
+          <!-- Slider Controls: Prev/Next & Dots -->
+          <div class="gallery-slider-controls">
+            <button id="gallery-btn-prev" class="gallery-arrow-btn prev" type="button" aria-label="Foto Sebelumnya">
+              <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            <div class="gallery-dots-wrap" id="gallery-dots-wrap"></div>
+            <button id="gallery-btn-next" class="gallery-arrow-btn next" type="button" aria-label="Foto Selanjutnya">
+              <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </button>
+          </div>
         </div>
       </section>
 
