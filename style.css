@@ -839,6 +839,28 @@ body.locked {
   fill: currentColor;
 }
 
+/* Pembatas Antar Section (Ornamental Flourish) */
+.section-divider-pembatas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 35px auto 25px;
+  padding: 0 20px;
+  max-width: 420px;
+  position: relative;
+  z-index: 6;
+  text-align: center;
+}
+
+.section-divider-pembatas img {
+  width: 250px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 3px 8px rgba(197, 138, 60, 0.22));
+  pointer-events: none;
+}
+
 .section-eyebrow {
   font-family: var(--font-body);
   font-size: 0.85rem;
@@ -1171,43 +1193,91 @@ body.locked {
   line-height: 1.5;
 }
 
-.dresscode-swatches {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
+.dresscode-fabrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
-.dresscode-swatch {
+@media (min-width: 460px) {
+  .dresscode-fabrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+.dresscode-fabric-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 138, 60, 0.35);
+  border-radius: 18px;
+  padding: 16px 14px 14px;
+  box-shadow: 0 6px 20px rgba(59, 42, 30, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.swatch-circle {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 3px solid #fff;
+.dresscode-fabric-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-500);
+  box-shadow: 0 10px 25px rgba(197, 138, 60, 0.2);
+}
+
+.dresscode-fabric-img-wrap {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.dresscode-fabric-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
   transition: transform 0.3s ease;
 }
 
-.dresscode-swatch:hover .swatch-circle {
-  transform: scale(1.1);
+.dresscode-fabric-card:hover .dresscode-fabric-img {
+  transform: scale(1.06);
 }
 
-.swatch-name {
+.dresscode-fabric-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dresscode-color-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid #ffffff;
+}
+
+.dresscode-fabric-name {
   font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--cocoa-900);
 }
 
-.swatch-hex {
-  font-family: monospace;
-  font-size: 11.5px;
-  color: #777;
-  letter-spacing: 0.05em;
+.dresscode-fabric-hex {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--gold-700);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* Countdown Grid */
@@ -1330,20 +1400,20 @@ body.locked {
 
 .profile-photo-arch {
   position: relative;
-  width: 170px;
-  height: 235px;
-  margin: 0 auto 30px;
-  padding: 6px;
-  border-radius: 90px 90px 0 0;
+  width: 220px;
+  height: 305px;
+  margin: 0 auto 38px;
+  padding: 7px;
+  border-radius: 115px 115px 0 0;
   background: #ffffff;
   border: 2.5px solid #1f1915;
-  box-shadow: 0 10px 30px rgba(35, 25, 18, 0.10);
+  box-shadow: 0 12px 35px rgba(35, 25, 18, 0.12);
 }
 
 .profile-photo-arch-inner {
   width: 100%;
   height: 100%;
-  border-radius: 84px 84px 0 0;
+  border-radius: 108px 108px 0 0;
   overflow: hidden;
   background: #f2ece4;
 }
@@ -1372,15 +1442,31 @@ body.locked {
 /* Bunga Emas di Bagian Bawah Lengkungan Sesuai Referensi */
 .profile-arch-flower {
   position: absolute;
-  bottom: -22px;
+  bottom: -28px;
   left: 50%;
   transform: translateX(-50%);
-  width: 215px;
-  max-width: 130%;
+  width: 280px;
+  max-width: 135%;
   height: auto;
   pointer-events: none;
   z-index: 5;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.16));
+}
+
+@media (max-width: 360px) {
+  .profile-photo-arch {
+    width: 195px;
+    height: 270px;
+    border-radius: 102px 102px 0 0;
+    margin-bottom: 34px;
+  }
+  .profile-photo-arch-inner {
+    border-radius: 95px 95px 0 0;
+  }
+  .profile-arch-flower {
+    width: 250px;
+    bottom: -24px;
+  }
 }
 
 .profile-fullname {
@@ -1441,21 +1527,27 @@ body.locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 15px 0 25px;
+  gap: 16px;
+  margin: 30px auto 35px;
+  max-width: 300px;
+  padding: 0 15px;
 }
 
-.ampersand-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--gold-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-cover);
-  font-size: 2rem;
-  color: var(--cocoa-900);
-  box-shadow: 0 4px 15px rgba(197, 138, 60, 0.4);
+.ampersand-line {
+  flex: 1;
+  height: 1.5px;
+  background: #c5a47e;
+  border-radius: 1px;
+}
+
+.ampersand-symbol {
+  font-family: 'Dancing Script', 'Great Vibes', cursive;
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #c5a47e;
+  line-height: 1;
+  display: inline-block;
+  padding: 0 6px;
 }
 
 /* ==========================================================================
