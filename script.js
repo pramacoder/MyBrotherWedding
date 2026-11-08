@@ -597,13 +597,64 @@ document.addEventListener('DOMContentLoaded', () => {
   galleryCards.forEach((card, index) => {
     const img = card.querySelector('img');
     if (img) {
-      galleryImages.push(img.src);
+      galleryImages.push(img.getAttribute('data-full') || img.getAttribute('data-src') || img.src);
     }
   });
 
   const totalGallery = galleryImages.length;
   let currentGalleryIndex = 0;
   let activeSlideIndex = 0;
+
+  // -------------------------------------------------------------------------
+  // Lazy Loading for Gallery Cards with IntersectionObserver & Skeleton
+  // -------------------------------------------------------------------------
+  const lazyGalleryImages = document.querySelectorAll('.gallery-slide-card img.gallery-lazy-img');
+
+  function loadCardImage(img) {
+    if (!img) return;
+    const realSrc = img.getAttribute('data-src');
+    if (realSrc && img.getAttribute('src') !== realSrc) {
+      img.src = realSrc;
+    }
+    const onImgLoaded = () => {
+      img.classList.add('loaded');
+      const inner = img.closest('.gallery-card-inner');
+      if (inner) inner.classList.add('is-loaded');
+    };
+    if (img.complete && img.naturalWidth > 0) {
+      onImgLoaded();
+    } else {
+      img.addEventListener('load', onImgLoaded, { once: true });
+    }
+  }
+
+  // Pre-load visible cards (first 2)
+  lazyGalleryImages.forEach((img, idx) => {
+    if (idx < 2) {
+      loadCardImage(img);
+    }
+  });
+
+  if ('IntersectionObserver' in window && sliderTrack) {
+    const galleryObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          loadCardImage(img);
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '250px 250px 250px 250px'
+    });
+
+    lazyGalleryImages.forEach(img => {
+      galleryObserver.observe(img);
+    });
+  } else {
+    lazyGalleryImages.forEach(img => loadCardImage(img));
+  }
 
   // Generate Dots
   if (dotsWrap && totalGallery > 0) {
@@ -650,6 +701,14 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth'
     });
     updateActiveSlide(index);
+
+    // Preload target and adjacent card thumbnails
+    [index - 1, index, index + 1].forEach(idx => {
+      if (galleryCards[idx]) {
+        const img = galleryCards[idx].querySelector('img.gallery-lazy-img');
+        if (img) loadCardImage(img);
+      }
+    });
   }
 
   if (sliderTrack) {
@@ -758,10 +817,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateLightbox() {
     if (lightboxImg && galleryImages[currentGalleryIndex]) {
       lightboxImg.style.opacity = '0';
-      setTimeout(() => {
-        lightboxImg.src = galleryImages[currentGalleryIndex];
+      const targetSrc = galleryImages[currentGalleryIndex];
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        lightboxImg.src = targetSrc;
         lightboxImg.style.opacity = '1';
-      }, 150);
+      };
+      tempImg.src = targetSrc;
+
+      // Preload next and prev full image in background
+      const nextIdx = (currentGalleryIndex + 1) % galleryImages.length;
+      const prevIdx = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+      new Image().src = galleryImages[nextIdx];
+      new Image().src = galleryImages[prevIdx];
     }
     if (lightboxCounter) {
       lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryImages.length}`;

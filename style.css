@@ -1768,6 +1768,33 @@ body.locked {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: #2a1f18;
+}
+
+/* Shimmer Loading Skeleton */
+.gallery-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, #2a1e16 8%, #3d2d22 18%, #2a1e16 33%);
+  background-size: 200% 100%;
+  animation: galleryShimmer 1.8s infinite linear;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+@keyframes galleryShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.gallery-card-inner.is-loaded .gallery-skeleton {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .gallery-slide-card img {
@@ -1776,8 +1803,13 @@ body.locked {
   object-fit: cover;
   object-position: center 25%;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
   pointer-events: none;
+  opacity: 0;
+}
+
+.gallery-slide-card img.loaded {
+  opacity: 1;
 }
 
 .gallery-slide-card:hover img {
@@ -1787,41 +1819,29 @@ body.locked {
 .gallery-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(18, 12, 8, 0.90) 0%, rgba(18, 12, 8, 0.40) 35%, transparent 70%);
+  background: linear-gradient(0deg, rgba(18, 12, 8, 0.90) 0%, rgba(18, 12, 8, 0.35) 35%, transparent 70%);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   padding: 20px 18px;
   pointer-events: none;
+  z-index: 2;
 }
 
 .gallery-card-caption {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-
-.gallery-card-badge {
-  display: inline-block;
-  align-self: flex-start;
-  font-family: monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--gold-300);
-  background: rgba(197, 138, 60, 0.25);
-  border: 1px solid rgba(197, 138, 60, 0.5);
-  padding: 2px 8px;
-  border-radius: 6px;
-  letter-spacing: 0.1em;
+  gap: 2px;
 }
 
 .gallery-card-title {
   font-family: var(--font-accent);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 400;
   color: #fff;
   line-height: 1.1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .gallery-card-zoom {
@@ -1921,8 +1941,10 @@ body.locked {
 .lightbox-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 2500;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 8, 6, 0.94);
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1940,26 +1962,21 @@ body.locked {
 
 .lightbox-content {
   position: relative;
-  max-width: 94vw;
-  max-height: 88vh;
+  max-width: 90vw;
+  max-height: 82vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .lightbox-img {
-  max-width: 100%;
-  max-height: 85vh;
+  max-width: 90vw;
+  max-height: 75vh;
   object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(197, 138, 60, 0.35);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(197, 138, 60, 0.4);
   transition: opacity 0.25s ease;
-}
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(236, 200, 118, 0.4);
 }
 
 .lightbox-close {
