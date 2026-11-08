@@ -456,9 +456,9 @@ document.addEventListener('DOMContentLoaded', () => {
   buildIntro();
 
   // -------------------------------------------------------------------------
-  // 4. DYNAMIC COUNTDOWN TIMER (30 OKTOBER 2026, 08:00 WITA = UTC+8)
+  // 4. DYNAMIC COUNTDOWN TIMER (11 DESEMBER 2026, 08:00 WITA = UTC+8)
   // -------------------------------------------------------------------------
-  const eventDate = new Date('2026-10-30T08:00:00+08:00');
+  const eventDate = new Date('2026-12-11T08:00:00+08:00');
 
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
@@ -493,16 +493,16 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // -------------------------------------------------------------------------
-  // 5. ADD TO GOOGLE CALENDAR
+  // 5. ADD TO GOOGLE CALENDAR (11 DESEMBER 2026)
   // -------------------------------------------------------------------------
   const btnAddToCalendar = document.getElementById('btn-add-calendar');
   if (btnAddToCalendar) {
     btnAddToCalendar.addEventListener('click', (e) => {
       e.preventDefault();
-      const title = encodeURIComponent('The Wedding of Fitri & Guswik');
-      const details = encodeURIComponent('Upacara Pawiwahan & Resepsi Pernikahan Fitri & Guswik.\nAtas kehadiran dan doa restu Bapak/Ibu/Saudara/i kami ucapkan terima kasih.');
-      const location = encodeURIComponent('Toko Sumber Rejeki, Jl. Masuk Pantai Ujung Suso, Desa Lambarese, Kec. Burau');
-      const dates = '20261030T000000Z/20261030T100000Z';
+      const title = encodeURIComponent('The Wedding of Guswik & Fitri');
+      const details = encodeURIComponent('Upacara Pawiwahan & Resepsi Pernikahan I Gusti Made Dwi Jayantara & Ni Komang Fitri.\nAtas kehadiran dan doa restu Bapak/Ibu/Saudara/i kami ucapkan terima kasih.');
+      const location = encodeURIComponent('Community hall of Sembung Gede Kelod Village, Tabanan, Bali');
+      const dates = '20261211T000000Z/20261211T100000Z';
       
       const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
       window.open(gcalUrl, '_blank');
