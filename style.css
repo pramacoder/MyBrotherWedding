@@ -844,12 +844,22 @@ body.locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 35px auto 25px;
+  margin: 28px auto 16px;
   padding: 0 20px;
   max-width: 420px;
   position: relative;
   z-index: 6;
   text-align: center;
+}
+
+.section-divider-pembatas.pembatas-open {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.section-divider-pembatas.pembatas-close {
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
 
 .section-divider-pembatas img {
@@ -862,10 +872,31 @@ body.locked {
   transition: transform 0.3s ease;
 }
 
-/* Pembatas Membuka Section (Diputar 180 Derajat) */
+/* Pembatas Membuka Section: Normal (0 Derajat) */
 .section-divider-pembatas.pembatas-open img,
 .pembatas-open img {
+  transform: none;
+}
+
+/* Pembatas Menutup Section: Diputar 180 Derajat */
+.section-divider-pembatas.pembatas-close img,
+.pembatas-close img {
   transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   SECTIONS DENGAN LATAR LEBIH REDUP (Digital, Our Love Story, RSVP)
+   Sesuai permintaan: Tanpa pembatas & menggunakan latar lebih redup
+   ========================================================================== */
+#digital-section,
+#story-section,
+#rsvp-section {
+  background: linear-gradient(180deg, #ede3d3 0%, #dfcfb9 50%, #ede3d3 100%);
+  box-shadow: inset 0 20px 40px rgba(59, 42, 30, 0.08), inset 0 -20px 40px rgba(59, 42, 30, 0.08);
+  border-top: 1px solid rgba(197, 138, 60, 0.22);
+  border-bottom: 1px solid rgba(197, 138, 60, 0.22);
+  position: relative;
+  z-index: 5;
 }
 
 .section-eyebrow {
