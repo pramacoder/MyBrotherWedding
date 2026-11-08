@@ -1333,20 +1333,22 @@ body.locked {
 
 .profile-photo-arch {
   position: relative;
-  width: 160px;
-  height: 220px;
-  margin: 0 auto 20px;
-  padding: 5px;
-  border-radius: 80px 80px 14px 14px;
-  background: var(--gold-gradient);
-  box-shadow: 0 8px 25px rgba(59, 42, 30, 0.15);
+  width: 170px;
+  height: 235px;
+  margin: 0 auto 30px;
+  padding: 6px;
+  border-radius: 90px 90px 0 0;
+  background: #ffffff;
+  border: 2.5px solid #1f1915;
+  box-shadow: 0 10px 30px rgba(35, 25, 18, 0.10);
 }
 
 .profile-photo-arch-inner {
   width: 100%;
   height: 100%;
-  border-radius: 75px 75px 10px 10px;
+  border-radius: 84px 84px 0 0;
   overflow: hidden;
+  background: #f2ece4;
 }
 
 .profile-photo-arch-inner picture {
@@ -1361,22 +1363,38 @@ body.locked {
   object-fit: cover;
   object-position: center 22%;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-.profile-nickname {
-  font-family: var(--font-cover);
-  font-size: 2.8rem;
-  color: var(--gold-700);
-  line-height: 1;
-  margin-bottom: 6px;
+/* Sedikit zoom pada foto mempelai pria agar wajah & busana lebih fokus dan seimbang dengan foto wanita */
+.profile-card:last-of-type .profile-photo-arch-inner img {
+  transform: scale(1.25);
+  transform-origin: center 28%;
+}
+
+/* Bunga Emas di Bagian Bawah Lengkungan Sesuai Referensi */
+.profile-arch-flower {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 215px;
+  max-width: 130%;
+  height: auto;
+  pointer-events: none;
+  z-index: 5;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.16));
 }
 
 .profile-fullname {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-family: 'Dancing Script', 'Great Vibes', cursive;
+  font-size: 2.25rem;
   font-weight: 700;
-  color: var(--cocoa-800);
+  color: var(--cocoa-900);
+  line-height: 1.25;
+  margin-top: 10px;
   margin-bottom: 8px;
+  letter-spacing: 0.01em;
 }
 
 .profile-parents-intro {
