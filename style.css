@@ -199,7 +199,7 @@ body.locked {
   top: 0;
   left: 0;
   width: 100%;
-  height: 38%;
+  height: 40%;
   pointer-events: none;
   z-index: 28;
   transform-origin: 50% 0%;
@@ -208,32 +208,36 @@ body.locked {
 
 .tree-canopy-top .branch--left {
   position: absolute;
-  top: -4%;
-  left: -8%;
-  width: 65%;
+  top: 16%;
+  left: 2%;
+  width: 62%;
   height: auto;
-  transform-origin: 0% 0%;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+  transform-origin: center center;
+  transform: rotate(85deg);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
 }
 
 .tree-canopy-top .branch--right {
   position: absolute;
-  top: -2%;
-  right: -8%;
-  width: 65%;
+  top: 14%;
+  right: -2%;
+  width: 48%;
   height: auto;
-  transform-origin: 100% 0%;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+  transform-origin: center center;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
 }
 
 .tree-canopy-top .branch--leaves {
   position: absolute;
-  top: 4%;
-  left: 20%;
-  width: 60%;
+  top: 8%;
+  left: 50%;
+  width: 36%;
   height: auto;
-  opacity: 0.92;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transform-origin: center center;
+  transform: translateX(-50%) rotate(180deg);
+  opacity: 0.98;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.24));
 }
 
 /* Wings (Sayap Pohon Kiri & Kanan) */
@@ -1548,31 +1552,342 @@ body.locked {
   fill: currentColor;
 }
 
-.couple-ampersand-divider {
+/* Divider Icon Love (Ganti Ampersand) */
+.couple-heart-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin: 30px auto 35px;
-  max-width: 300px;
-  padding: 0 15px;
+  margin: 25px auto 30px;
+  width: 100%;
 }
 
-.ampersand-line {
-  flex: 1;
-  height: 1.5px;
-  background: #c5a47e;
-  border-radius: 1px;
+.couple-love-icon {
+  width: 88px;
+  max-width: 92px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(180, 130, 45, 0.45));
+  transition: transform 0.3s ease;
+  animation: pulse-love 3.2s ease-in-out infinite alternate;
 }
 
-.ampersand-symbol {
-  font-family: 'Dancing Script', 'Great Vibes', cursive;
-  font-size: 3.4rem;
+@keyframes pulse-love {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   PANDAWA PRINTING ANIMATION STYLES (Diterapkan Khusus Section Event & Story)
+   ========================================================================== */
+#event-section .inv-bawah,
+#story-section .inv-bawah {
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease;
+}
+
+#event-section .inv-bawah.active,
+#story-section .inv-bawah.active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+#event-section .inv-zoom-in,
+#story-section .inv-zoom-in {
+  transform: scale(0.9);
+  opacity: 0;
+  filter: blur(5px);
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease, filter 1.5s ease;
+}
+
+#event-section .inv-zoom-in.active,
+#story-section .inv-zoom-in.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+#event-section .inv-zoom-out,
+#story-section .inv-zoom-out {
+  transform: scale(1.08);
+  opacity: 0;
+  filter: blur(5px);
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease, filter 1.5s ease;
+}
+
+#event-section .inv-zoom-out.active,
+#story-section .inv-zoom-out.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+#event-section .animated-slow,
+#story-section .animated-slow {
+  animation-duration: 2s;
+}
+
+.elementor-animation-shrink {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.elementor-animation-shrink:active,
+.elementor-animation-shrink:focus,
+.elementor-animation-shrink:hover {
+  transform: scale(0.92);
+}
+
+/* ==========================================================================
+   4. DETAIL ACARA (PAWIWAHAN & RESEPSI - GAYA PANDAWA PRINTING)
+   ========================================================================== */
+.pandawa-events-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 15px auto 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pandawa-event-card {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 12px 36px rgba(75, 15, 40, 0.12), 0 2px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(197, 138, 60, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.pandawa-event-card:hover {
+  box-shadow: 0 16px 42px rgba(197, 138, 60, 0.2);
+}
+
+/* Header Slideshow Media */
+.pandawa-card-media {
+  position: relative;
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  border-radius: 13px 13px 0 0;
+  background: #241912;
+}
+
+.event-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.event-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out, transform 5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1.08);
+}
+
+.event-slide-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Card Body Split */
+.pandawa-card-body {
+  display: flex;
+  min-height: 360px;
+  background: #ffffff;
+}
+
+.pandawa-card-body.layout-banner-left {
+  flex-direction: row;
+}
+
+.pandawa-card-body.layout-banner-right {
+  flex-direction: row;
+}
+
+/* Vertical Gold Banner */
+.pandawa-side-banner {
+  background: var(--gold-gradient);
+  width: 90px;
+  min-width: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 16px rgba(110, 68, 15, 0.22);
+}
+
+.pandawa-card-body.layout-banner-left .pandawa-side-banner {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pandawa-card-body.layout-banner-right .pandawa-side-banner {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pandawa-banner-title {
+  color: #ffffff;
+  font-family: 'Cormorant Upright', 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 34px;
   font-weight: 700;
-  color: #c5a47e;
   line-height: 1;
-  display: inline-block;
-  padding: 0 6px;
+  letter-spacing: 3px;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  text-align: center;
+  margin: 0;
+  user-select: none;
+  text-shadow: 0 2px 6px rgba(70, 42, 10, 0.45);
+}
+
+/* White Details Column */
+.pandawa-details-col {
+  flex: 1;
+  padding: 22px 20px 24px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+/* Date Row */
+.pandawa-date-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.pandawa-date-num {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--gold-500);
+  letter-spacing: -1px;
+}
+
+.pandawa-date-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.pandawa-day,
+.pandawa-month,
+.pandawa-year {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #5e5e5e;
+  letter-spacing: 2px;
+  line-height: 1.25;
+}
+
+.pandawa-day {
+  font-weight: 600;
+}
+
+/* Divider Line */
+.pandawa-divider-line {
+  width: 100%;
+  height: 1px;
+  background: #ece8e1;
+  margin: 12px 0 16px;
+}
+
+/* Time Row */
+.pandawa-time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pandawa-clock-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--gold-500);
+  flex-shrink: 0;
+}
+
+.pandawa-time-text {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 14.5px;
+  color: #5e5e5e;
+  letter-spacing: 1px;
+}
+
+/* Location */
+.pandawa-location-label {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin: 0 0 6px 0;
+}
+
+.pandawa-location-name {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3b2a1e;
+  line-height: 1.45;
+  margin: 0 0 4px 0;
+}
+
+.pandawa-location-sub {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #6e6e6e;
+  line-height: 1.45;
+  margin: 0 0 18px 0;
+}
+
+/* Google Maps Pill Button */
+.pandawa-btn-wrap {
+  margin-top: auto;
+}
+
+.pandawa-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-gradient);
+  color: #ffffff !important;
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  padding: 8px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(197, 138, 60, 0.38);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.pandawa-map-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(197, 138, 60, 0.5);
+  filter: brightness(1.06);
+}
+
+.pandawa-pin-icon {
+  width: 13px;
+  height: 13px;
 }
 
 /* ==========================================================================
@@ -2039,6 +2354,41 @@ body.locked {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
+.gallery-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.gallery-card-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b0f28;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  pointer-events: auto;
+}
+
+.gallery-card-btn:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  transform: scale(1.12);
+}
+
+.gallery-card-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
 .gallery-card-zoom {
   width: 38px;
   height: 38px;
@@ -2050,6 +2400,7 @@ body.locked {
   color: var(--cocoa-900);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .gallery-slide-card:hover .gallery-card-zoom {
@@ -2186,6 +2537,41 @@ body.locked {
   line-height: 1;
 }
 
+.lightbox-download {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 10001;
+}
+
+.lightbox-download:hover {
+  background: var(--gold-gradient);
+  color: var(--cocoa-900);
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.lightbox-download svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 .lightbox-nav {
   position: absolute;
   top: 50%;
@@ -2216,6 +2602,7 @@ body.locked {
   .lightbox-nav.prev { left: 10px; }
   .lightbox-nav.next { right: 10px; }
   .lightbox-close { top: 15px; right: 15px; position: fixed; }
+  .lightbox-download { top: 15px; left: 15px; position: fixed; padding: 6px 12px; font-size: 0.8rem; }
 }
 
 .lightbox-counter {
@@ -2230,8 +2617,279 @@ body.locked {
 }
 
 /* ==========================================================================
-   7. KISAH CINTA (LOVE STORY TIMELINE)
+   7. KISAH CINTA (LOVE STORY - GAYA PANDAWA PRINTING)
    ========================================================================== */
+.pandawa-story-card {
+  padding-top: 36px;
+  padding-bottom: 40px;
+}
+
+.pandawa-story-heading {
+  font-family: 'Cormorant Upright', 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #4b0f28;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.pandawa-timeline-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  margin: 25px auto 10px;
+  max-width: 440px;
+}
+
+.pandawa-story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.pandawa-story-img-box {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(75, 15, 40, 0.1);
+  background: #f5f0eb;
+}
+
+.pandawa-story-img {
+  width: 100%;
+  height: auto;
+  max-height: 270px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.pandawa-story-item:hover .pandawa-story-img {
+  transform: scale(1.03);
+}
+
+.pandawa-story-body {
+  padding: 20px 10px 0;
+  width: 100%;
+}
+
+.pandawa-story-item-title {
+  font-family: 'Arima', 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #4b0f28;
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+.pandawa-story-desc {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #5e5e5e;
+}
+
+.pandawa-story-desc b {
+  color: #4b0f28;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pandawa-story-desc p {
+  margin: 0;
+  color: #666666;
+}
+
+.pandawa-story-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--gold-700);
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   GALERI KHUSUS UPACARA NGIDIH DI SULAWESI (MEMADIK)
+   ========================================================================== */
+.ngidih-section {
+  position: relative;
+  padding: 40px 16px 50px;
+  background: transparent;
+  text-align: center;
+}
+
+.ngidih-header {
+  margin-bottom: 24px;
+}
+
+.ngidih-slider-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ngidih-slider-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 4px 20px;
+  scrollbar-width: none;
+}
+
+.ngidih-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ngidih-slide-card {
+  flex: 0 0 88%;
+  max-width: 380px;
+  scroll-snap-align: center;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(59, 42, 30, 0.08);
+  border: 1px solid rgba(197, 138, 60, 0.28);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ngidih-slide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(197, 138, 60, 0.2);
+}
+
+.ngidih-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #2a1f14;
+  cursor: pointer;
+}
+
+.ngidih-lazy-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.ngidih-slide-card:hover .ngidih-lazy-img {
+  transform: scale(1.05);
+}
+
+.ngidih-card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.ngidih-card-actions .gallery-card-btn,
+.ngidih-card-actions .gallery-card-zoom {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cocoa-900);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.ngidih-card-actions .gallery-card-btn svg,
+.ngidih-card-actions .gallery-card-zoom svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ngidih-card-actions .gallery-card-btn:hover,
+.ngidih-card-actions .gallery-card-zoom:hover {
+  background: var(--gold-gradient);
+  color: #ffffff;
+  transform: scale(1.12);
+}
+
+.ngidih-card-caption {
+  padding: 16px 18px 20px;
+  text-align: left;
+  background: #ffffff;
+}
+
+.ngidih-step-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(197, 138, 60, 0.12);
+  border: 1px solid rgba(197, 138, 60, 0.35);
+  border-radius: 20px;
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin-bottom: 8px;
+}
+
+.ngidih-card-title {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #2b1d14;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+
+.ngidih-card-text {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #6a6a6a;
+  margin: 0;
+}
+
+/* Dots Navigation */
+.ngidih-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ngidih-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(197, 138, 60, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ngidih-dot.active {
+  width: 24px;
+  border-radius: 12px;
+  background: var(--gold-500);
+}
+
+/* Fallback timeline */
 .timeline-wrap {
   position: relative;
   padding: 20px 0;

@@ -412,6 +412,10 @@ document.addEventListener('DOMContentLoaded', () => {
       heroTitle.setAttribute('tabindex', '-1');
       heroTitle.focus();
     }
+
+    if (typeof revealPandawaElements === 'function') {
+      setTimeout(revealPandawaElements, 350);
+    }
   }
 
   // Direct Button Click Listener
@@ -591,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxNext = document.getElementById('lightbox-next');
   const lightboxCounter = document.getElementById('lightbox-counter');
 
-  const galleryCards = document.querySelectorAll('.gallery-slide-card, .gallery-item');
+  const galleryCards = document.querySelectorAll('#gallery-slider-track .gallery-slide-card');
   const galleryImages = [];
 
   galleryCards.forEach((card, index) => {
@@ -601,7 +605,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const ngidihCards = document.querySelectorAll('#ngidih-slider-track .ngidih-slide-card');
+  const ngidihImages = [];
+  ngidihCards.forEach((card) => {
+    const img = card.querySelector('img');
+    if (img) {
+      ngidihImages.push(img.getAttribute('data-full') || img.src);
+    }
+  });
+
   const totalGallery = galleryImages.length;
+  let activeGalleryList = galleryImages;
+  let activeGalleryType = 'wedding';
   let currentGalleryIndex = 0;
   let activeSlideIndex = 0;
 
@@ -783,9 +798,12 @@ document.addEventListener('DOMContentLoaded', () => {
       sliderTrack.scrollLeft = scrollLeftStart - walk * 1.4;
     });
 
-    // Card Click -> Open Lightbox (prevent opening if user dragged)
+    // Card Click -> Open Lightbox (prevent opening if user dragged or clicked download button)
     galleryCards.forEach((card, index) => {
       card.addEventListener('click', (e) => {
+        if (e.target.closest('.gallery-btn-download')) {
+          return;
+        }
         if (hasDragged) {
           e.preventDefault();
           return;
@@ -796,7 +814,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Lightbox Modal Functions
-  function openLightbox(index) {
+  function openLightbox(index, list = galleryImages, type = 'wedding') {
+    activeGalleryList = list;
+    activeGalleryType = type;
     currentGalleryIndex = index;
     updateLightbox();
     if (lightboxModal) {
@@ -815,9 +835,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateLightbox() {
-    if (lightboxImg && galleryImages[currentGalleryIndex]) {
+    if (lightboxImg && activeGalleryList[currentGalleryIndex]) {
       lightboxImg.style.opacity = '0';
-      const targetSrc = galleryImages[currentGalleryIndex];
+      const targetSrc = activeGalleryList[currentGalleryIndex];
       const tempImg = new Image();
       tempImg.onload = () => {
         lightboxImg.src = targetSrc;
@@ -826,29 +846,220 @@ document.addEventListener('DOMContentLoaded', () => {
       tempImg.src = targetSrc;
 
       // Preload next and prev full image in background
-      const nextIdx = (currentGalleryIndex + 1) % galleryImages.length;
-      const prevIdx = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-      new Image().src = galleryImages[nextIdx];
-      new Image().src = galleryImages[prevIdx];
+      const nextIdx = (currentGalleryIndex + 1) % activeGalleryList.length;
+      const prevIdx = (currentGalleryIndex - 1 + activeGalleryList.length) % activeGalleryList.length;
+      new Image().src = activeGalleryList[nextIdx];
+      new Image().src = activeGalleryList[prevIdx];
     }
     if (lightboxCounter) {
-      lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryImages.length}`;
+      lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${activeGalleryList.length}`;
     }
   }
 
   function prevImage() {
-    currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+    currentGalleryIndex = (currentGalleryIndex - 1 + activeGalleryList.length) % activeGalleryList.length;
     updateLightbox();
   }
 
   function nextImage() {
-    currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+    currentGalleryIndex = (currentGalleryIndex + 1) % activeGalleryList.length;
     updateLightbox();
   }
 
   if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
   if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
   if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
+
+  // Universal Download Functionality
+  function triggerPhotoDownload(url, filename) {
+    fetch(url)
+      .then(res => {
+        if (res.ok) return res.blob();
+        throw new Error('Download failed');
+      })
+      .then(blob => {
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(blobUrl);
+        }, 800);
+      })
+      .catch(() => {
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = filename;
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => document.body.removeChild(a), 500);
+      });
+  }
+
+  const lightboxDownload = document.getElementById('lightbox-download');
+  if (lightboxDownload) {
+    lightboxDownload.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const currentUrl = activeGalleryList[currentGalleryIndex];
+      const filename = activeGalleryType === 'ngidih'
+        ? `The-Wedding-Guswik-Fitri-Ngidih-${currentGalleryIndex + 1}.jpg`
+        : `The-Wedding-Guswik-Fitri-${currentGalleryIndex + 1}.jpg`;
+      triggerPhotoDownload(currentUrl, filename);
+    });
+  }
+
+  function downloadGalleryPhoto(index) {
+    const photoNum = index + 1;
+    const card = galleryCards[index];
+    const img = card ? card.querySelector('img') : null;
+    const fullWebp = img ? (img.getAttribute('data-full') || `Image/gallery/full-${photoNum}.webp`) : `Image/gallery/full-${photoNum}.webp`;
+    const fullJpg = `Image/GuswikFitri (${photoNum}).jpg`;
+    const filename = `The-Wedding-Guswik-Fitri-${photoNum}.jpg`;
+
+    fetch(fullJpg)
+      .then(res => {
+        if (res.ok) return res.blob();
+        return fetch(fullWebp).then(r => r.blob());
+      })
+      .then(blob => {
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(blobUrl);
+        }, 800);
+      })
+      .catch(() => {
+        triggerPhotoDownload(fullWebp, filename);
+      });
+  }
+
+  // Gallery Card Download Button Clicks
+  const cardDownloadBtns = document.querySelectorAll('.gallery-btn-download');
+  cardDownloadBtns.forEach((btn, index) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      downloadGalleryPhoto(index);
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // Ngidih (Sulawesi) Gallery Slider & Lightbox Wiring
+  // -------------------------------------------------------------------------
+  const ngidihTrack = document.getElementById('ngidih-slider-track');
+  const ngidihCounter = document.getElementById('ngidih-counter');
+  const ngidihDots = document.querySelectorAll('.ngidih-dot');
+
+  if (ngidihTrack) {
+    let ngidihIsDown = false;
+    let ngidihStartX = 0;
+    let ngidihScrollStart = 0;
+    let ngidihHasDragged = false;
+
+    ngidihTrack.addEventListener('mousedown', (e) => {
+      ngidihIsDown = true;
+      ngidihHasDragged = false;
+      ngidihStartX = e.pageX - ngidihTrack.offsetLeft;
+      ngidihScrollStart = ngidihTrack.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      ngidihIsDown = false;
+    });
+
+    ngidihTrack.addEventListener('mouseleave', () => {
+      ngidihIsDown = false;
+    });
+
+    ngidihTrack.addEventListener('mousemove', (e) => {
+      if (!ngidihIsDown) return;
+      const x = e.pageX - ngidihTrack.offsetLeft;
+      const walk = x - ngidihStartX;
+      if (Math.abs(walk) > 6) {
+        ngidihHasDragged = true;
+      }
+      ngidihTrack.scrollLeft = ngidihScrollStart - walk * 1.3;
+    });
+
+    // Update counter & dots on scroll
+    let ngidihScrollTimeout = null;
+    ngidihTrack.addEventListener('scroll', () => {
+      if (ngidihScrollTimeout) clearTimeout(ngidihScrollTimeout);
+      ngidihScrollTimeout = setTimeout(() => {
+        const firstCard = ngidihTrack.querySelector('.ngidih-slide-card');
+        if (!firstCard) return;
+        const cardWidth = firstCard.getBoundingClientRect().width + 16;
+        const activeIdx = Math.min(
+          ngidihCards.length - 1,
+          Math.max(0, Math.round(ngidihTrack.scrollLeft / cardWidth))
+        );
+        if (ngidihCounter) {
+          ngidihCounter.textContent = `Foto ${activeIdx + 1} dari ${ngidihCards.length}`;
+        }
+        ngidihDots.forEach((dot, dIdx) => {
+          dot.classList.toggle('active', dIdx === activeIdx);
+        });
+      }, 50);
+    });
+
+    // Dot click scrolls to card
+    ngidihDots.forEach((dot, dIdx) => {
+      dot.addEventListener('click', () => {
+        const firstCard = ngidihTrack.querySelector('.ngidih-slide-card');
+        if (!firstCard) return;
+        const cardWidth = firstCard.getBoundingClientRect().width + 16;
+        ngidihTrack.scrollTo({
+          left: dIdx * cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Card click / zoom click -> Open Ngidih Lightbox
+    ngidihCards.forEach((card, index) => {
+      const imgWrap = card.querySelector('.ngidih-img-wrap');
+      const zoomBtn = card.querySelector('.ngidih-btn-zoom');
+      const downloadBtn = card.querySelector('.ngidih-btn-download');
+
+      const handleOpen = (e) => {
+        if (e.target.closest('.ngidih-btn-download')) return;
+        if (ngidihHasDragged) {
+          e.preventDefault();
+          return;
+        }
+        openLightbox(index, ngidihImages, 'ngidih');
+      };
+
+      if (imgWrap) imgWrap.addEventListener('click', handleOpen);
+      if (zoomBtn) zoomBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(index, ngidihImages, 'ngidih');
+      });
+
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          const fullSrc = downloadBtn.getAttribute('data-full') || `Image/Ngidih (${index + 1}).JPG`;
+          const fname = downloadBtn.getAttribute('data-filename') || `The-Wedding-Guswik-Fitri-Ngidih-${index + 1}.jpg`;
+          triggerPhotoDownload(fullSrc, fname);
+        });
+      }
+    });
+  }
 
   if (lightboxModal) {
     lightboxModal.addEventListener('click', (e) => {
@@ -1001,7 +1212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="wish-message">${escapeHtml(wish.message)}</div>
         <div class="wish-footer">
           <button class="btn-like-wish" data-id="${wish.id}" aria-label="Suka ucapan">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             <span class="like-count">${wish.likes || 0}</span>
           </button>
         </div>
@@ -1203,4 +1414,43 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealElements.forEach(el => el.classList.add('visible'));
   }
+
+  // -------------------------------------------------------------------------
+  // 11. PANDAWA PRINTING ANIMATION REVEAL (EVENT & LOVE STORY SECTIONS)
+  // -------------------------------------------------------------------------
+  function revealPandawaElements() {
+    const selector = '#event-section .inv-zoom-out, #event-section .inv-zoom-in, #event-section .inv-bawah, #event-section .inv-atas, #story-section .inv-zoom-in, #story-section .inv-bawah, #story-section .inv-atas, #story-section .inv-fade-in';
+    const elements = document.querySelectorAll(selector);
+    const windowHeight = window.innerHeight;
+    const elementVisible = 120;
+
+    elements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < windowHeight - elementVisible && rect.bottom > 0) {
+        element.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealPandawaElements, { passive: true });
+  window.addEventListener('resize', revealPandawaElements, { passive: true });
+  setTimeout(revealPandawaElements, 300);
+
+  // -------------------------------------------------------------------------
+  // 12. PANDAWA EVENT CARDS SLIDESHOW (PAWIWAHAN & RESEPSI)
+  // -------------------------------------------------------------------------
+  function initPandawaCardSlideshows() {
+    const slideshows = document.querySelectorAll('.event-slideshow');
+    slideshows.forEach((slideshow) => {
+      const slides = slideshow.querySelectorAll('.event-slide-img');
+      if (slides.length <= 1) return;
+      let currentIndex = 0;
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 3400);
+    });
+  }
+  initPandawaCardSlideshows();
 });

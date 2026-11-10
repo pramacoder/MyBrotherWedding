@@ -24,7 +24,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Upright:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -64,10 +64,11 @@
       <div class="tree-curtain" id="tree-curtain" aria-hidden="true">
         <!-- Top Arch Canopy -->
         <div class="tree-canopy-top">
-          <img class="branch--left" src="assets/brunch.webp" alt="">
-          <img class="branch--right" src="assets/brunch1.webp" alt="">
-          <img class="branch--leaves" src="assets/brunchofleaves.png" alt="">
+          <img class="branch--left canopy--left" src="assets/canopy-left.png" alt="" loading="eager" decoding="async">
+          <img class="branch--right canopy--right" src="assets/canopy-right.png" alt="" loading="eager" decoding="async">
+          <img class="branch--leaves canopy--center" src="assets/canopy-center.png" alt="" loading="eager" decoding="async">
         </div>
+
 
         <!-- Left Wing of Trees & Branches -->
         <div class="tree-wing tree-wing--left">
@@ -157,7 +158,7 @@
         <div class="hero-content-wrap">
           <p class="hero-eyebrow">The Wedding of</p>
           <h2 class="hero-script-title">Guswik &amp; Fitri</h2>
-          <p class="hero-full-names">I Gusti Made Dwi Jayantara &amp; Ni Komang Fitri Dharma</p>
+          <p class="hero-full-names">I Gusti Made Dwi Jayantara,S.T &amp; Ni Komang Fitri Dharma,S.M</p>
 
           <div class="hero-date-badge">
             <svg viewBox="0 0 24 24" class="date-icon"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
@@ -209,10 +210,6 @@
         </div>
       </section>
 
-      <!-- Pembatas Antar Section (Membuka Section) -->
-      <div class="section-divider-pembatas pembatas-open" aria-hidden="true">
-        <img src="assets/Pembatas.png" alt="" loading="lazy">
-      </div>
 
       <!-- ====================================================================
            3. PROFIL MEMPELAI (BRIDE & GROOM SECTION)
@@ -233,34 +230,6 @@
             </p>
           </div>
 
-          <!-- Profil Mempelai Wanita -->
-          <div class="profile-card">
-            <div class="profile-photo-arch">
-              <div class="profile-photo-arch-inner">
-                <picture>
-                  <source srcset="Image/gallery/full-1.webp" type="image/webp">
-                  <img src="Image/GuswikFitri (1).jpg" alt="Ni Komang Fitri" loading="lazy" decoding="async">
-                </picture>
-              </div>
-              <!-- Hiasan Bunga Emas di Bawah Lengkungan Sesuai Referensi -->
-              <img src="assets/GoldFlower.png" alt="" class="profile-arch-flower" aria-hidden="true">
-            </div>
-            <h4 class="profile-fullname">Ni Komang Fitri</h4>
-            <p class="profile-parents-intro">Putri Bungsu dari Pasangan:</p>
-            <p class="profile-parents-name">Bapak I Komang Darma, S.P<br>&amp; Ibu Ni Ketut Sumitri</p>
-            <a href="https://www.instagram.com/fitridarma_27?vrfl=cnZna2J5emZ5N3Rx" target="_blank" rel="noopener" class="profile-social-link" title="Instagram Ni Komang Fitri">
-              <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-              @fitridarma_27
-            </a>
-          </div>
-
-          <!-- Ampersand Divider Sesuai Referensi -->
-          <div class="couple-ampersand-divider" aria-hidden="true">
-            <span class="ampersand-line"></span>
-            <span class="ampersand-symbol">&amp;</span>
-            <span class="ampersand-line"></span>
-          </div>
-
           <!-- Profil Mempelai Pria -->
           <div class="profile-card">
             <div class="profile-photo-arch">
@@ -270,15 +239,36 @@
                   <img src="Image/GuswikFitri (16).jpg" alt="I Gusti Made Dwi Jayantara" loading="lazy" decoding="async">
                 </picture>
               </div>
-              <!-- Hiasan Bunga Emas di Bawah Lengkungan Sesuai Referensi -->
-              <img src="assets/GoldFlower.png" alt="" class="profile-arch-flower" aria-hidden="true">
             </div>
-            <h4 class="profile-fullname">I Gusti Made Dwi Jayantara</h4>
+            <h4 class="profile-fullname">I Gusti Made Dwi Jayantara,S.T</h4>
             <p class="profile-parents-intro">Putra Kedua dari Pasangan:</p>
             <p class="profile-parents-name">Bapak I Gusti Made Dwipa<br>&amp; Ibu Ni Made Arsaniati</p>
             <a href="https://www.instagram.com/guswiik_?xtok=MXRmM3hzem9lenk0Mw==" target="_blank" rel="noopener" class="profile-social-link" title="Instagram I Gusti Made Dwi Jayantara">
               <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
               @guswik_
+            </a>
+          </div>
+
+          <!-- Divider Icon Love -->
+          <div class="couple-heart-divider" aria-hidden="true">
+            <img src="assets/love.png" alt="Love" class="couple-love-icon">
+          </div>
+          <!-- Profil Mempelai Wanita -->
+          <div class="profile-card">
+            <div class="profile-photo-arch">
+              <div class="profile-photo-arch-inner">
+                <picture>
+                  <source srcset="Image/gallery/full-1.webp" type="image/webp">
+                  <img src="Image/GuswikFitri (1).jpg" alt="Ni Komang Fitri" loading="lazy" decoding="async">
+                </picture>
+              </div>
+            </div>
+            <h4 class="profile-fullname">Ni Komang Fitri,S.M</h4>
+            <p class="profile-parents-intro">Putri Bungsu dari Pasangan:</p>
+            <p class="profile-parents-name">Bapak I Komang Darma, S.P<br>&amp; Ibu Ni Ketut Sumitri</p>
+            <a href="https://www.instagram.com/fitridarma_27?vrfl=cnZna2J5emZ5N3Rx" target="_blank" rel="noopener" class="profile-social-link" title="Instagram Ni Komang Fitri">
+              <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              @fitridarma_27
             </a>
           </div>
 
@@ -290,11 +280,6 @@
         <img src="assets/Pembatas.png" alt="" loading="lazy">
       </div>
 
-      <!-- Pembatas Antar Section (Membuka Section Event) -->
-      <div class="section-divider-pembatas pembatas-open" aria-hidden="true">
-        <img src="assets/Pembatas.png" alt="" loading="lazy">
-      </div>
-
       <!-- ====================================================================
            4. DETAIL ACARA (EVENT DETAILS SECTION - PAWIWAHAN & RESEPSI BERSATU)
            ==================================================================== -->
@@ -302,105 +287,125 @@
         <div class="section-card fade-in-element">
           <p class="section-eyebrow">Agenda Pernikahan</p>
           <h2 class="section-title">Pawiwahan &amp; Resepsi</h2>
-          
-          <div class="balinese-divider">
-            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
-          </div>
 
-          <!-- Rangkaian Acara Pawiwahan & Resepsi Bersatu -->
-          <div class="event-unified-wrap">
+          <!-- Pandawa Events Container (Layout & Animasi Sesuai Pandawa Printing) -->
+          <div class="pandawa-events-container">
             
-            <!-- Tanggal Bersama -->
-            <div class="event-unified-date">
-              <svg viewBox="0 0 24 24" class="unified-date-icon"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
-              <span>Jumat, 11 Desember 2026</span>
-            </div>
-
-            <!-- Sesi 1 & Sesi 2 Berdampingan -->
-            <div class="event-sessions-grid">
-              <!-- Sesi 1: Pawiwahan -->
-              <div class="event-session-box">
-                <span class="event-session-pill">Sesi 1</span>
-                <h3 class="event-session-title">Upacara Pawiwahan</h3>
-                <div class="event-session-time">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
-                  <span>Pukul 08:00 – 10:00 WITA</span>
+            <!-- KARTU 1: RESEPSI (Banner di Kiri, Detail di Kanan) -->
+            <div class="pandawa-event-card animated-slow inv-zoom-out" data-event-card="resepsi">
+              <!-- Header Slideshow Foto -->
+              <div class="pandawa-card-media">
+                <div class="event-slideshow slide-left">
+                  <img src="Image/lovestory/lovestory-1.jpg" alt="Resepsi Guswik &amp; Fitri" class="event-slide-img active">
+                  <img src="Image/lovestory/lovestory-2.jpg" alt="Resepsi Guswik &amp; Fitri" class="event-slide-img">
                 </div>
               </div>
 
-              <!-- Sesi 2: Resepsi -->
-              <div class="event-session-box">
-                <span class="event-session-pill">Sesi 2</span>
-                <h3 class="event-session-title">Resepsi Pernikahan</h3>
-                <div class="event-session-time">
-                  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
-                  <span>Pukul 11:00 WITA – Selesai</span>
+              <!-- Body: Banner Maroon di Kiri, Detail di Kanan -->
+              <div class="pandawa-card-body layout-banner-left">
+                <!-- Banner Vertikal -->
+                <div class="pandawa-side-banner">
+                  <h3 class="pandawa-banner-title">Resepsi</h3>
+                </div>
+
+                <!-- Kolom Detail Acara -->
+                <div class="pandawa-details-col">
+                  <!-- Baris Tanggal -->
+                  <div class="pandawa-date-row">
+                    <div class="pandawa-date-num">11</div>
+                    <div class="pandawa-date-meta">
+                      <span class="pandawa-day">Jumat</span>
+                      <span class="pandawa-month">Desember</span>
+                      <span class="pandawa-year">2026</span>
+                    </div>
+                  </div>
+
+                  <div class="pandawa-divider-line"></div>
+
+                  <!-- Waktu Acara -->
+                  <div class="pandawa-time-row">
+                    <svg class="pandawa-clock-icon" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8l-19.8 27.2c-3.9 5.3-11.4 6.5-16.8 2.5z"/></svg>
+                    <span class="pandawa-time-text">11:00 WITA – Selesai</span>
+                  </div>
+
+                  <!-- Lokasi Acara -->
+                  <h4 class="pandawa-location-label">LOKASI ACARA</h4>
+                  <p class="pandawa-location-name">Community Hall of Sembung Gede Kelod Village</p>
+                  <p class="pandawa-location-sub">Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali</p>
+
+                  <!-- Tombol Google Maps -->
+                  <div class="pandawa-btn-wrap">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="pandawa-map-btn elementor-animation-shrink">
+                      <svg class="pandawa-pin-icon" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
+                      Google Maps
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Lokasi & Petunjuk Google Maps Bersama -->
+            <!-- KARTU 2: PAWIWAHAN (Detail di Kiri, Banner di Kanan) -->
+            <div class="pandawa-event-card animated-slow inv-zoom-out" data-event-card="pawiwahan">
+              <!-- Header Slideshow Foto -->
+              <div class="pandawa-card-media">
+                <div class="event-slideshow slide-right">
+                  <img src="Image/lovestory/lovestory-3.jpg" alt="Pawiwahan Guswik &amp; Fitri" class="event-slide-img active">
+                  <img src="Image/lovestory/lovestory-4.jpg" alt="Pawiwahan Guswik &amp; Fitri" class="event-slide-img">
+                </div>
+              </div>
+
+              <!-- Body: Detail di Kiri, Banner Maroon di Kanan -->
+              <div class="pandawa-card-body layout-banner-right">
+                <!-- Kolom Detail Acara -->
+                <div class="pandawa-details-col">
+                  <!-- Baris Tanggal -->
+                  <div class="pandawa-date-row">
+                    <div class="pandawa-date-num">11</div>
+                    <div class="pandawa-date-meta">
+                      <span class="pandawa-day">Jumat</span>
+                      <span class="pandawa-month">Desember</span>
+                      <span class="pandawa-year">2026</span>
+                    </div>
+                  </div>
+
+                  <div class="pandawa-divider-line"></div>
+
+                  <!-- Waktu Acara -->
+                  <div class="pandawa-time-row">
+                    <svg class="pandawa-clock-icon" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8l-19.8 27.2c-3.9 5.3-11.4 6.5-16.8 2.5z"/></svg>
+                    <span class="pandawa-time-text">08:00 – 10:00 WITA</span>
+                  </div>
+
+                  <!-- Lokasi Acara -->
+                  <h4 class="pandawa-location-label">LOKASI ACARA</h4>
+                  <p class="pandawa-location-name">Community Hall of Sembung Gede Kelod Village</p>
+                  <p class="pandawa-location-sub">Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali</p>
+
+                  <!-- Tombol Google Maps -->
+                  <div class="pandawa-btn-wrap">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="pandawa-map-btn elementor-animation-shrink">
+                      <svg class="pandawa-pin-icon" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
+                      Google Maps
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Banner Vertikal di Kanan -->
+                <div class="pandawa-side-banner">
+                  <h3 class="pandawa-banner-title">Pawiwahan</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Petunjuk Google Maps Embed Interaktif -->
             <div class="event-venue-unified">
-              <p class="venue-label">Bertempat di:</p>
-              <h4 class="venue-name">Community Hall of Sembung Gede Kelod Village</h4>
-              <p class="venue-address">
-                Balai Banjar Sembung Gede Kelod,<br>
-                Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali
-              </p>
-
-              <!-- Google Maps Embed Iframe -->
               <div class="maps-embed-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.8082926975134!2d115.08675967664867!3d-8.510021869123346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2300eda0ac65f%3A0xf9898f7339cff7a3!2sCommunity%20hall%20of%20Sembung%20Gede%20Kelod%20Village!5e0!3m2!1sen!2sid!4v1794131331282!5m2!1sen!2sid" width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
               </div>
-
-              <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="btn-gmaps">
-                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                Petunjuk Google Maps
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Dress Code Section -->
-          <div class="dresscode-unified">
-            <div class="dresscode-icon-badge">
-              <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4c0 1.48.81 2.77 2 3.46V11H8l-6 6v3h20v-3l-6-6h-2V9.46c1.19-.69 2-1.98 2-3.46a4 4 0 0 0-4-4zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>
-            </div>
-            <h3 class="dresscode-title">Dress Code</h3>
-            <p class="dresscode-desc">
-              Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan mengenakan busana bernuansa:
-            </p>
-            <div class="dresscode-fabrics-wrap">
-              <div class="dresscode-fabric-item">
-                <div class="dresscode-fabric-banner">
-                  <img src="assets/Maroon.png" alt="Maroon Fabric" class="dresscode-fabric-img" loading="lazy">
-                </div>
-                <div class="dresscode-fabric-info">
-                  <span class="dresscode-color-dot" style="background-color: #550000;"></span>
-                  <span class="dresscode-fabric-name">Maroon</span>
-                  <span class="dresscode-fabric-hex">#550000</span>
-                </div>
-              </div>
-              <div class="dresscode-fabric-item">
-                <div class="dresscode-fabric-banner">
-                  <img src="assets/SteelBlue.png" alt="Steel Blue Fabric" class="dresscode-fabric-img" loading="lazy">
-                </div>
-                <div class="dresscode-fabric-info">
-                  <span class="dresscode-color-dot" style="background-color: #4682B4;"></span>
-                  <span class="dresscode-fabric-name">Steel Blue</span>
-                  <span class="dresscode-fabric-hex">#4682B4</span>
-                </div>
-              </div>
             </div>
           </div>
-
         </div>
       </section>
-
-      <!-- Pembatas Antar Section (Menutup Section Event) -->
-      <div class="section-divider-pembatas pembatas-close" aria-hidden="true">
-        <img src="assets/Pembatas.png" alt="" loading="lazy">
-      </div>
 
       <!-- ====================================================================
            5. KETERLIBATAN DIGITAL (DIGITAL ENGAGEMENT SECTION)
@@ -462,10 +467,6 @@
           <p class="section-eyebrow">Our Moments</p>
           <h2 class="section-title">Wedding Gallery</h2>
           <p class="section-desc">Untaian rasa dan senyuman dalam bingkai kebersamaan kami menuju gerbang pelaminan.</p>
-          
-          <div class="balinese-divider">
-            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
-          </div>
         </div>
 
                         <!-- Horizontal Swipeable Gallery Slider -->
@@ -490,9 +491,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -505,9 +511,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -520,9 +531,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -535,9 +551,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -550,9 +571,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -565,9 +591,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -580,9 +611,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -595,9 +631,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -610,9 +651,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -625,9 +671,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -640,9 +691,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -655,9 +711,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -670,9 +731,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -685,9 +751,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -700,9 +771,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -715,9 +791,14 @@
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
                 </div>
-                <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                </span>
+                <div class="gallery-card-actions">
+                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                  </button>
+                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -742,70 +823,236 @@
       </div>
 
       <!-- ====================================================================
-           7. KISAH CINTA (LOVE STORY TIMELINE)
+           7. KISAH CINTA (LOVE STORY) - GAYA LAYOUT & ANIMASI PANDAWA PRINTING
            ==================================================================== -->
       <section id="story-section" class="section">
-        <div class="section-card fade-in-element">
+        <div class="section-card fade-in-element pandawa-story-card">
           <p class="section-eyebrow">Perjalanan Rasa</p>
-          <h2 class="section-title">Our Love Story</h2>
+          <h2 class="pandawa-story-heading inv-bawah">Love Story</h2>
           
           <div class="balinese-divider">
             <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 9.5 8 14 6.5 21 12 17.5 17.5 21 16 14 21 9.5 14.5 8.5z"/></svg>
           </div>
 
-          <div class="timeline-wrap">
-            <div class="timeline-line"></div>
-
-            <!-- 2019 -->
-            <div class="timeline-item">
-              <div class="timeline-node"></div>
-              <span class="timeline-year-badge">2019</span>
-              <div class="timeline-card">
-                <h3 class="timeline-title">It Started with a Simple Hello</h3>
-                <p class="timeline-text">Sebuah sapaan sederhana menjadi awal kisah yang membawa kami hingga hari ini.</p>
+          <div class="pandawa-timeline-wrap inv-zoom-in">
+            
+            <!-- Item 1: 2019 -->
+            <div class="pandawa-story-item">
+              <div class="pandawa-story-img-box">
+                <img src="Image/lovestory/lovestory-1.jpg" alt="From a Simple Hello to Coming Home" class="pandawa-story-img" loading="lazy">
+              </div>
+              <div class="pandawa-story-body">
+                <h3 class="pandawa-story-item-title">From a Simple Hello to Coming Home</h3>
+                <div class="pandawa-story-desc">
+                  <b>2019 - It Started with a Simple Hello</b>
+                  <p>Sebuah sapaan sederhana menjadi awal kisah yang membawa kami hingga hari ini.</p>
+                </div>
               </div>
             </div>
 
-            <!-- 2020 -->
-            <div class="timeline-item">
-              <div class="timeline-node"></div>
-              <span class="timeline-year-badge">2020</span>
-              <div class="timeline-card">
-                <h3 class="timeline-title">Distance Became Part of Our Story</h3>
-                <p class="timeline-text">Kota yang berbeda dan rindu yang disampaikan lewat layar mengajarkan kami bahwa jarak tak pernah menghentikan kami untuk saling memilih.</p>
+            <!-- Item 2: 2020 -->
+            <div class="pandawa-story-item">
+              <div class="pandawa-story-img-box">
+                <img src="Image/lovestory/lovestory-2.jpg" alt="Distance Became Part of Our Story" class="pandawa-story-img" loading="lazy">
+              </div>
+              <div class="pandawa-story-body">
+                <h3 class="pandawa-story-item-title">2020 - Distance Became Part of Our Story</h3>
+                <div class="pandawa-story-desc">
+                  <p>Kota yang berbeda dan rindu yang disampaikan lewat layar mengajarkan kami bahwa jarak tak pernah menghentikan kami untuk saling memilih.</p>
+                </div>
               </div>
             </div>
 
-            <!-- 2025 -->
-            <div class="timeline-item">
-              <div class="timeline-node"></div>
-              <span class="timeline-year-badge">2025</span>
-              <div class="timeline-card">
-                <h3 class="timeline-title">From &ldquo;When Will We Meet?&rdquo; to &ldquo;When Will We Get Married?&rdquo;</h3>
-                <p class="timeline-text">Setelah begitu banyak pertemuan singkat dan perpisahan di bandara, kami memilih untuk berhenti menghitung jarak dan mulai merencanakan masa depan bersama.</p>
+            <!-- Item 3: 2025 -->
+            <div class="pandawa-story-item">
+              <div class="pandawa-story-img-box">
+                <img src="Image/lovestory/lovestory-3.jpg" alt="When Will We Meet to When Will We Get Married" class="pandawa-story-img" loading="lazy">
+              </div>
+              <div class="pandawa-story-body">
+                <h3 class="pandawa-story-item-title">2025 - From “When Will We Meet?” to “When Will We Get Married?”</h3>
+                <div class="pandawa-story-desc">
+                  <p>Setelah begitu banyak pertemuan singkat dan perpisahan di bandara, kami memilih untuk berhenti menghitung jarak dan mulai merencanakan masa depan bersama.</p>
+                </div>
               </div>
             </div>
 
-            <!-- 2026 -->
-            <div class="timeline-item">
-              <div class="timeline-node"></div>
-              <span class="timeline-year-badge">2026</span>
-              <div class="timeline-card">
-                <h3 class="timeline-title">No More Goodbyes at the Airport</h3>
-                <p class="timeline-text">Kini, bukan lagi tentang dua pulau dan jadwal penerbangan, melainkan tentang satu rumah, satu kehidupan, dan perjalanan yang akan kami lalui bersama.</p>
+            <!-- Item 4: 2026 -->
+            <div class="pandawa-story-item">
+              <div class="pandawa-story-img-box">
+                <img src="Image/lovestory/lovestory-4.jpg" alt="No More Goodbyes at the Airport" class="pandawa-story-img" loading="lazy">
+              </div>
+              <div class="pandawa-story-body">
+                <h3 class="pandawa-story-item-title">2026 - No More Goodbyes at the Airport</h3>
+                <div class="pandawa-story-desc">
+                  <p>Kini, bukan lagi tentang dua pulau dan jadwal penerbangan, melainkan tentang satu rumah, satu kehidupan, dan perjalanan yang akan kami lalui bersama.</p>
+                </div>
               </div>
             </div>
+
           </div>
 
-          <p class="timeline-quote-closing">
-            &ldquo;Our long-distance story is finally coming home.&rdquo;
+          <p class="pandawa-story-quote">
+            &ldquo;Our long-distance story is finally coming home. ❤️&rdquo;
           </p>
 
         </div>
       </section>
 
-      <!-- Pembatas Antar Section (Membuka Section Gift) -->
+      <!-- Pembatas Antar Section (Membuka Section Ngidih Sulawesi) -->
       <div class="section-divider-pembatas pembatas-open" aria-hidden="true">
+        <img src="assets/Pembatas.png" alt="" loading="lazy">
+      </div>
+
+      <!-- ====================================================================
+           7. GALERI KHUSUS UPACARA NGIDIH DI SULAWESI (MEMADIK MOMENT)
+           ==================================================================== -->
+      <section id="ngidih-section" class="section ngidih-section">
+        <div class="ngidih-header fade-in-element">
+          <p class="section-eyebrow">Prosesi Adat Sakral</p>
+          <h2 class="section-title">Momen Memadik di Sulawesi</h2>
+          <p class="section-desc">
+            Sebuah langkah suci melintasi samudra, mempertemukan dua keluarga besar dalam ketulusan niat. Momen sakral upacara Ngidih (meminang) di kediaman mempelai wanita di Sulawesi, memohon restu leluhur untuk menyatukan dua hati menuju hari bahagia.
+          </p>
+        </div>
+
+        <!-- Horizontal Swipeable Gallery Slider -->
+        <div class="ngidih-slider-wrapper fade-in-element">
+          <!-- Slider Meta / Swipe Hint & Counter -->
+          <div class="gallery-slider-meta">
+            <span class="gallery-swipe-hint">
+              <svg viewBox="0 0 24 24" class="swipe-icon"><path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"/></svg>
+              Geser ke kanan / kiri
+            </span>
+            <span id="ngidih-counter" class="gallery-counter-pill">Foto 1 dari 5</span>
+          </div>
+
+          <!-- Horizontal Scroll Track -->
+          <div class="ngidih-slider-track" id="ngidih-slider-track">
+            <!-- Foto 1 -->
+            <div class="ngidih-slide-card" data-index="0">
+              <div class="ngidih-card-inner">
+                <div class="ngidih-img-wrap">
+                  <img class="ngidih-lazy-img" src="Image/ngidih/thumb-1.webp" data-full="Image/Ngidih (1).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-1.jpg" alt="Kedatangan Rombongan Keluarga Mempelai Pria di Sulawesi" loading="lazy" decoding="async">
+                  <div class="ngidih-card-actions">
+                    <button type="button" class="gallery-card-btn ngidih-btn-download" data-full="Image/Ngidih (1).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-1.jpg" aria-label="Unduh Foto" title="Unduh Foto">
+                      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    </button>
+                    <span class="gallery-card-zoom ngidih-btn-zoom" aria-label="Perbesar Foto">
+                      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="ngidih-card-caption">
+                  <span class="ngidih-step-badge">Momen 01</span>
+                  <h3 class="ngidih-card-title">Kedatangan Rombongan Keluarga</h3>
+                  <p class="ngidih-card-text">Iring-iringan keluarga besar calon mempelai pria tiba dengan penuh ketulusan di kediaman mempelai wanita di Sulawesi.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Foto 2 -->
+            <div class="ngidih-slide-card" data-index="1">
+              <div class="ngidih-card-inner">
+                <div class="ngidih-img-wrap">
+                  <img class="ngidih-lazy-img" src="Image/ngidih/thumb-2.webp" data-full="Image/Ngidih (2).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-2.jpg" alt="Kedua Mempelai Bersanding Anggun dalam Busana Adat Payas" loading="lazy" decoding="async">
+                  <div class="ngidih-card-actions">
+                    <button type="button" class="gallery-card-btn ngidih-btn-download" data-full="Image/Ngidih (2).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-2.jpg" aria-label="Unduh Foto" title="Unduh Foto">
+                      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    </button>
+                    <span class="gallery-card-zoom ngidih-btn-zoom" aria-label="Perbesar Foto">
+                      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="ngidih-card-caption">
+                  <span class="ngidih-step-badge">Momen 02</span>
+                  <h3 class="ngidih-card-title">Kedua Mempelai Bersanding Anggun</h3>
+                  <p class="ngidih-card-text">Guswik &amp; Fitri bersanding dalam balutan busana adat Payas yang anggun diapit oleh ibunda tercinta.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Foto 3 -->
+            <div class="ngidih-slide-card" data-index="2">
+              <div class="ngidih-card-inner">
+                <div class="ngidih-img-wrap">
+                  <img class="ngidih-lazy-img" src="Image/ngidih/thumb-3.webp" data-full="Image/Ngidih (3).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-3.jpg" alt="Penyerahan Seserahan & Hantaran Sakral" loading="lazy" decoding="async">
+                  <div class="ngidih-card-actions">
+                    <button type="button" class="gallery-card-btn ngidih-btn-download" data-full="Image/Ngidih (3).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-3.jpg" aria-label="Unduh Foto" title="Unduh Foto">
+                      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    </button>
+                    <span class="gallery-card-zoom ngidih-btn-zoom" aria-label="Perbesar Foto">
+                      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="ngidih-card-caption">
+                  <span class="ngidih-step-badge">Momen 03</span>
+                  <h3 class="ngidih-card-title">Penyerahan Seserahan &amp; Hantaran</h3>
+                  <p class="ngidih-card-text">Prosesi penyerahan buah tangan sakral oleh kedua orang tua sebagai simbol restu dan ketulusan penyatuan dua keluarga.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Foto 4 -->
+            <div class="ngidih-slide-card" data-index="3">
+              <div class="ngidih-card-inner">
+                <div class="ngidih-img-wrap">
+                  <img class="ngidih-lazy-img" src="Image/ngidih/thumb-4.webp" data-full="Image/Ngidih (4).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-4.jpg" alt="Pengikatan Janji & Cincin Pertunangan" loading="lazy" decoding="async">
+                  <div class="ngidih-card-actions">
+                    <button type="button" class="gallery-card-btn ngidih-btn-download" data-full="Image/Ngidih (4).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-4.jpg" aria-label="Unduh Foto" title="Unduh Foto">
+                      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    </button>
+                    <span class="gallery-card-zoom ngidih-btn-zoom" aria-label="Perbesar Foto">
+                      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="ngidih-card-caption">
+                  <span class="ngidih-step-badge">Momen 04</span>
+                  <h3 class="ngidih-card-title">Pengikatan Janji &amp; Cincin</h3>
+                  <p class="ngidih-card-text">Momen sakral penyematan cincin pertunangan di hadapan para sesepuh dan keluarga besar kedua belah pihak.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Foto 5 -->
+            <div class="ngidih-slide-card" data-index="4">
+              <div class="ngidih-card-inner">
+                <div class="ngidih-img-wrap">
+                  <img class="ngidih-lazy-img" src="Image/ngidih/thumb-5.webp" data-full="Image/Ngidih (5).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-5.jpg" alt="Gadis Pembawa Baki Hantaran di Pelaminan" loading="lazy" decoding="async">
+                  <div class="ngidih-card-actions">
+                    <button type="button" class="gallery-card-btn ngidih-btn-download" data-full="Image/Ngidih (5).JPG" data-filename="The-Wedding-Guswik-Fitri-Ngidih-5.jpg" aria-label="Unduh Foto" title="Unduh Foto">
+                      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    </button>
+                    <span class="gallery-card-zoom ngidih-btn-zoom" aria-label="Perbesar Foto">
+                      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="ngidih-card-caption">
+                  <span class="ngidih-step-badge">Momen 05</span>
+                  <h3 class="ngidih-card-title">Kebersamaan &amp; Berkah Pelaminan</h3>
+                  <p class="ngidih-card-text">Gadis-gadis pembawa baki hantaran seserahan bersanding di pelaminan bunga, melengkapi sukacita perayaan.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Dots Indicator Navigation -->
+        <div class="ngidih-dots" id="ngidih-dots" aria-hidden="true">
+          <button class="ngidih-dot active" data-index="0" aria-label="Momen 1"></button>
+          <button class="ngidih-dot" data-index="1" aria-label="Momen 2"></button>
+          <button class="ngidih-dot" data-index="2" aria-label="Momen 3"></button>
+          <button class="ngidih-dot" data-index="3" aria-label="Momen 4"></button>
+          <button class="ngidih-dot" data-index="4" aria-label="Momen 5"></button>
+        </div>
+      </section>
+
+      <!-- Pembatas Antar Section (Menutup Section Ngidih / Membuka Section Gift) -->
+      <div class="section-divider-pembatas pembatas-close" aria-hidden="true">
         <img src="assets/Pembatas.png" alt="" loading="lazy">
       </div>
 
@@ -1019,6 +1266,10 @@
     <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Pratinjau Foto">
       <div class="lightbox-content">
         <button id="lightbox-close" class="lightbox-close" aria-label="Tutup">&times;</button>
+        <button id="lightbox-download" class="lightbox-download" aria-label="Unduh Foto Ini" title="Unduh Foto">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          <span>Unduh</span>
+        </button>
         <button id="lightbox-prev" class="lightbox-nav prev" aria-label="Sebelumnya">&#10094;</button>
         <img id="lightbox-img" class="lightbox-img" src="" alt="Pratinjau Foto">
         <button id="lightbox-next" class="lightbox-nav next" aria-label="Selanjutnya">&#10095;</button>
@@ -1030,7 +1281,6 @@
 
   <!-- GSAP Library -->
   <script src="gsap.min.js"></script>
-  <script src="ScrollTrigger.min.js"></script>
 
   <!-- Main JavaScript -->
   <script src="script.js"></script>
