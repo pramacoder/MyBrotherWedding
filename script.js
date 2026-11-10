@@ -1453,4 +1453,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   initPandawaCardSlideshows();
+
+  // -------------------------------------------------------------------------
+  // 13. WEDDING VIDEO TEASER PLAYER
+  // -------------------------------------------------------------------------
+  const videoPoster = document.getElementById('video-poster');
+  const videoIframe = document.getElementById('wedding-youtube-iframe');
+
+  if (videoPoster && videoIframe) {
+    videoPoster.addEventListener('click', () => {
+      // Pause background music
+      pauseAudio();
+
+      // Hide poster overlay
+      videoPoster.classList.add('is-hidden');
+
+      // Autoplay the YouTube iframe
+      const currentSrc = videoIframe.getAttribute('src');
+      if (currentSrc && !currentSrc.includes('autoplay=1')) {
+        const delimiter = currentSrc.includes('?') ? '&' : '?';
+        videoIframe.src = currentSrc + delimiter + 'autoplay=1';
+      } else {
+        try {
+          videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        } catch (err) {}
+      }
+    });
+
+    // Pause background audio whenever user plays YouTube player
+    window.addEventListener('message', (e) => {
+      if (e.origin && e.origin.includes('youtube.com')) {
+        try {
+          const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+          if (data && (data.event === 'onStateChange' && data.info === 1)) {
+            pauseAudio();
+          }
+        } catch (err) {}
+      }
+    });
+  }
 });
