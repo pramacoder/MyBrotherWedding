@@ -845,14 +845,25 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       tempImg.src = targetSrc;
 
-      // Preload next and prev full image in background
-      const nextIdx = (currentGalleryIndex + 1) % activeGalleryList.length;
-      const prevIdx = (currentGalleryIndex - 1 + activeGalleryList.length) % activeGalleryList.length;
-      new Image().src = activeGalleryList[nextIdx];
-      new Image().src = activeGalleryList[prevIdx];
+      // Preload next and prev full image in background if more than 1 image
+      if (activeGalleryList.length > 1) {
+        const nextIdx = (currentGalleryIndex + 1) % activeGalleryList.length;
+        const prevIdx = (currentGalleryIndex - 1 + activeGalleryList.length) % activeGalleryList.length;
+        new Image().src = activeGalleryList[nextIdx];
+        new Image().src = activeGalleryList[prevIdx];
+        if (lightboxPrev) lightboxPrev.style.display = '';
+        if (lightboxNext) lightboxNext.style.display = '';
+      } else {
+        if (lightboxPrev) lightboxPrev.style.display = 'none';
+        if (lightboxNext) lightboxNext.style.display = 'none';
+      }
     }
     if (lightboxCounter) {
-      lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${activeGalleryList.length}`;
+      if (activeGalleryType === 'denah') {
+        lightboxCounter.textContent = 'Denah Lokasi Acara';
+      } else {
+        lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${activeGalleryList.length}`;
+      }
     }
   }
 
@@ -908,12 +919,31 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       e.preventDefault();
       const currentUrl = activeGalleryList[currentGalleryIndex];
-      const filename = activeGalleryType === 'ngidih'
-        ? `The-Wedding-Guswik-Fitri-Ngidih-${currentGalleryIndex + 1}.jpg`
-        : `The-Wedding-Guswik-Fitri-${currentGalleryIndex + 1}.jpg`;
+      let filename = `The-Wedding-Guswik-Fitri-${currentGalleryIndex + 1}.jpg`;
+      if (activeGalleryType === 'ngidih') {
+        filename = `The-Wedding-Guswik-Fitri-Ngidih-${currentGalleryIndex + 1}.jpg`;
+      } else if (activeGalleryType === 'denah') {
+        filename = 'Denah-Lokasi-Pernikahan-Guswik-Fitri.jpg';
+      }
       triggerPhotoDownload(currentUrl, filename);
     });
   }
+
+  // -------------------------------------------------------------------------
+  // Denah Lokasi Click / Lightbox Wiring
+  // -------------------------------------------------------------------------
+  const denahCard = document.getElementById('denah-card');
+  const btnZoomDenah = document.getElementById('btn-zoom-denah');
+
+  function openDenahLightbox() {
+    openLightbox(0, ['Image/denah.jpeg'], 'denah');
+  }
+
+  if (denahCard) denahCard.addEventListener('click', openDenahLightbox);
+  if (btnZoomDenah) btnZoomDenah.addEventListener('click', (e) => {
+    e.preventDefault();
+    openDenahLightbox();
+  });
 
   function downloadGalleryPhoto(index) {
     const photoNum = index + 1;

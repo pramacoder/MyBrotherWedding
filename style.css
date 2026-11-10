@@ -1189,6 +1189,192 @@ body.locked {
   display: block;
 }
 
+/* Denah Lokasi Container */
+.event-denah-container {
+  margin-top: 26px;
+  text-align: center;
+  width: 100%;
+}
+
+.event-denah-header {
+  margin-bottom: 12px;
+}
+
+.denah-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  background: rgba(197, 138, 60, 0.12);
+  border: 1px solid rgba(197, 138, 60, 0.35);
+  border-radius: 20px;
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin-bottom: 6px;
+}
+
+.denah-badge-icon {
+  width: 13px;
+  height: 13px;
+}
+
+.event-denah-title {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2b1d14;
+  margin: 0 0 4px;
+}
+
+.event-denah-sub {
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 12.5px;
+  color: #6e6e6e;
+  line-height: 1.45;
+  margin: 0 auto;
+  max-width: 360px;
+}
+
+.denah-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #14100c;
+  border: 1.5px solid rgba(197, 138, 60, 0.45);
+  box-shadow: 0 8px 24px rgba(59, 42, 30, 0.15), 0 2px 8px rgba(197, 138, 60, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.denah-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(197, 138, 60, 0.28);
+}
+
+.denah-img-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.denah-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.denah-card:hover .denah-img {
+  transform: scale(1.04);
+}
+
+.denah-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.denah-card:hover .denah-overlay {
+  opacity: 1;
+}
+
+.denah-zoom-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: var(--gold-gradient);
+  color: #ffffff;
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.denah-zoom-pill svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.denah-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-denah-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-family: 'Arima', 'Poppins', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-denah-zoom {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(197, 138, 60, 0.45);
+  color: #3b2a1e;
+  box-shadow: 0 4px 12px rgba(59, 42, 30, 0.08);
+}
+
+.btn-denah-zoom:hover {
+  background: var(--gold-gradient);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(197, 138, 60, 0.35);
+}
+
+.btn-denah-zoom svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.btn-denah-download {
+  background: var(--gold-gradient);
+  color: #ffffff !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(197, 138, 60, 0.35);
+}
+
+.btn-denah-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(197, 138, 60, 0.5);
+  filter: brightness(1.06);
+}
+
+.btn-denah-download svg {
+  width: 14px;
+  height: 14px;
+}
+
 /* Dress Code Section */
 .dresscode-card,
 .dresscode-unified {

@@ -397,6 +397,41 @@
               <div class="maps-embed-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.8082926975134!2d115.08675967664867!3d-8.510021869123346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2300eda0ac65f%3A0xf9898f7339cff7a3!2sCommunity%20hall%20of%20Sembung%20Gede%20Kelod%20Village!5e0!3m2!1sen!2sid!4v1794131331282!5m2!1sen!2sid" width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
               </div>
+
+              <!-- Denah Lokasi Acara (Route Map) -->
+              <div class="event-denah-container">
+                <div class="event-denah-header">
+                  <span class="denah-badge">
+                    <svg viewBox="0 0 24 24" class="denah-badge-icon"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                    Petunjuk Rute Acara
+                  </span>
+                  <h4 class="event-denah-title">Denah Lokasi Acara</h4>
+                  <p class="event-denah-sub">Ketuk gambar denah untuk melihat rute penuh atau mengunduh denah acara.</p>
+                </div>
+
+                <div class="denah-card" id="denah-card" role="button" tabindex="0" aria-label="Buka Denah Lokasi Acara">
+                  <div class="denah-img-box">
+                    <img src="Image/denah.webp" data-full="Image/denah.jpeg" alt="Denah Lokasi Acara Pernikahan Guswik &amp; Fitri" class="denah-img" loading="lazy" decoding="async">
+                    <div class="denah-overlay">
+                      <span class="denah-zoom-pill">
+                        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                        Perbesar Denah
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="denah-actions">
+                  <button type="button" class="btn-denah-action btn-denah-zoom" id="btn-zoom-denah">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                    <span>Layar Penuh</span>
+                  </button>
+                  <a href="Image/denah.jpeg" download="Denah-Lokasi-Pernikahan-Guswik-Fitri.jpg" class="btn-denah-action btn-denah-download" id="btn-download-denah">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span>Unduh Denah HD</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
