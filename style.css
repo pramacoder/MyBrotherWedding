@@ -889,10 +889,9 @@ body.locked {
 }
 
 /* ==========================================================================
-   SECTIONS DENGAN LATAR LEBIH REDUP (Digital, Our Love Story, RSVP)
+   SECTIONS DENGAN LATAR LEBIH REDUP (Our Love Story, RSVP)
    Sesuai permintaan: Tanpa pembatas & menggunakan latar lebih redup
    ========================================================================== */
-#digital-section,
 #story-section,
 #rsvp-section {
   background: linear-gradient(180deg, #ede3d3 0%, #dfcfb9 50%, #ede3d3 100%);
@@ -2247,111 +2246,6 @@ body.locked {
   fill: currentColor;
 }
 
-/* ==========================================================================
-   5. KETERLIBATAN DIGITAL (DIGITAL ENGAGEMENT SECTION)
-   ========================================================================== */
-.digital-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-.digital-card {
-  background: #fff;
-  border: 1px solid var(--border-gold);
-  border-radius: 18px;
-  padding: 26px 20px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(59, 42, 30, 0.05);
-  transition: var(--transition);
-}
-
-.digital-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--gold-500);
-}
-
-.digital-icon-wrap {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  margin: 0 auto 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-.digital-icon-wrap.youtube {
-  background: #ff0000;
-  color: #fff;
-}
-
-.digital-icon-wrap.instagram {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  color: #fff;
-}
-
-.digital-icon-wrap svg {
-  width: 26px;
-  height: 26px;
-  fill: currentColor;
-}
-
-.digital-card-title {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--cocoa-800);
-  margin-bottom: 8px;
-}
-
-.digital-card-desc {
-  font-size: 0.88rem;
-  color: var(--cocoa-600);
-  margin-bottom: 18px;
-  line-height: 1.55;
-}
-
-.btn-action-youtube {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ff0000;
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 25px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-}
-
-.btn-action-youtube:hover {
-  background: #cc0000;
-  transform: translateY(-2px);
-}
-
-.btn-action-instagram {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 25px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
-}
-
-.btn-action-instagram:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-}
 
 /* ==========================================================================
    6. WEDDING GALLERY SECTION (HORIZONTAL SWIPEABLE SLIDER)
