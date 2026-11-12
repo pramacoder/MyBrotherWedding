@@ -17,6 +17,9 @@
 
   <!-- Preload Essential Cover Assets -->
   <link rel="preload" href="assets/Background.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/tree.png" as="image" type="image/png">
+  <link rel="preload" href="assets/tree%201.png" as="image" type="image/png">
+  <link rel="preload" href="assets/tree%202.png" as="image" type="image/png">
   <link rel="preload" href="assets/floral1.webp" as="image" type="image/webp">
   <link rel="preload" href="assets/floral4.webp" as="image" type="image/webp">
   <link rel="preload" href="assets/floralwithflower.webp" as="image" type="image/webp">
@@ -60,27 +63,45 @@
       <!-- L1 Kilau Emas Pita Atas -->
       <div class="shine" aria-hidden="true"></div>
 
-      <!-- Tree Curtain: Animasi Tertutup Elemen Pohon Lalu Terbuka (Sesuai Referensi) -->
+      <!-- Tree Frame: Pohon Muncul dari Sisi Kiri & Kanan dan Terus Bergoyang Hingga Undangan Dibuka -->
       <div class="tree-curtain" id="tree-curtain" aria-hidden="true">
 
-
-
-        <!-- Left Wing of Trees & Branches -->
+        <!-- Left Side Trees (Muncul dari Sisi Kiri) -->
         <div class="tree-wing tree-wing--left">
-          <img class="tree-branch-top" src="assets/brunchofleaves.png" alt="">
-          <img class="tree-trunk-main" src="assets/floral6.png" alt="">
-          <img class="tree-bush-mid" src="assets/floral8.png" alt="">
-          <img class="tree-bush-low" src="assets/floral1.webp" alt="">
-          <img class="tree-flower-accent" src="assets/whiteflowers.webp" alt="">
+          <div class="tree-slot tree-slot--left-back">
+            <div class="tree-sway">
+              <img class="tree-img tree-img--flip" src="assets/tree%202.png" alt="" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="tree-slot tree-slot--left-mid">
+            <div class="tree-sway">
+              <img class="tree-img" src="assets/tree.png" alt="" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="tree-slot tree-slot--left-low">
+            <div class="tree-sway">
+              <img class="tree-img tree-img--flip" src="assets/tree%201.png" alt="" loading="eager" decoding="async">
+            </div>
+          </div>
         </div>
 
-        <!-- Right Wing of Trees & Branches -->
+        <!-- Right Side Trees (Muncul dari Sisi Kanan) -->
         <div class="tree-wing tree-wing--right">
-          <img class="tree-branch-top" src="assets/brunchofflowers.webp" alt="">
-          <img class="tree-trunk-main" src="assets/floral5.png" alt="">
-          <img class="tree-bush-mid" src="assets/floral4.webp" alt="">
-          <img class="tree-bush-low" src="assets/floralwithflower2.png" alt="">
-          <img class="tree-flower-accent" src="assets/bouquetofflowers.webp" alt="">
+          <div class="tree-slot tree-slot--right-back">
+            <div class="tree-sway">
+              <img class="tree-img" src="assets/tree%202.png" alt="" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="tree-slot tree-slot--right-mid">
+            <div class="tree-sway">
+              <img class="tree-img" src="assets/tree%201.png" alt="" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="tree-slot tree-slot--right-low">
+            <div class="tree-sway">
+              <img class="tree-img tree-img--flip" src="assets/tree.png" alt="" loading="eager" decoding="async">
+            </div>
+          </div>
         </div>
 
         <!-- Bottom Foreground Floral Threshold -->
@@ -160,12 +181,8 @@
             Jumat, 11 Desember 2026
           </div>
 
-          <!-- Wiwaha Spiritual Hindu Quote -->
-          <div class="hero-quote-box">
-            <p>
-              &ldquo;Atas anugerah Ida Sang Hyang Widhi Wasa, kami dipersatukan dalam ikatan suci Wiwaha. Semoga perjalanan ini senantiasa dipenuhi cinta kasih, keharmonisan, kesetiaan, dan kebijaksanaan, menuju keluarga yang bahagia lahir dan batin.&rdquo;
-            </p>
-          </div>
+          <!-- Transparent Spacer Container (Menjaga Jarak Agar Wajah Pengantin Terlihat Jelas) -->
+          <div class="hero-quote-box" aria-hidden="true"></div>
 
           <!-- Countdown Timer -->
           <div class="hero-countdown-wrap">
@@ -461,7 +478,7 @@
               <svg viewBox="0 0 24 24" class="swipe-icon"><path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"/></svg>
               Geser ke kanan / kiri
             </span>
-            <span id="gallery-counter" class="gallery-counter-pill">Foto 1 dari 16</span>
+            <span id="gallery-counter" class="gallery-counter-pill">Foto 1 dari 15</span>
           </div>
 
           <!-- Horizontal Scroll Track -->
@@ -730,7 +747,7 @@
           <div class="gallery-slide-card" data-index="13">
             <div class="gallery-card-inner">
               <div class="gallery-skeleton" aria-hidden="true"></div>
-              <img class="gallery-lazy-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325 460'%3E%3C/svg%3E" data-src="Image/gallery/thumb-14.webp" data-full="Image/gallery/full-14.webp" alt="The Wedding of Guswik &amp; Fitri - Pre-wedding 14" loading="lazy" decoding="async">
+              <img class="gallery-lazy-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325 460'%3E%3C/svg%3E" data-src="Image/gallery/thumb-15.webp" data-full="Image/gallery/full-15.webp" alt="The Wedding of Guswik &amp; Fitri - Pre-wedding 14" loading="lazy" decoding="async">
               <div class="gallery-card-overlay">
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
@@ -750,27 +767,7 @@
           <div class="gallery-slide-card" data-index="14">
             <div class="gallery-card-inner">
               <div class="gallery-skeleton" aria-hidden="true"></div>
-              <img class="gallery-lazy-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325 460'%3E%3C/svg%3E" data-src="Image/gallery/thumb-15.webp" data-full="Image/gallery/full-15.webp" alt="The Wedding of Guswik &amp; Fitri - Pre-wedding 15" loading="lazy" decoding="async">
-              <div class="gallery-card-overlay">
-                <div class="gallery-card-caption">
-                  <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
-                </div>
-                <div class="gallery-card-actions">
-                  <button type="button" class="gallery-card-btn gallery-btn-download" aria-label="Unduh Foto" title="Unduh Foto">
-                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                  </button>
-                  <span class="gallery-card-zoom" aria-label="Perbesar Foto">
-                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Foto 16 -->
-          <div class="gallery-slide-card" data-index="15">
-            <div class="gallery-card-inner">
-              <div class="gallery-skeleton" aria-hidden="true"></div>
-              <img class="gallery-lazy-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325 460'%3E%3C/svg%3E" data-src="Image/gallery/thumb-16.webp" data-full="Image/gallery/full-16.webp" alt="The Wedding of Guswik &amp; Fitri - Pre-wedding 16" loading="lazy" decoding="async">
+              <img class="gallery-lazy-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 325 460'%3E%3C/svg%3E" data-src="Image/gallery/thumb-16.webp" data-full="Image/gallery/full-16.webp" alt="The Wedding of Guswik &amp; Fitri - Pre-wedding 15" loading="lazy" decoding="async">
               <div class="gallery-card-overlay">
                 <div class="gallery-card-caption">
                   <h3 class="gallery-card-title">Guswik &amp; Fitri</h3>
@@ -1299,7 +1296,7 @@
         <button id="lightbox-prev" class="lightbox-nav prev" aria-label="Sebelumnya">&#10094;</button>
         <img id="lightbox-img" class="lightbox-img" src="" alt="Pratinjau Foto">
         <button id="lightbox-next" class="lightbox-nav next" aria-label="Selanjutnya">&#10095;</button>
-        <div id="lightbox-counter" class="lightbox-counter">1 / 16</div>
+        <div id="lightbox-counter" class="lightbox-counter">1 / 15</div>
       </div>
     </div>
 

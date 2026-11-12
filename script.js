@@ -194,6 +194,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Build Master GSAP Intro Timeline (A-20)
   let introTl = null;
+  let treeSwayTweens = [];
+
+  function startTreeSway() {
+    if (treeSwayTweens.length > 0 || !window.gsap || isCoverOpen) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const swayConfigs = [
+      { selector: '.tree-slot--left-back .tree-sway',  fromRot: -1.8, toRot: 1.8, duration: 4.8, delay: 0 },
+      { selector: '.tree-slot--left-mid .tree-sway',   fromRot: 1.6,  toRot: -1.8, duration: 4.2, delay: -1.1 },
+      { selector: '.tree-slot--left-low .tree-sway',   fromRot: -1.4, toRot: 1.7, duration: 3.9, delay: -0.6 },
+      { selector: '.tree-slot--right-back .tree-sway', fromRot: 1.8,  toRot: -1.8, duration: 5.0, delay: -1.5 },
+      { selector: '.tree-slot--right-mid .tree-sway',  fromRot: -1.6, toRot: 1.9, duration: 4.4, delay: -0.4 },
+      { selector: '.tree-slot--right-low .tree-sway',  fromRot: 1.5,  toRot: -1.5, duration: 4.0, delay: -1.8 }
+    ];
+
+    swayConfigs.forEach(cfg => {
+      const el = document.querySelector(cfg.selector);
+      if (!el) return;
+      gsap.set(el, { rotation: cfg.fromRot, transformOrigin: '48% 92%' });
+      const tween = gsap.to(el, {
+        rotation: cfg.toRot,
+        duration: cfg.duration,
+        delay: cfg.delay,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true
+      });
+      treeSwayTweens.push(tween);
+    });
+  }
+
+  function stopTreeSway() {
+    treeSwayTweens.forEach(t => t && t.kill());
+    treeSwayTweens = [];
+  }
 
   function buildIntro() {
     if (!window.gsap) {
@@ -211,13 +246,21 @@ document.addEventListener('DOMContentLoaded', () => {
       write: 'power1.inOut'
     };
 
-    // Prepare centered transforms for GSAP & initial closed tree state
+    // Prepare centered transforms & initial off-screen side tree positions
     gsap.set('.letter-wrapper', { xPercent: -50, yPercent: -50 });
     gsap.set('.fg--bc', { xPercent: -50 });
-    gsap.set('.tree-wing--left', { xPercent: 0, rotate: 0 });
-    gsap.set('.tree-wing--right', { xPercent: 0, rotate: 0 });
-    gsap.set('.tree-canopy-top', { yPercent: 0, scale: 1 });
-    gsap.set('.tree-curtain__bottom', { yPercent: 0 });
+    gsap.set('.tree-wing--left, .tree-wing--right', { xPercent: 0, opacity: 1 });
+    gsap.set('.tree-slot--left-back, .tree-slot--left-mid, .tree-slot--left-low', {
+      xPercent: -58,
+      opacity: 0,
+      rotate: -4
+    });
+    gsap.set('.tree-slot--right-back, .tree-slot--right-mid, .tree-slot--right-low', {
+      xPercent: 58,
+      opacity: 0,
+      rotate: 4
+    });
+    gsap.set('.tree-curtain__bottom', { yPercent: 24, opacity: 0 });
 
     introTl = gsap.timeline({
       defaults: { ease: E.out },
@@ -228,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 0.0s - 2.2s: L0-bg wash-to-clear & pohon mulai tertutup lalu terbuka
+    // 0.0s - 2.2s: L0-bg wash-to-clear & pohon muncul dari sisi kiri dan kanan
     introTl.addLabel('bg', 0)
       .fromTo('.bg', 
         { opacity: 0, filter: 'blur(8px) saturate(0.35) brightness(1.12)', yPercent: -2.5, scale: 1.06 },
@@ -239,31 +282,31 @@ document.addEventListener('DOMContentLoaded', () => {
         { xPercent: 100, opacity: 0.8, duration: 1, ease: E.inout }, 
         0.9)
 
-      // 0.4s - 2.2s: ANIMASI TIRAI POHON TERTUTUP LALU TERBUKA (SESUAI REFERENSI)
-      .addLabel('treeOpen', 0.4)
-      .to('.tree-wing--left', {
-        xPercent: -76,
-        rotate: -3,
-        duration: 1.8,
-        ease: 'power3.inOut'
-      }, 'treeOpen')
-      .to('.tree-wing--right', {
-        xPercent: 76,
-        rotate: 3,
-        duration: 1.8,
-        ease: 'power3.inOut'
-      }, 'treeOpen')
-      .to('.tree-canopy-top', {
-        yPercent: -42,
-        scale: 1.05,
-        duration: 1.8,
-        ease: 'power3.inOut'
-      }, 'treeOpen')
+      // 0.3s - 2.2s: Pohon Sisi Kiri & Kanan Muncul & Terus Bergoyang
+      .addLabel('treeEnter', 0.3)
+      .add(() => startTreeSway(), 'treeEnter')
+      .to('.tree-slot--left-back, .tree-slot--left-mid, .tree-slot--left-low', {
+        xPercent: 0,
+        opacity: 1,
+        rotate: 0,
+        duration: 1.7,
+        stagger: 0.22,
+        ease: 'power3.out'
+      }, 'treeEnter')
+      .to('.tree-slot--right-back, .tree-slot--right-mid, .tree-slot--right-low', {
+        xPercent: 0,
+        opacity: 1,
+        rotate: 0,
+        duration: 1.7,
+        stagger: 0.22,
+        ease: 'power3.out'
+      }, 'treeEnter')
       .to('.tree-curtain__bottom', {
-        yPercent: 6,
-        duration: 1.6,
-        ease: 'power3.inOut'
-      }, 'treeOpen')
+        yPercent: 0,
+        opacity: 1,
+        duration: 1.5,
+        ease: 'power3.out'
+      }, 'treeEnter+=0.35')
 
       // 1.8s - 3.0s: Kertas Mendarat dengan Sedikit Overshoot
       .addLabel('paper', 1.8)
@@ -343,10 +386,14 @@ document.addEventListener('DOMContentLoaded', () => {
       introTl.progress(1);
     }
     introFinished = true;
-    gsap.set('.tree-wing--left', { xPercent: -76, rotate: -3 });
-    gsap.set('.tree-wing--right', { xPercent: 76, rotate: 3 });
-    gsap.set('.tree-canopy-top', { yPercent: -42, scale: 1.05 });
-    gsap.set('.tree-curtain__bottom', { yPercent: 6 });
+    gsap.set('.tree-wing--left, .tree-wing--right', { xPercent: 0, opacity: 1 });
+    gsap.set('.tree-slot--left-back, .tree-slot--left-mid, .tree-slot--left-low, .tree-slot--right-back, .tree-slot--right-mid, .tree-slot--right-low', {
+      xPercent: 0,
+      opacity: 1,
+      rotate: 0
+    });
+    gsap.set('.tree-curtain__bottom', { yPercent: 0, opacity: 1 });
+    startTreeSway();
     document.querySelectorAll('.letter__names .w').forEach(w => w.classList.add('is-writing'));
     if (btnOpen) {
       gsap.to(btnOpen, { opacity: 1, duration: 0.3, ease: 'power2.out' });
@@ -366,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     playAudio();
 
     if (!window.gsap) {
+      stopTreeSway();
       showPage2();
       return;
     }
@@ -378,9 +426,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tl.to('.cta', { opacity: 0, duration: 0.35, ease: 'power2.out' }, 0)
       .to('.letter-wrapper', { y: '-40vh', rotate: -4, opacity: 0, duration: 0.9 }, 0.1)
-      .to('.tree-wing--left', { xPercent: -130, opacity: 0, duration: 1.5, ease: 'power2.inOut' }, 0.2)
-      .to('.tree-wing--right', { xPercent: 130, opacity: 0, duration: 1.5, ease: 'power2.inOut' }, 0.2)
-      .to('.tree-canopy-top', { yPercent: -100, opacity: 0, duration: 1.2, ease: 'power2.inOut' }, 0.2)
+      .to('.tree-wing--left', { xPercent: -75, opacity: 0, duration: 1.5, ease: 'power2.inOut' }, 0.2)
+      .to('.tree-wing--right', { xPercent: 75, opacity: 0, duration: 1.5, ease: 'power2.inOut' }, 0.2)
       .to('.tree-curtain__bottom', { yPercent: 100, opacity: 0, duration: 1.2, ease: 'power2.inOut' }, 0.2)
       .to('.fg--bl', { x: '-35vw', scale: 1.25, opacity: 0, duration: 1.5 }, 0.3)
       .to('.fg--br', { x: '35vw', scale: 1.25, opacity: 0, duration: 1.5 }, 0.3)
@@ -390,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showPage2() {
+    stopTreeSway();
     if (coverEl) {
       coverEl.style.display = 'none';
     }

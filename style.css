@@ -181,7 +181,7 @@ body.locked {
 }
 
 /* ==========================================================================
-   TREE CURTAIN: ANIMASI TERTUTUP ELEMEN POHON LALU TERBUKA (SESUAI REFERENSI)
+   TREE FRAME: ANIMASI POHON MUNCUL DARI KIRI & KANAN + BERGOYANG KONTINU
    ========================================================================== */
 .tree-curtain {
   position: absolute;
@@ -189,176 +189,87 @@ body.locked {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 25;
   overflow: hidden;
 }
 
-/* Top Arch Canopy */
-.tree-canopy-top {
+/* Wings (Sayap Pohon Kiri & Kanan - di belakang surat, di depan gapura) */
+.tree-wing {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: 40%;
+  height: 100%;
   pointer-events: none;
-  z-index: 28;
-  transform-origin: 50% 0%;
+  z-index: 16;
   will-change: transform, opacity;
 }
 
-.tree-canopy-top .branch--left {
+.tree-slot {
   position: absolute;
-  top: 16%;
-  left: 2%;
-  width: 62%;
-  height: auto;
-  transform-origin: center center;
-  transform: rotate(85deg);
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
-}
-
-.tree-canopy-top .branch--right {
-  position: absolute;
-  top: 14%;
-  right: -2%;
-  width: 48%;
-  height: auto;
-  transform-origin: center center;
-  transform: rotate(-90deg);
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
-}
-
-.tree-canopy-top .branch--leaves {
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  width: 36%;
-  height: auto;
-  transform-origin: center center;
-  transform: translateX(-50%) rotate(180deg);
-  opacity: 0.98;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.24));
-}
-
-/* Wings (Sayap Pohon Kiri & Kanan) */
-.tree-wing {
-  position: absolute;
-  top: -2%;
-  width: 82%;
-  height: 104%;
   pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.tree-sway {
+  width: 100%;
+  height: 100%;
+  transform-origin: 48% 92%;
   will-change: transform;
 }
 
-.tree-wing--left {
-  left: -8%;
-  transform-origin: 0% 50%;
-  z-index: 27;
-}
-
-.tree-wing--right {
-  right: -8%;
-  transform-origin: 100% 50%;
-  z-index: 27;
-}
-
-/* Left Wing Elements */
-.tree-wing--left .tree-branch-top {
-  position: absolute;
-  top: 2%;
-  left: 5%;
-  width: 90%;
+.tree-img {
+  display: block;
+  width: 100%;
   height: auto;
-  transform: rotate(-5deg);
-  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.25));
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(43, 29, 20, 0.24));
 }
 
-.tree-wing--left .tree-trunk-main {
-  position: absolute;
-  top: 18%;
-  left: 0;
-  width: 95%;
-  height: auto;
-  transform: scale(1.05);
-  filter: drop-shadow(4px 6px 12px rgba(0, 0, 0, 0.35));
-}
-
-.tree-wing--left .tree-bush-mid {
-  position: absolute;
-  top: 45%;
-  left: 5%;
-  width: 85%;
-  height: auto;
-  transform: scale(1.1);
-  filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.3));
-}
-
-.tree-wing--left .tree-bush-low {
-  position: absolute;
-  bottom: 2%;
-  left: 0;
-  width: 80%;
-  height: auto;
-  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.25));
-}
-
-.tree-wing--left .tree-flower-accent {
-  position: absolute;
-  bottom: 6%;
-  left: 30%;
-  width: 45%;
-  height: auto;
-  filter: drop-shadow(1px 3px 6px rgba(0, 0, 0, 0.2));
-}
-
-/* Right Wing Elements */
-.tree-wing--right .tree-branch-top {
-  position: absolute;
-  top: 2%;
-  right: 5%;
-  width: 90%;
-  height: auto;
-  transform: rotate(5deg) scaleX(-1);
-  filter: drop-shadow(-2px 4px 8px rgba(0, 0, 0, 0.25));
-}
-
-.tree-wing--right .tree-trunk-main {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  width: 95%;
-  height: auto;
-  transform: scaleX(-1.05) scaleY(1.05);
-  filter: drop-shadow(-4px 6px 12px rgba(0, 0, 0, 0.35));
-}
-
-.tree-wing--right .tree-bush-mid {
-  position: absolute;
-  top: 48%;
-  right: 5%;
-  width: 85%;
-  height: auto;
+.tree-img--flip {
   transform: scaleX(-1);
-  filter: drop-shadow(-3px 5px 10px rgba(0, 0, 0, 0.3));
 }
 
-.tree-wing--right .tree-bush-low {
-  position: absolute;
-  bottom: 2%;
-  right: 0;
-  width: 80%;
-  height: auto;
-  transform: scaleX(-1);
-  filter: drop-shadow(-2px 4px 8px rgba(0, 0, 0, 0.25));
+/* Left Side Trees (tree 2.png hijau di belakang atas, tree.png marun di tengah, tree 1.png emas di bawah) */
+.tree-slot--left-back {
+  width: 84%;
+  bottom: 24%;
+  left: -46%;
+  z-index: 1;
 }
 
-.tree-wing--right .tree-flower-accent {
-  position: absolute;
-  bottom: 8%;
-  right: 25%;
-  width: 50%;
-  height: auto;
-  filter: drop-shadow(-1px 3px 6px rgba(0, 0, 0, 0.2));
+.tree-slot--left-mid {
+  width: 74%;
+  bottom: 14%;
+  left: -38%;
+  z-index: 2;
+}
+
+.tree-slot--left-low {
+  width: 64%;
+  bottom: 5%;
+  left: -32%;
+  z-index: 3;
+}
+
+/* Right Side Trees (tree 2.png hijau di belakang atas, tree 1.png emas di tengah, tree.png marun di bawah) */
+.tree-slot--right-back {
+  width: 84%;
+  bottom: 24%;
+  right: -46%;
+  z-index: 1;
+}
+
+.tree-slot--right-mid {
+  width: 74%;
+  bottom: 14%;
+  right: -38%;
+  z-index: 2;
+}
+
+.tree-slot--right-low {
+  width: 64%;
+  bottom: 5%;
+  right: -32%;
+  z-index: 3;
 }
 
 /* Bottom Foreground Rumpun Dedaunan */
@@ -680,15 +591,6 @@ body.locked {
 /* ==========================================================================
    A-27 IDLE ANIMATIONS
    ========================================================================== */
-.cover.is-idle .tree-wing--left {
-  animation: swayTreeLeft 6s ease-in-out infinite alternate;
-}
-.cover.is-idle .tree-wing--right {
-  animation: swayTreeRight 6.5s ease-in-out infinite alternate;
-}
-.cover.is-idle .tree-canopy-top {
-  animation: swayCanopyTop 5.5s ease-in-out infinite alternate;
-}
 .cover.is-idle .fg--bl {
   animation: swayBL 5.5s ease-in-out infinite alternate;
 }
@@ -703,21 +605,6 @@ body.locked {
 }
 .cover.is-idle .ink {
   animation: wobbleInk 5s ease-in-out infinite alternate;
-}
-
-@keyframes swayTreeLeft {
-  0%   { transform: translate(-76%, 0) rotate(-3.5deg); }
-  100% { transform: translate(-76%, 0) rotate(-2deg); }
-}
-
-@keyframes swayTreeRight {
-  0%   { transform: translate(76%, 0) rotate(3.5deg); }
-  100% { transform: translate(76%, 0) rotate(2deg); }
-}
-
-@keyframes swayCanopyTop {
-  0%   { transform: translate(0, -42%) scale(1.05) rotate(-0.5deg); }
-  100% { transform: translate(0, -42%) scale(1.05) rotate(0.5deg); }
 }
 
 @keyframes swayBL {
@@ -1054,23 +941,17 @@ body.locked {
 }
 
 .hero-quote-box {
-  background: rgba(20, 15, 12, 0.52);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-left: 3px solid var(--gold-400);
-  border-right: 3px solid var(--gold-400);
-  border-radius: 12px;
-  padding: 16px 20px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 125px;
   margin-bottom: 24px;
   max-width: 380px;
-}
-
-.hero-quote-box p {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.92);
+  pointer-events: none;
 }
 
 .hero-countdown-wrap {
@@ -3849,6 +3730,7 @@ body.locked {
 @media (prefers-reduced-motion: reduce) {
   .cover .bg,
   .cover .fg,
+  .cover .tree-sway,
   .cover .letter-wrapper,
   .cover .ink,
   .cover .cta,
