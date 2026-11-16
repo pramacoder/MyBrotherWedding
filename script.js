@@ -44,8 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const queryGuest = urlParams.get('to') || urlParams.get('guest') || urlParams.get('u');
 
   if (pathSlug) {
-    // 1. Immediate lookup in local guests table, then sync with Database API (/api/guests?slug=...)
-    const matchedLocal = defaultGuests.find(g => g.slug.toLowerCase() === pathSlug);
+    // 1. Immediate lookup in local guests table / localStorage, then sync with Database API
+    let localCustomGuests = [];
+    try {
+      const rawCustom = localStorage.getItem('fitri_guswik_admin_guests_v1');
+      if (rawCustom) localCustomGuests = JSON.parse(rawCustom);
+    } catch (e) {}
+
+    const combinedLocal = [...localCustomGuests, ...defaultGuests];
+    const matchedLocal = combinedLocal.find(g => g.slug && g.slug.toLowerCase() === pathSlug);
     if (matchedLocal) {
       applyGuestName(matchedLocal.name);
     } else {
@@ -53,7 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetch(`/api/guests?slug=${encodeURIComponent(pathSlug)}`)
-      .then(res => (res.ok ? res.json() : Promise.reject()))
+      .then(res => {
+        const isJson = res.ok && String(res.headers.get('content-type') || '').toLowerCase().includes('application/json');
+        return isJson ? res.json() : Promise.reject();
+      })
       .then(guest => {
         if (guest && guest.name) {
           applyGuestName(guest.name);

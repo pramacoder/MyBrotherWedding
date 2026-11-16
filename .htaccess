@@ -2,14 +2,18 @@
   RewriteEngine On
   RewriteBase /
 
-  # 1. Arahkan /admin atau /dashboard ke admin.html
+  # 1. Arahkan /api/guests dan /api/wishes ke handler PHP (untuk Hostinger LiteSpeed/Apache)
+  RewriteRule ^api/guests/?$ api/guests.php [QSA,L]
+  RewriteRule ^api/wishes/?$ api/wishes.php [QSA,L]
+
+  # 2. Arahkan /admin atau /dashboard ke admin.html
   RewriteRule ^(admin|dashboard)/?$ admin.html [L]
 
-  # 2. Jangan ubah jika file atau folder fisik memang ada (gambar, css, js, dll)
+  # 3. Jangan ubah jika file atau folder fisik memang ada (gambar, css, js, json, txt, xml, dll)
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 3. Dynamic Routing Tamu: arahkan /nama-tamu ke index.html
+  # 4. Dynamic Routing Tamu: arahkan /nama-tamu ke index.html
   RewriteRule ^ index.html [L]
 </IfModule>

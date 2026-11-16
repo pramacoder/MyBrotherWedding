@@ -369,6 +369,10 @@
       showToast('Ucapan dihapus.');
     };
 
+    function isJsonRes(res) {
+      return res && res.ok && String(res.headers.get('content-type') || '').toLowerCase().includes('application/json');
+    }
+
     formAddGuest.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = guestNameInput.value.trim();
@@ -382,9 +386,12 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, slug, invitation })
         });
-        if (res.ok) {
-          savedServer = true;
-          await loadData();
+        if (isJsonRes(res)) {
+          const created = await res.json();
+          if (created && created.slug) {
+            savedServer = true;
+            await loadData();
+          }
         }
       } catch (err) {}
 
@@ -415,10 +422,13 @@
       let loadedFromServer = false;
       try {
         const gRes = await fetch('/api/guests');
-        if (gRes.ok) {
-          allGuests = await gRes.json();
-          loadedFromServer = true;
-          saveLocalGuests();
+        if (isJsonRes(gRes)) {
+          const parsed = await gRes.json();
+          if (Array.isArray(parsed)) {
+            allGuests = parsed;
+            loadedFromServer = true;
+            saveLocalGuests();
+          }
         }
       } catch (e) {}
 
@@ -429,7 +439,7 @@
             allGuests = JSON.parse(localRaw);
           } else {
             const jsonRes = await fetch('/guests.json');
-            if (jsonRes.ok) {
+            if (isJsonRes(jsonRes)) {
               allGuests = await jsonRes.json();
               saveLocalGuests();
             }
@@ -439,8 +449,11 @@
 
       try {
         const wRes = await fetch('/api/wishes');
-        if (wRes.ok) {
-          allWishes = await wRes.json();
+        if (isJsonRes(wRes)) {
+          const parsedW = await wRes.json();
+          if (Array.isArray(parsedW)) {
+            allWishes = parsedW;
+          }
         } else {
           const localWishes = localStorage.getItem('fitri_guswik_wedding_wishes_v2');
           if (localWishes) allWishes = JSON.parse(localWishes);
