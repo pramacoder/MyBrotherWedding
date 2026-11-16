@@ -259,22 +259,30 @@
       }
 
       guestsTableBody.innerHTML = filtered.map(g => {
-        const fullUrl = `${window.location.origin}/${g.slug}`;
+        const queryUrl = `${window.location.origin}/?to=${encodeURIComponent(g.name)}`;
+        const slugUrl = `${window.location.origin}/${g.slug}`;
         const badgeClass = g.invitation === 'Group'
           ? 'bg-purple-50 text-purple-700 border-purple-200'
           : 'bg-amber-50 text-amber-800 border-amber-200';
         const waText = encodeURIComponent(
-          `Kepada Yth. ${g.name},\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara Pawiwahan & Resepsi kami (Guswik & Fitri).\n\nInfo lengkap undangan dapat diakses melalui tautan berikut:\n${fullUrl}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.\nTerima kasih.`
+          `Kepada Yth. ${g.name},\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara Pawiwahan & Resepsi kami (Guswik & Fitri).\n\nInfo lengkap undangan dapat diakses melalui tautan berikut:\n${queryUrl}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.\nTerima kasih.`
         );
 
         return `
           <tr class="hover:bg-slate-50/80 transition">
             <td class="py-3 px-4 font-mono text-xs text-slate-500">${g.id}</td>
             <td class="py-3 px-4 font-medium text-slate-900">${escapeHtml(g.name)}</td>
-            <td class="py-3 px-4">
-              <a href="/${escapeHtml(g.slug)}" target="_blank" class="inline-flex items-center gap-1 font-mono text-xs text-amber-700 hover:underline">
-                /${escapeHtml(g.slug)}
-              </a>
+            <td class="py-3 px-4 space-y-0.5">
+              <div>
+                <a href="/?to=${encodeURIComponent(g.name)}" target="_blank" class="inline-flex items-center gap-1 font-mono text-xs text-amber-700 hover:underline">
+                  /?to=${escapeHtml(g.name)}
+                </a>
+              </div>
+              <div>
+                <a href="/${escapeHtml(g.slug)}" target="_blank" class="inline-flex items-center gap-1 font-mono text-[11px] text-slate-400 hover:underline">
+                  /${escapeHtml(g.slug)}
+                </a>
+              </div>
             </td>
             <td class="py-3 px-4">
               <span class="inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-medium ${badgeClass}">
@@ -282,8 +290,11 @@
               </span>
             </td>
             <td class="py-3 px-4 text-right whitespace-nowrap space-x-1.5">
-              <button type="button" onclick="copyGuestUrl('${escapeHtml(fullUrl)}')" class="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 transition">
+              <button type="button" onclick="copyGuestUrl('${escapeHtml(queryUrl)}')" class="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 transition" title="Salin Link Undangan (?to=...)">
                 Salin Link
+              </button>
+              <button type="button" onclick="copyGuestUrl('${escapeHtml(slugUrl)}')" class="inline-flex items-center gap-1 rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 hover:bg-amber-100 transition" title="Salin Link Slug (/slug)">
+                Salin /slug
               </button>
               <a href="https://api.whatsapp.com/send?text=${waText}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 transition">
                 Kirim WA
@@ -323,6 +334,14 @@
       }).join('');
     }
 
+    const LOCAL_GUESTS_KEY = 'fitri_guswik_admin_guests_v1';
+
+    function saveLocalGuests() {
+      try {
+        localStorage.setItem(LOCAL_GUESTS_KEY, JSON.stringify(allGuests));
+      } catch (e) {}
+    }
+
     window.copyGuestUrl = function(url) {
       navigator.clipboard.writeText(url).then(() => {
         showToast('Link undangan berhasil disalin!');
@@ -330,52 +349,104 @@
     };
 
     window.removeGuest = async function(id) {
-      await fetch(`/api/guests?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
-      await loadData();
+      try {
+        await fetch(`/api/guests?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      } catch (e) {}
+      allGuests = allGuests.filter(g => Number(g.id) !== Number(id));
+      saveLocalGuests();
+      renderStats();
+      renderGuestsTable();
       showToast('Data tamu dihapus.');
     };
 
     window.removeWish = async function(id) {
-      await fetch(`/api/wishes?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
-      await loadData();
+      try {
+        await fetch(`/api/wishes?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      } catch (e) {}
+      allWishes = allWishes.filter(w => String(w.id) !== String(id));
+      renderStats();
+      renderWishesTable();
       showToast('Ucapan dihapus.');
     };
 
     formAddGuest.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = guestNameInput.value.trim();
-      const slug = guestSlugInput.value.trim();
+      const slug = guestSlugInput.value.trim() || makeSlug(name);
       const invitation = guestInvInput.value;
 
-      const res = await fetch('/api/guests', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, slug, invitation })
-      });
+      let savedServer = false;
+      try {
+        const res = await fetch('/api/guests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, slug, invitation })
+        });
+        if (res.ok) {
+          savedServer = true;
+          await loadData();
+        }
+      } catch (err) {}
 
-      if (res.ok) {
-        guestNameInput.value = '';
-        guestSlugInput.value = '';
-        slugManuallyEdited = false;
-        updateSlugPreview();
-        await loadData();
-        showToast(`Tamu "${name}" berhasil disimpan!`);
-      } else {
-        showToast('Gagal menyimpan tamu.');
+      if (!savedServer) {
+        const existingIdx = allGuests.findIndex(g => g.slug === slug);
+        if (existingIdx >= 0) {
+          allGuests[existingIdx].name = name;
+          allGuests[existingIdx].invitation = invitation;
+        } else {
+          const nextId = allGuests.reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1;
+          allGuests.push({ id: nextId, name, slug, invitation });
+        }
+        saveLocalGuests();
+        renderStats();
+        renderGuestsTable();
       }
+
+      guestNameInput.value = '';
+      guestSlugInput.value = '';
+      slugManuallyEdited = false;
+      updateSlugPreview();
+      showToast(`Tamu "${name}" berhasil ditambahkan!`);
     });
 
     searchGuestInput.addEventListener('input', renderGuestsTable);
 
     async function loadData() {
+      let loadedFromServer = false;
       try {
-        const [gRes, wRes] = await Promise.all([
-          fetch('/api/guests'),
-          fetch('/api/wishes')
-        ]);
-        if (gRes.ok) allGuests = await gRes.json();
-        if (wRes.ok) allWishes = await wRes.json();
+        const gRes = await fetch('/api/guests');
+        if (gRes.ok) {
+          allGuests = await gRes.json();
+          loadedFromServer = true;
+          saveLocalGuests();
+        }
       } catch (e) {}
+
+      if (!loadedFromServer) {
+        try {
+          const localRaw = localStorage.getItem(LOCAL_GUESTS_KEY);
+          if (localRaw) {
+            allGuests = JSON.parse(localRaw);
+          } else {
+            const jsonRes = await fetch('/guests.json');
+            if (jsonRes.ok) {
+              allGuests = await jsonRes.json();
+              saveLocalGuests();
+            }
+          }
+        } catch (e) {}
+      }
+
+      try {
+        const wRes = await fetch('/api/wishes');
+        if (wRes.ok) {
+          allWishes = await wRes.json();
+        } else {
+          const localWishes = localStorage.getItem('fitri_guswik_wedding_wishes_v2');
+          if (localWishes) allWishes = JSON.parse(localWishes);
+        }
+      } catch (e) {}
+
       renderStats();
       renderGuestsTable();
       renderWishesTable();

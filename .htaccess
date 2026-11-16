@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Arahkan /admin atau /dashboard ke admin.html
+  RewriteRule ^(admin|dashboard)/?$ admin.html [L]
+
+  # 2. Jangan ubah jika file atau folder fisik memang ada (gambar, css, js, dll)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. Dynamic Routing Tamu: arahkan /nama-tamu ke index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
