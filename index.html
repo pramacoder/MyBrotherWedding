@@ -174,8 +174,6 @@
         <div class="hero-content-wrap">
           <p class="hero-eyebrow">The Wedding of</p>
           <h2 class="hero-script-title">Guswik &amp; Fitri</h2>
-          <p class="hero-full-names">I Gusti Made Dwi Jayantara,S.T &amp; Ni Komang Fitri Dharma,S.M</p>
-
           <div class="hero-date-badge">
             <svg viewBox="0 0 24 24" class="date-icon"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
             Jumat, 11 Desember 2026
@@ -293,163 +291,67 @@
       </div>
 
       <!-- ====================================================================
-           4. DETAIL ACARA (EVENT DETAILS SECTION - PAWIWAHAN & RESEPSI BERSATU)
+           4. DETAIL ACARA (PAWIWAHAN & RESEPSI - GAYA "THE WEDDING OF" DENGAN LATAR DINAMIS)
            ==================================================================== -->
-      <section id="event-section" class="section">
-        <div class="section-card fade-in-element">
-          <p class="section-eyebrow">Agenda Pernikahan</p>
-          <h2 class="section-title">Pawiwahan &amp; Resepsi</h2>
+      <section id="event-section" class="hero-headsection event-headsection">
+        <!-- Latar Dinamis Slideshow yang Digelapkan -->
+        <div class="event-dynamic-bg" aria-hidden="true">
+          <div class="event-slideshow">
+            <img src="Image/gallery/full-2.webp" alt="" class="event-slide-img active" loading="eager" decoding="async">
+            <img src="Image/gallery/full-8.webp" alt="" class="event-slide-img" loading="lazy" decoding="async">
+            <img src="Image/gallery/full-10.webp" alt="" class="event-slide-img" loading="lazy" decoding="async">
+            <img src="Image/gallery/full-12.webp" alt="" class="event-slide-img" loading="lazy" decoding="async">
+          </div>
+          <div class="event-dynamic-overlay"></div>
+        </div>
 
-          <!-- Pandawa Events Container (Layout & Animasi Sesuai Pandawa Printing) -->
-          <div class="pandawa-events-container">
-            
-            <!-- KARTU 1: RESEPSI (Banner di Kiri, Detail di Kanan) -->
-            <div class="pandawa-event-card animated-slow inv-zoom-out" data-event-card="resepsi">
-              <!-- Header Slideshow Foto -->
-              <div class="pandawa-card-media">
-                <div class="event-slideshow slide-left">
-                  <img src="Image/lovestory/lovestory-1.jpg" alt="Resepsi Guswik &amp; Fitri" class="event-slide-img active">
-                  <img src="Image/lovestory/lovestory-2.jpg" alt="Resepsi Guswik &amp; Fitri" class="event-slide-img">
-                </div>
-              </div>
+        <div class="hero-content-wrap event-hero-content fade-in-element">
+          <p class="hero-eyebrow">Agenda Pernikahan</p>
+          <h2 class="hero-script-title event-script-title">Pawiwahan &amp; Resepsi</h2>
 
-              <!-- Body: Banner Maroon di Kiri, Detail di Kanan -->
-              <div class="pandawa-card-body layout-banner-left">
-                <!-- Banner Vertikal -->
-                <div class="pandawa-side-banner">
-                  <h3 class="pandawa-banner-title">Resepsi</h3>
-                </div>
+          <!-- Waktu: Hari & Tanggal -->
+          <div class="hero-date-badge event-date-badge">
+            <svg viewBox="0 0 24 24" class="date-icon"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
+            <span>Waktu : Jumat, 11 Desember 2026</span>
+          </div>
 
-                <!-- Kolom Detail Acara -->
-                <div class="pandawa-details-col">
-                  <!-- Baris Tanggal -->
-                  <div class="pandawa-date-row">
-                    <div class="pandawa-date-num">11</div>
-                    <div class="pandawa-date-meta">
-                      <span class="pandawa-day">Jumat</span>
-                      <span class="pandawa-month">Desember</span>
-                      <span class="pandawa-year">2026</span>
-                    </div>
-                  </div>
-
-                  <div class="pandawa-divider-line"></div>
-
-                  <!-- Waktu Acara -->
-                  <div class="pandawa-time-row">
-                    <svg class="pandawa-clock-icon" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8l-19.8 27.2c-3.9 5.3-11.4 6.5-16.8 2.5z"/></svg>
-                    <span class="pandawa-time-text">11:00 WITA – Selesai</span>
-                  </div>
-
-                  <!-- Lokasi Acara -->
-                  <h4 class="pandawa-location-label">LOKASI ACARA</h4>
-                  <p class="pandawa-location-name">Community Hall of Sembung Gede Kelod Village</p>
-                  <p class="pandawa-location-sub">Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali</p>
-
-                  <!-- Tombol Google Maps -->
-                  <div class="pandawa-btn-wrap">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="pandawa-map-btn elementor-animation-shrink">
-                      <svg class="pandawa-pin-icon" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
-                      Google Maps
-                    </a>
-                  </div>
-                </div>
-              </div>
+          <!-- Detail Waktu Pawiwahan & Resepsi (Gaya Glassmorphism "The Wedding of") -->
+          <div class="event-hero-time-grid">
+            <div class="event-hero-glass-box">
+              <div class="event-glass-label">Pawiwahan</div>
+              <div class="event-glass-time">08.00 hingga 10.00 WITA</div>
             </div>
-
-            <!-- KARTU 2: PAWIWAHAN (Detail di Kiri, Banner di Kanan) -->
-            <div class="pandawa-event-card animated-slow inv-zoom-out" data-event-card="pawiwahan">
-              <!-- Header Slideshow Foto -->
-              <div class="pandawa-card-media">
-                <div class="event-slideshow slide-right">
-                  <img src="Image/lovestory/lovestory-3.jpg" alt="Pawiwahan Guswik &amp; Fitri" class="event-slide-img active">
-                  <img src="Image/lovestory/lovestory-4.jpg" alt="Pawiwahan Guswik &amp; Fitri" class="event-slide-img">
-                </div>
-              </div>
-
-              <!-- Body: Detail di Kiri, Banner Maroon di Kanan -->
-              <div class="pandawa-card-body layout-banner-right">
-                <!-- Kolom Detail Acara -->
-                <div class="pandawa-details-col">
-                  <!-- Baris Tanggal -->
-                  <div class="pandawa-date-row">
-                    <div class="pandawa-date-num">11</div>
-                    <div class="pandawa-date-meta">
-                      <span class="pandawa-day">Jumat</span>
-                      <span class="pandawa-month">Desember</span>
-                      <span class="pandawa-year">2026</span>
-                    </div>
-                  </div>
-
-                  <div class="pandawa-divider-line"></div>
-
-                  <!-- Waktu Acara -->
-                  <div class="pandawa-time-row">
-                    <svg class="pandawa-clock-icon" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8l-19.8 27.2c-3.9 5.3-11.4 6.5-16.8 2.5z"/></svg>
-                    <span class="pandawa-time-text">08:00 – 10:00 WITA</span>
-                  </div>
-
-                  <!-- Lokasi Acara -->
-                  <h4 class="pandawa-location-label">LOKASI ACARA</h4>
-                  <p class="pandawa-location-name">Community Hall of Sembung Gede Kelod Village</p>
-                  <p class="pandawa-location-sub">Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali</p>
-
-                  <!-- Tombol Google Maps -->
-                  <div class="pandawa-btn-wrap">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="pandawa-map-btn elementor-animation-shrink">
-                      <svg class="pandawa-pin-icon" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
-                      Google Maps
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Banner Vertikal di Kanan -->
-                <div class="pandawa-side-banner">
-                  <h3 class="pandawa-banner-title">Pawiwahan</h3>
-                </div>
-              </div>
+            <div class="event-hero-glass-box">
+              <div class="event-glass-label">Resepsi</div>
+              <div class="event-glass-time">10.00 hingga selesai</div>
             </div>
+          </div>
 
-            <!-- Petunjuk Google Maps Embed Interaktif -->
-            <div class="event-venue-unified">
-              <div class="maps-embed-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.8082926975134!2d115.08675967664867!3d-8.510021869123346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2300eda0ac65f%3A0xf9898f7339cff7a3!2sCommunity%20hall%20of%20Sembung%20Gede%20Kelod%20Village!5e0!3m2!1sen!2sid!4v1794131331282!5m2!1sen!2sid" width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-              </div>
-
-              <!-- Denah Lokasi Acara (Route Map) -->
-              <div class="event-denah-container">
-                <div class="event-denah-header">
-                  <span class="denah-badge">
-                    <svg viewBox="0 0 24 24" class="denah-badge-icon"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-                    Petunjuk Rute Acara
-                  </span>
-                  <h4 class="event-denah-title">Denah Lokasi Acara</h4>
-                  <p class="event-denah-sub">Ketuk gambar denah untuk melihat rute penuh atau mengunduh denah acara.</p>
-                </div>
-
-                <div class="denah-card" id="denah-card" role="button" tabindex="0" aria-label="Buka Denah Lokasi Acara">
-                  <div class="denah-img-box">
-                    <img src="Image/denah.webp" data-full="Image/denah.jpeg" alt="Denah Lokasi Acara Pernikahan Guswik &amp; Fitri" class="denah-img" loading="lazy" decoding="async">
-                    <div class="denah-overlay">
-                      <span class="denah-zoom-pill">
-                        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                        Perbesar Denah
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="denah-actions">
-                  <button type="button" class="btn-denah-action btn-denah-zoom" id="btn-zoom-denah">
-                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                    <span>Layar Penuh</span>
-                  </button>
-                  <a href="Image/denah.jpeg" download="Denah-Lokasi-Pernikahan-Guswik-Fitri.jpg" class="btn-denah-action btn-denah-download" id="btn-download-denah">
-                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    <span>Unduh Denah HD</span>
-                  </a>
-                </div>
-              </div>
+          <!-- Detail Lokasi Acara -->
+          <div class="event-hero-location-box">
+            <div class="event-location-header">
+              <svg viewBox="0 0 384 512" class="event-loc-icon"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
+              <span>Lokasi</span>
             </div>
+            <p class="event-location-address">
+              260m ke utara dari Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali
+            </p>
+          </div>
+
+          <!-- Tombol Aksi: Maps & Denah -->
+          <div class="event-hero-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village" target="_blank" rel="noopener" class="btn-calendar btn-event-action">
+              <svg viewBox="0 0 384 512">
+                <path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/>
+              </svg>
+              Google Maps
+            </a>
+            <button type="button" id="btn-zoom-denah" class="btn-calendar btn-event-action btn-event-denah">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/>
+              </svg>
+              Lihat Denah
+            </button>
           </div>
         </div>
       </section>
@@ -1057,11 +959,11 @@
           <!-- Statistics Badges -->
           <div class="rsvp-stats-grid">
             <div class="rsvp-stat-box">
-              <div id="stat-total" class="stat-number total">5</div>
+              <div id="stat-total" class="stat-number total">0</div>
               <div class="stat-label">Ucapan</div>
             </div>
             <div class="rsvp-stat-box">
-              <div id="stat-hadir" class="stat-number present">4</div>
+              <div id="stat-hadir" class="stat-number present">0</div>
               <div class="stat-label">Hadir</div>
             </div>
             <div class="rsvp-stat-box">
@@ -1069,7 +971,7 @@
               <div class="stat-label">Tidak Hadir</div>
             </div>
             <div class="rsvp-stat-box">
-              <div id="stat-ragu" class="stat-number unsure">1</div>
+              <div id="stat-ragu" class="stat-number unsure">0</div>
               <div class="stat-label">Masih Ragu</div>
             </div>
           </div>

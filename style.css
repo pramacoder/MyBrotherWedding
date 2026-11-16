@@ -1050,6 +1050,189 @@ body.locked {
   box-shadow: 0 6px 25px rgba(197, 138, 60, 0.6);
 }
 
+/* ==========================================================================
+   PAWIWAHAN & RESEPSI: GAYA "THE WEDDING OF" DENGAN LATAR DINAMIS DIGELAPKAN
+   ========================================================================== */
+.event-headsection {
+  background-image: none !important;
+  background-color: #120e0b;
+  padding: 80px 20px 75px;
+}
+
+.event-dynamic-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.event-dynamic-bg .event-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.event-dynamic-bg .event-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1.8s ease-in-out, transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.event-dynamic-bg .event-slide-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.event-dynamic-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 12, 10, 0.48) 0%,
+    rgba(18, 14, 11, 0.72) 50%,
+    rgba(15, 12, 10, 0.94) 100%
+  );
+}
+
+.event-hero-content {
+  z-index: 2;
+}
+
+.event-script-title {
+  font-size: clamp(38px, 11vw, 56px);
+  margin-bottom: 14px;
+}
+
+.event-date-badge {
+  margin-bottom: 20px;
+}
+
+.event-hero-time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 390px;
+  margin-bottom: 14px;
+}
+
+.event-hero-glass-box {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(197, 138, 60, 0.48);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 16px 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.event-glass-label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.event-glass-time {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.35;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.event-hero-location-box {
+  width: 100%;
+  max-width: 390px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(197, 138, 60, 0.48);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.event-location-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.event-loc-icon {
+  width: 13px;
+  height: 13px;
+  fill: var(--gold-300);
+}
+
+.event-location-address {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.event-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 390px;
+}
+
+.event-hero-actions .btn-event-action {
+  flex: 1 1 155px;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.event-hero-actions .btn-event-denah {
+  background: rgba(197, 138, 60, 0.24);
+  border: 1px solid rgba(197, 138, 60, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.event-hero-actions .btn-event-denah:hover {
+  background: linear-gradient(135deg, #c58a3c, #9e6d2b);
+}
+
 .hero-scroll-indicator {
   margin-top: 32px;
   display: flex;

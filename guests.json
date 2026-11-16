@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Andi",
+    "slug": "andi",
+    "invitation": "Personal"
+  },
+  {
+    "id": 2,
+    "name": "Budi",
+    "slug": "budi",
+    "invitation": "Personal"
+  },
+  {
+    "id": 3,
+    "name": "Keluarga Besar",
+    "slug": "keluarga-besar",
+    "invitation": "Group"
+  },
+  {
+    "id": 4,
+    "name": "Teman Kampus",
+    "slug": "teman-kampus",
+    "invitation": "Group"
+  }
+]

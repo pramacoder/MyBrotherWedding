@@ -1,0 +1,34 @@
+// Prisma Schema untuk Undangan Digital Guswik & Fitri
+// Menghubungkan aplikasi dengan PostgreSQL Database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Tabel Tamu Undangan (Dynamic Routing: undangan.com/[slug])
+model Guest {
+  id         Int      @id @default(autoincrement())
+  name       String
+  slug       String   @unique
+  invitation String   @default("Personal") // "Personal" | "Group"
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("guests")
+}
+
+// Tabel Buku Tamu & Konfirmasi Kehadiran (Wedding Wishes & RSVP)
+model Wish {
+  id         Int      @id @default(autoincrement())
+  name       String
+  attendance String   @default("hadir") // "hadir" | "tidak-hadir" | "ragu"
+  message    String
+  likes      Int      @default(0)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("wishes")
+}

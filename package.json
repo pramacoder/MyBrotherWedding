@@ -1,0 +1,20 @@
+{
+  "name": "wedding-guswik-fitri",
+  "version": "1.0.0",
+  "description": "Undangan Pernikahan Digital Guswik & Fitri dengan Dynamic Routing, Prisma PostgreSQL & Admin Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "node prisma/seed.js",
+    "postinstall": "prisma generate || true"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}

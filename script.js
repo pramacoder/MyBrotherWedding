@@ -5,23 +5,79 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------------------
-  // 1. EXTRACT PERSONALIZED GUEST NAME FROM URL (?to=...)
+  // 1. DYNAMIC ROUTING (/slug) & PERSONALIZED GUEST LOOKUP
   // -------------------------------------------------------------------------
-  const urlParams = new URLSearchParams(window.location.search);
-  let guestName = urlParams.get('to') || urlParams.get('guest') || urlParams.get('u');
-  
+  const defaultGuests = [
+    { id: 1, name: 'Andi', slug: 'andi', invitation: 'Personal' },
+    { id: 2, name: 'Budi', slug: 'budi', invitation: 'Personal' },
+    { id: 3, name: 'Keluarga Besar', slug: 'keluarga-besar', invitation: 'Group' },
+    { id: 4, name: 'Teman Kampus', slug: 'teman-kampus', invitation: 'Group' }
+  ];
+
   const guestDisplayEl = document.getElementById('guest-name-display');
   const rsvpNameInput = document.getElementById('rsvp-name');
-  
-  if (guestName) {
-    // Replace pluses and decode URI components
-    guestName = decodeURIComponent(guestName.replace(/\+/g, ' ')).trim();
-    if (guestName && guestDisplayEl) {
-      guestDisplayEl.textContent = guestName;
+
+  function applyGuestName(name) {
+    if (!name) return;
+    if (guestDisplayEl) {
+      guestDisplayEl.textContent = name;
     }
-    if (guestName && rsvpNameInput && !rsvpNameInput.value) {
-      rsvpNameInput.value = guestName;
+    if (rsvpNameInput && !rsvpNameInput.value) {
+      rsvpNameInput.value = name;
     }
+  }
+
+  function formatSlugToName(slug) {
+    return decodeURIComponent(slug)
+      .replace(/[-_+]+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
+  // Extract slug from pathname (e.g. /andi -> "andi") or fallback to ?to=...
+  const rawPathname = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  const pathSlug = (rawPathname && rawPathname.toLowerCase() !== 'index.html')
+    ? decodeURIComponent(rawPathname).toLowerCase()
+    : '';
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryGuest = urlParams.get('to') || urlParams.get('guest') || urlParams.get('u');
+
+  if (pathSlug) {
+    // 1. Immediate lookup in local guests table, then sync with Database API (/api/guests?slug=...)
+    const matchedLocal = defaultGuests.find(g => g.slug.toLowerCase() === pathSlug);
+    if (matchedLocal) {
+      applyGuestName(matchedLocal.name);
+    } else {
+      applyGuestName(formatSlugToName(pathSlug));
+    }
+
+    fetch(`/api/guests?slug=${encodeURIComponent(pathSlug)}`)
+      .then(res => (res.ok ? res.json() : Promise.reject()))
+      .then(guest => {
+        if (guest && guest.name) {
+          applyGuestName(guest.name);
+        }
+      })
+      .catch(() => {
+        fetch('/guests.json')
+          .then(res => (res.ok ? res.json() : null))
+          .then(guestsList => {
+            if (Array.isArray(guestsList)) {
+              const matched = guestsList.find(g => g.slug && g.slug.toLowerCase() === pathSlug);
+              if (matched && matched.name) {
+                applyGuestName(matched.name);
+              }
+            }
+          })
+          .catch(() => {});
+      });
+  } else if (queryGuest) {
+    const cleanedQuery = decodeURIComponent(queryGuest.replace(/\+/g, ' ')).trim();
+    const matchedByQuery = defaultGuests.find(
+      g => g.slug.toLowerCase() === cleanedQuery.toLowerCase()
+    );
+    applyGuestName(matchedByQuery ? matchedByQuery.name : cleanedQuery);
   } else if (guestDisplayEl) {
     guestDisplayEl.textContent = 'Tamu Undangan';
   }
@@ -553,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const title = encodeURIComponent('The Wedding of Guswik & Fitri');
       const details = encodeURIComponent('Upacara Pawiwahan & Resepsi Pernikahan I Gusti Made Dwi Jayantara & Ni Komang Fitri.\nAtas kehadiran dan doa restu Bapak/Ibu/Saudara/i kami ucapkan terima kasih.');
-      const location = encodeURIComponent('Community hall of Sembung Gede Kelod Village, Tabanan, Bali');
+      const location = encodeURIComponent('260m ke utara dari Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali');
       const dates = '20261211T000000Z/20261211T100000Z';
       
       const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
@@ -1178,55 +1234,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -------------------------------------------------------------------------
-  // 8. RSVP & WEDDING WISHES BOARD (WITH LOCALSTORAGE)
+  // 8. RSVP & WEDDING WISHES BOARD (CLEAN FOR DEPLOYMENT)
   // -------------------------------------------------------------------------
-  const defaultWishes = [
-    {
-      id: 'w1',
-      name: 'I Gede Aditya Wardana',
-      attendance: 'hadir',
-      time: '2 jam yang lalu',
-      message: 'Rahajeng Pawiwahan Fitri & Guswik! Dumogi langgeng riwekasan, labda karya, tur dados keluarga sane sukha lan harmonis selalu.',
-      likes: 12
-    },
-    {
-      id: 'w2',
-      name: 'Ni Luh Putu Sintya Dewi',
-      attendance: 'hadir',
-      time: '5 jam yang lalu',
-      message: 'Happy Wedding Fitri sayang dan Guswik! Akhirnya berlabuh di pelaminan setelah penantian panjang LDR. Sangat bahagia melihat kalian berdua!',
-      likes: 8
-    },
-    {
-      id: 'w3',
-      name: 'Mang dan CalonSuami',
-      attendance: 'hadir',
-      time: '1 hari yang lalu',
-      message: 'Selamat berbahagia untuk Fitri & Guswik. Semoga acara pawiwahan dan resepsi berjalan lancar dan penuh berkah Sang Hyang Widhi Wasa.',
-      likes: 15
-    },
-    {
-      id: 'w4',
-      name: 'Made Rama Sanjaya, S.T.',
-      attendance: 'ragu',
-      time: '1 hari yang lalu',
-      message: 'Selamat kawan seperjuangan Guswik & Fitri! Semoga acaranya sukses lancar jaya. Sedang usahakan cuti biar bisa hadir langsung ke Burau!',
-      likes: 4
-    },
-    {
-      id: 'w5',
-      name: 'Kadek Ayu Maharani',
-      attendance: 'hadir',
-      time: '2 hari yang lalu',
-      message: 'Om Swastyastu. Selamat menempuh hidup baru sahabatku Fitri & Guswik. Semoga cinta dan kebahagiaan selalu menyertai kalian berdua hingga kakek nenek.',
-      likes: 9
-    }
-  ];
+  const defaultWishes = [];
 
-  const STORAGE_KEY = 'fitri_guswik_wedding_wishes_v1';
+  const STORAGE_KEY = 'fitri_guswik_wedding_wishes_v2';
   let storedWishes = [];
 
   try {
+    localStorage.removeItem('fitri_guswik_wedding_wishes_v1');
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       storedWishes = JSON.parse(raw);
@@ -1271,6 +1287,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!wishesContainer) return;
     wishesContainer.innerHTML = '';
 
+    if (storedWishes.length === 0) {
+      wishesContainer.innerHTML = `
+        <div class="wishes-empty-state" style="text-align: center; padding: 28px 16px; color: var(--cocoa-600, #7a6452); font-size: 0.92rem; font-style: italic;">
+          Belum ada ucapan &amp; doa restu. Jadilah yang pertama mengirimkan ucapan untuk kedua mempelai.
+        </div>
+      `;
+      renderStats();
+      return;
+    }
+
     storedWishes.forEach(wish => {
       const initial = wish.name ? wish.name.charAt(0).toUpperCase() : 'G';
       const wishCard = document.createElement('div');
@@ -1302,7 +1328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wishesContainer.querySelectorAll('.btn-like-wish').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-id');
-        const wish = storedWishes.find(w => w.id === id);
+        const wish = storedWishes.find(w => String(w.id) === String(id));
         if (wish) {
           wish.likes = (wish.likes || 0) + 1;
           btn.classList.add('liked');
@@ -1310,11 +1336,28 @@ document.addEventListener('DOMContentLoaded', () => {
           try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(storedWishes));
           } catch(e) {}
+          fetch(`/api/wishes?action=like&id=${encodeURIComponent(id)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'like', id })
+          }).catch(() => {});
         }
       });
     });
 
     renderStats();
+  }
+
+  function formatWishTime(createdAt, fallbackTime) {
+    if (fallbackTime) return fallbackTime;
+    if (!createdAt) return 'Baru saja';
+    try {
+      const d = new Date(createdAt);
+      if (Number.isNaN(d.getTime())) return 'Baru saja';
+      return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) {
+      return 'Baru saja';
+    }
   }
 
   function escapeHtml(text) {
@@ -1328,6 +1371,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderWishes();
+
+  // Sync wishes from Backend API (/api/wishes)
+  fetch('/api/wishes')
+    .then(res => (res.ok ? res.json() : null))
+    .then(serverWishes => {
+      if (Array.isArray(serverWishes)) {
+        storedWishes = serverWishes.map(w => ({
+          ...w,
+          time: formatWishTime(w.createdAt, w.time)
+        }));
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(storedWishes));
+        } catch (e) {}
+        renderWishes();
+      }
+    })
+    .catch(() => {});
 
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
@@ -1363,6 +1423,23 @@ document.addEventListener('DOMContentLoaded', () => {
       renderWishes();
       document.getElementById('rsvp-message').value = '';
       showToast('Terima kasih! Ucapan Anda telah tersimpan.');
+
+      fetch('/api/wishes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, attendance, message })
+      })
+        .then(res => (res.ok ? res.json() : null))
+        .then(saved => {
+          if (saved && saved.id) {
+            newWish.id = saved.id;
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(storedWishes));
+            } catch (err) {}
+            renderWishes();
+          }
+        })
+        .catch(() => {});
 
       if (wishesContainer) {
         wishesContainer.scrollTop = 0;
