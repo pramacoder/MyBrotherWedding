@@ -9,7 +9,7 @@
       "destination": "/admin.html"
     },
     {
-      "source": "/((?!api/|Image/|assets/|admin\\.html|style\\.css|script\\.js|gsap\\.min\\.js|music\\.mp3|guests\\.json|wishes\\.json|.*\\..*).*)",
+      "source": "/((?!api/|Image/|assets/|admin\\.html|style\\.css|script\\.js|gsap\\.min\\.js|music\\.mp3|guests\\.json|wishes\\.json|robots\\.txt|llms\\.txt|sitemap\\.xml|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]

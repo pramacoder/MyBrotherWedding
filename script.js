@@ -140,13 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeLeaves = 0;
   const maxLeaves = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ? 3 : 5;
   const leafAssets = [
-    'assets/leave1.png',
-    'assets/leave2.png',
-    'assets/leave3.png',
-    'assets/leave4.png',
-    'assets/leave5.png',
-    'assets/leave6.png',
-    'assets/leave7.png'
+    'assets/leave1.webp',
+    'assets/leave2.webp',
+    'assets/leave3.webp',
+    'assets/leave4.webp',
+    'assets/leave5.webp',
+    'assets/leave6.webp',
+    'assets/leave7.webp'
   ];
 
   // Drifting Leaves Spawner (A-27)

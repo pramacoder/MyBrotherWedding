@@ -476,7 +476,7 @@ body.locked {
   inset: -10% -10% auto auto;
   width: 90%;
   aspect-ratio: 1;
-  background: url('assets/leave3.png') center / contain no-repeat;
+  background: url('assets/leave3.webp') center / contain no-repeat;
   filter: brightness(0) blur(7px);
   opacity: .10;
   mix-blend-mode: multiply;
@@ -780,7 +780,8 @@ body.locked {
    ========================================================================== */
 #story-section {
   position: relative;
-  background-image: url('Image/background1.jpg');
+  background-image: url('Image/background1.webp');
+  background-image: image-set(url('Image/background1.webp') type('image/webp'), url('Image/background1.jpg') type('image/jpeg'));
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;

@@ -1,0 +1,27 @@
+# The Wedding of Guswik & Fitri (I Gusti Made Dwi Jayantara, S.T & Ni Komang Fitri Dharma, S.M)
+
+> Undangan pernikahan digital resmi (Pawiwahan & Resepsi) I Gusti Made Dwi Jayantara, S.T (Guswik) dan Ni Komang Fitri Dharma, S.M (Fitri) pada hari Jumat, 11 Desember 2026 di Tabanan, Bali.
+
+## Informasi Mempelai
+- **Mempelai Pria:** I Gusti Made Dwi Jayantara, S.T (@guswik_) — Putra Kedua dari Pasangan Bapak I Gusti Made Dwipa & Ibu Ni Made Arsaniati.
+- **Mempelai Wanita:** Ni Komang Fitri Dharma, S.M (@fitridarma_27) — Putri Bungsu dari Pasangan Bapak I Komang Darma, S.P & Ibu Ni Ketut Sumitri.
+
+## Agenda Acara (Pawiwahan & Resepsi)
+- **Hari & Tanggal:** Jumat, 11 Desember 2026
+- **Waktu Pawiwahan:** 08.00 hingga 10.00 WITA
+- **Waktu Resepsi:** 10.00 WITA hingga selesai
+- **Lokasi:** 260m ke utara dari Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali
+- **Google Maps:** https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village
+- **Denah Lokasi:** /Image/denah.jpeg
+
+##Kisah Cinta (Love Story)
+- **2019 — It Started with a Simple Hello:** Awal perkenalan yang menjadi pembuka perjalanan bersama.
+- **2020 — Distance Became Part of Our Story:** Menjalani hubungan jarak jauh (LDR) dengan saling percaya dan mendukung.
+- **2024 — From "When Will We Meet?" to "When Will We Get Married?":** Memutuskan untuk melangkah ke jenjang pernikahan.
+- **2026 — No More Goodbyes at the Airport:** Bersatu dalam ikatan suci Wiwaha (Pawiwahan) pada 11 Desember 2026.
+
+## Fitur & Endpoint Publik
+- **Halaman Utama Undangan:** `/`
+- **Dynamic Guest Routing:** `/[slug]` (contoh: `/andi`, `/budi`, `/keluarga-besar`, `/teman-kampus`)
+- **API Tamu Undangan (JSON):** `/api/guests?slug=[slug]`
+- **API Buku Tamu & RSVP (JSON):** `/api/wishes`

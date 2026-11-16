@@ -1,0 +1,27 @@
+# robots.txt - The Wedding of Guswik & Fitri
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /dashboard
+
+# Explicitly allow AI & Search Assistants to index and describe the wedding invitation
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: /sitemap.xml
