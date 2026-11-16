@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build": "node -e \"console.log('Build selesai')\"",
     "dev": "node server.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "db:seed": "node prisma/seed.js",
-    "postinstall": "prisma generate || true"
+    "db:seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0"
