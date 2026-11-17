@@ -24,11 +24,16 @@
   --leaf-800: #2C5230;
   --coral-500: #C4474B;  /* bunga merah */
 
-  /* Kertas surat — dari card.png */
-  --paper:          #F4EFE6;
-  --paper-edge:     #E6DED0;
-  --ink-terracotta: #B84A2A;  /* tulisan tangan nama */
-  --ink-tagline:    #6B4A33;  /* tagline kecil */
+  /* Kertas surat vintage realistis — perkamen antik & tinta emas kontras tinggi */
+  --paper:             #EFE0C4;
+  --paper-mid:         #E2C99F;
+  --paper-edge:        #C59F6E;
+  --paper-kraft:       #7E5D3B;
+  --ink-gold-deep:     #4E2E05;
+  --ink-gold-rich:     #8A5810;
+  --ink-gold-bright:   #C8922E;
+  --ink-cocoa-deep:    #361F10;  /* coklat tua kontras tinggi */
+  --ink-tagline:       #4F311D;  /* coklat tua hangat */
 
   /* Cokelat — dari template (page berikutnya, teks) */
   --cocoa-900: #2B1D14;
@@ -280,7 +285,7 @@ body.locked {
   width: 100%;
   height: 25%;
   pointer-events: none;
-  z-index: 29;
+  z-index: 18;
 }
 
 /* L2 & L3: Rumpun Dedaunan Depan */
@@ -339,21 +344,39 @@ body.locked {
   will-change: transform, opacity;
 }
 
-/* L4-paper: Kertas Surat (DS-50) */
+/* L4-paper: Kertas Surat Vintage Realistis (DS-50) */
 .cover .letter-wrapper {
   position: absolute;
   left: 50%;
-  top: 42svh;
-  top: 42vh;
+  top: 40svh;
+  top: 40vh;
   transform: translate(-50%, -50%);
-  width: min(58vw, 260px);
+  width: min(60vw, 266px);
   aspect-ratio: 2 / 3;
-  z-index: 20;
+  z-index: 25;
   will-change: transform, opacity;
+}
+
+/* Lapisan Kertas Belakang (Kraft / Coklat Tua Vintage) */
+.letter-backing {
+  position: absolute;
+  inset: 0;
+  transform: rotate(3deg) translate(3px, 4px);
+  border-radius: 3px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='kb'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/><feColorMatrix values='0 0 0 0 .25 0 0 0 0 .18 0 0 0 0 .12 0 0 0 .25 0'/></filter><rect width='100%' height='100%' filter='url(%23kb)'/></svg>"),
+    linear-gradient(145deg, #6E4F33 0%, #523821 55%, #382412 100%);
+  border: 1px solid rgba(212, 174, 114, 0.35);
+  box-shadow:
+    inset 0 0 18px rgba(24, 12, 4, 0.45),
+    0 18px 34px -8px rgba(24, 12, 4, 0.55);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .cover .letter {
   position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   transform: rotate(-1.2deg);
@@ -361,48 +384,135 @@ body.locked {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.2em;
+  gap: 0.14em;
   text-align: center;
   background:
-    linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,0) 45%),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .33  0 0 0 0 .25  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
-    var(--paper);
-  border-radius: 2px;
+    linear-gradient(132deg, rgba(255, 251, 240, 0.52) 0%, rgba(255, 250, 238, 0) 46%, rgba(68, 38, 12, 0.18) 100%),
+    linear-gradient(164deg, transparent 48%, rgba(255, 248, 230, 0.20) 49.4%, rgba(92, 56, 22, 0.06) 50.2%, transparent 51.8%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='pf'><feTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch' result='noise'/><feDiffuseLighting in='noise' lighting-color='%23f7ebd4' surfaceScale='1.6'><feDistantLight azimuth='45' elevation='58'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23pf)' opacity='0.36'/></svg>"),
+    radial-gradient(ellipse at 48% 44%, #F7ECDA 0%, #EFE1C6 36%, #DFC397 72%, #C49B68 96%, #B08552 100%);
+  border: 1px solid rgba(114, 72, 28, 0.55);
+  border-radius: 3px;
   box-shadow:
-    0 1px 0 var(--paper-edge) inset,
-    0 2px 4px rgba(43,29,20,.18),
-    0 14px 28px -8px rgba(43,29,20,.35),
-    0 30px 50px -20px rgba(43,29,20,.30);
+    inset 0 0 32px rgba(92, 54, 18, 0.38),
+    inset 0 0 7px rgba(62, 34, 10, 0.40),
+    inset 1px 1px 0 rgba(255, 252, 242, 0.78),
+    0 2px 5px rgba(36, 20, 8, 0.30),
+    0 12px 26px -6px rgba(30, 16, 6, 0.50);
   overflow: hidden;
-  padding: 16px 14px;
+  padding: 20px 18px;
+}
+
+/* Efek bercak penuaan tepi kertas perkamen alami */
+.cover .letter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(132, 84, 34, 0.20) 0%, transparent 34%),
+    radial-gradient(circle at 90% 88%, rgba(118, 72, 26, 0.22) 0%, transparent 36%),
+    radial-gradient(circle at 86% 14%, rgba(145, 98, 44, 0.13) 0%, transparent 28%),
+    radial-gradient(circle at 14% 88%, rgba(128, 82, 34, 0.14) 0%, transparent 28%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bingkai Ganda & Filigree Sudut Antik Emas */
+.letter__frame {
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(120, 76, 16, 0.58);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.letter__frame::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 0.75px solid rgba(68, 38, 14, 0.32);
+  pointer-events: none;
+}
+
+.letter__corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  color: #6B420A;
+  opacity: 0.90;
+}
+
+.corner--tl { top: -2px; left: -2px; }
+.corner--tr { top: -2px; right: -2px; transform: rotate(90deg); }
+.corner--bl { bottom: -2px; left: -2px; transform: rotate(-90deg); }
+.corner--br { bottom: -2px; right: -2px; transform: rotate(180deg); }
+
+/* Ornamen Filigree Atas */
+.letter__ornament {
+  position: relative;
+  z-index: 3;
+  width: 112px;
+  height: 18px;
+  color: #6E450B;
+  margin-bottom: 3px;
+  filter: drop-shadow(0 1px 0 rgba(255, 248, 232, 0.72));
+}
+
+.letter__ornament svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .letter__eyebrow {
+  position: relative;
+  z-index: 3;
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 11px;
+  font-weight: 700;
+  font-size: 10.5px;
   line-height: 1;
   letter-spacing: .30em;
   text-transform: uppercase;
-  color: var(--ink-tagline);
-  margin: 0 0 0.8em;
+  color: var(--ink-cocoa-deep);
+  text-shadow: 0 1px 0 rgba(255, 250, 236, 0.70);
+  margin: 0 0 0.50em;
   will-change: letter-spacing, opacity;
 }
 
 .letter__names {
+  position: relative;
+  z-index: 3;
   margin: 0;
   font-family: var(--font-cover);
   font-weight: 400;
-  font-size: clamp(42px, 13.5vw, 60px);
-  line-height: 0.95;
-  color: var(--ink-terracotta);
+  font-size: clamp(40px, 13vw, 56px);
+  line-height: 0.94;
+  color: #422503;
   display: flex;
   flex-direction: column;
   align-items: center;
+  filter:
+    drop-shadow(0 0.8px 0 rgba(255, 248, 232, 0.80))
+    drop-shadow(0 1.4px 1.2px rgba(38, 20, 4, 0.45));
 }
 
 .letter__names .w {
   display: inline-block;
+  padding: 0.05em 0.18em;
+  margin: 0 -0.18em;
+  background: linear-gradient(
+    148deg,
+    #361D02 0%,
+    #6B4206 18%,
+    #9C6812 36%,
+    #543103 52%,
+    #AB7417 68%,
+    #452702 86%,
+    #281401 100%
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
           mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
   -webkit-mask-size: 250% 100%;
@@ -427,44 +537,91 @@ body.locked {
 }
 
 .w--1 { --dur: 1100ms; --delay: 0ms; }
-.w--amp { --dur: 400ms; --delay: 1100ms; font-size: 0.7em; margin: 0.05em 0; }
+.w--amp { --dur: 400ms; --delay: 1100ms; font-size: 0.68em; margin: 0.02em 0; }
 .w--2 { --dur: 1100ms; --delay: 1500ms; }
 
 .letter__tagline {
-  margin: 1.2em 0 0;
+  position: relative;
+  z-index: 3;
+  margin: 0.65em 0 0;
   font-family: var(--font-body);
   font-style: italic;
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 11.5px;
   line-height: 1.2;
-  letter-spacing: .12em;
-  color: var(--ink-tagline);
+  letter-spacing: .11em;
+  color: var(--ink-cocoa-deep);
+  text-shadow: 0 1px 0 rgba(255, 248, 232, 0.60);
+}
+
+/* Garis Pemisah Klasik & Segel Medali Emas */
+.letter__divider {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 72%;
+  margin: 6px auto 5px;
+}
+
+.letter__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(102, 64, 12, 0.72), transparent);
+}
+
+.letter__divider-crest {
+  width: 17px;
+  height: 17px;
+  color: #6E4409;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 1px 0 rgba(255, 246, 224, 0.70));
+}
+
+.letter__divider-crest svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Sapaan Tamu pada Kertas Surat */
 .letter__guest {
-  margin-top: 1em;
-  padding: 5px 12px;
-  background: rgba(184, 74, 42, 0.05);
-  border-radius: 4px;
-  border-top: 1px dashed rgba(197, 138, 60, 0.3);
-  border-bottom: 1px dashed rgba(197, 138, 60, 0.3);
-  width: 90%;
+  position: relative;
+  z-index: 3;
+  margin-top: 2px;
+  padding: 6px 12px 7px;
+  background: linear-gradient(180deg, rgba(104, 66, 20, 0.08) 0%, rgba(148, 102, 38, 0.14) 50%, rgba(104, 66, 20, 0.08) 100%);
+  border-radius: 2px;
+  border-top: 1px solid rgba(110, 68, 12, 0.48);
+  border-bottom: 1px solid rgba(110, 68, 12, 0.48);
+  box-shadow: inset 0 1px 0 rgba(255, 250, 236, 0.50);
+  width: 88%;
 }
 
 .letter__guest-intro {
-  font-size: 9px;
+  font-family: var(--font-body);
+  font-size: 8.5px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--ink-tagline);
-  margin-bottom: 2px;
+  letter-spacing: 0.14em;
+  color: var(--ink-cocoa-deep);
+  margin-bottom: 3px;
 }
 
 .letter__guest-name {
   font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink-terracotta);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #3D2103;
+  background: linear-gradient(135deg, #331B02 0%, #7C4F0B 48%, #2E1802 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 248, 232, 0.70));
   letter-spacing: 0.03em;
   text-transform: capitalize;
   word-break: break-word;
@@ -478,10 +635,11 @@ body.locked {
   aspect-ratio: 1;
   background: url('assets/leave3.webp') center / contain no-repeat;
   filter: brightness(0) blur(7px);
-  opacity: .10;
+  opacity: .11;
   mix-blend-mode: multiply;
   transform: rotate(18deg);
   pointer-events: none;
+  z-index: 4;
 }
 
 /* L5-paper-flowers: Bunga Kecil Sudut Kertas (DS-54) */
