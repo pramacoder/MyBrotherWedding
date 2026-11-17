@@ -85,8 +85,211 @@
     href="https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Upright:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Stylesheet (dengan cache-busting version) -->
+  <link rel="stylesheet" href="style.css?v=20261117-v4">
+
+  <!-- Critical Inline CSS: Memastikan Kertas Vintage & Tinta Gold Tampil 100% Sempurna Tanpa Terpengaruh Cache Browser -->
+  <style id="critical-vintage-letter">
+    .cover .letter-wrapper {
+      position: absolute;
+      left: 50%;
+      top: 40svh;
+      top: 40vh;
+      transform: translate(-50%, -50%);
+      width: min(60vw, 268px);
+      aspect-ratio: 2 / 3;
+      z-index: 25;
+      will-change: transform, opacity;
+    }
+    .letter-backing {
+      position: absolute;
+      inset: 0;
+      transform: rotate(3deg) translate(3px, 4px);
+      border-radius: 4px;
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='kb'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/><feColorMatrix values='0 0 0 0 .25 0 0 0 0 .18 0 0 0 0 .12 0 0 0 .25 0'/></filter><rect width='100%' height='100%' filter='url(%23kb)'/></svg>"),
+        linear-gradient(145deg, #6E4F33 0%, #523821 55%, #382412 100%);
+      border: 1px solid rgba(212, 174, 114, 0.4);
+      box-shadow: inset 0 0 18px rgba(24, 12, 4, 0.5), 0 18px 34px -8px rgba(24, 12, 4, 0.55);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cover .letter {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-1.2deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.16em;
+      text-align: center;
+      background:
+        linear-gradient(132deg, rgba(255, 251, 240, 0.55) 0%, rgba(255, 250, 238, 0) 46%, rgba(68, 38, 12, 0.18) 100%),
+        linear-gradient(164deg, transparent 48%, rgba(255, 248, 230, 0.22) 49.4%, rgba(92, 56, 22, 0.06) 50.2%, transparent 51.8%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='pf'><feTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch' result='noise'/><feDiffuseLighting in='noise' lighting-color='%23f7ebd4' surfaceScale='1.6'><feDistantLight azimuth='45' elevation='58'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23pf)' opacity='0.36'/></svg>"),
+        radial-gradient(ellipse at 48% 44%, #F8EEDB 0%, #EFE1C6 36%, #DFC397 72%, #C49B68 96%, #B08552 100%) !important;
+      border: 1px solid rgba(116, 72, 16, 0.75) !important;
+      border-radius: 3px;
+      box-shadow:
+        inset 0 0 0 4px #E7D2AF,
+        inset 0 0 0 5.5px rgba(116, 72, 16, 0.55),
+        inset 0 0 28px rgba(92, 54, 18, 0.38),
+        inset 0 0 6px rgba(62, 34, 10, 0.38),
+        0 2px 5px rgba(36, 20, 8, 0.30),
+        0 14px 30px -6px rgba(30, 16, 6, 0.55) !important;
+      overflow: hidden;
+      padding: 18px 16px;
+    }
+    .cover .letter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(132, 84, 34, 0.22) 0%, transparent 32%),
+        radial-gradient(circle at 92% 90%, rgba(118, 72, 26, 0.24) 0%, transparent 34%),
+        radial-gradient(circle at 88% 12%, rgba(145, 98, 44, 0.14) 0%, transparent 26%),
+        radial-gradient(circle at 12% 88%, rgba(128, 82, 34, 0.15) 0%, transparent 26%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .cover .letter::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 0.75px solid rgba(116, 72, 16, 0.35);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .letter__ornament {
+      position: relative;
+      z-index: 3;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: #7A4B0A;
+      margin-bottom: 2px;
+      text-shadow: 0 1px 0 rgba(255, 248, 232, 0.85);
+      line-height: 1;
+    }
+    .letter__eyebrow {
+      position: relative;
+      z-index: 3;
+      font-family: var(--font-body, 'Cormorant Garamond', serif);
+      font-weight: 700;
+      font-size: 10.5px;
+      line-height: 1;
+      letter-spacing: .30em;
+      text-transform: uppercase;
+      color: #361F10 !important;
+      text-shadow: 0 1px 0 rgba(255, 250, 236, 0.75);
+      margin: 0 0 0.45em;
+    }
+    .letter__names {
+      position: relative;
+      z-index: 3;
+      margin: 0;
+      font-family: var(--font-cover, 'Pinyon Script', cursive);
+      font-weight: 400;
+      font-size: clamp(40px, 13vw, 56px);
+      line-height: 0.94;
+      color: #422503 !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      filter:
+        drop-shadow(0 0.8px 0 rgba(255, 248, 232, 0.85))
+        drop-shadow(0 1.5px 1.5px rgba(38, 20, 4, 0.48));
+    }
+    .letter__names .w {
+      display: inline-block;
+      padding: 0.05em 0.18em;
+      margin: 0 -0.18em;
+      background: linear-gradient(
+        148deg,
+        #361D02 0%,
+        #6B4206 18%,
+        #9C6812 36%,
+        #543103 52%,
+        #AB7417 68%,
+        #452702 86%,
+        #281401 100%
+      ) !important;
+      -webkit-background-clip: text !important;
+              background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    .letter__tagline {
+      position: relative;
+      z-index: 3;
+      margin: 0.6em 0 0;
+      font-family: var(--font-body, 'Cormorant Garamond', serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 11.5px;
+      line-height: 1.2;
+      letter-spacing: .11em;
+      color: #361F10 !important;
+      text-shadow: 0 1px 0 rgba(255, 248, 232, 0.65);
+    }
+    .letter__divider {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 70%;
+      margin: 6px auto 5px;
+    }
+    .letter__divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(102, 64, 12, 0.72), transparent);
+    }
+    .letter__divider-symbol {
+      font-size: 10px;
+      color: #7A4B0A;
+      line-height: 1;
+      text-shadow: 0 1px 0 rgba(255, 246, 224, 0.75);
+    }
+    .letter__guest {
+      position: relative;
+      z-index: 3;
+      margin-top: 2px;
+      padding: 6px 12px 7px;
+      background: linear-gradient(180deg, rgba(104, 66, 20, 0.08) 0%, rgba(148, 102, 38, 0.14) 50%, rgba(104, 66, 20, 0.08) 100%) !important;
+      border-radius: 2px;
+      border-top: 1px solid rgba(110, 68, 12, 0.48) !important;
+      border-bottom: 1px solid rgba(110, 68, 12, 0.48) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 250, 236, 0.50);
+      width: 88%;
+    }
+    .letter__guest-intro {
+      font-family: var(--font-body, 'Cormorant Garamond', serif);
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #361F10 !important;
+      margin-bottom: 3px;
+    }
+    .letter__guest-name {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #3D2103 !important;
+      background: linear-gradient(135deg, #331B02 0%, #7C4F0B 48%, #2E1802 100%) !important;
+      -webkit-background-clip: text !important;
+              background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 1px 0 rgba(255, 248, 232, 0.75));
+      letter-spacing: 0.03em;
+      text-transform: capitalize;
+      word-break: break-word;
+    }
+  </style>
 </head>
 
 <body class="locked">
@@ -179,54 +382,13 @@
 
       <!-- Kertas Surat & Hiasan Tinta -->
       <div class="letter-wrapper">
-        <!-- Lapisan Kertas Kraft / Coklat Tua di Belakang (Efek Tumpukan Kertas Vintage Realistis) -->
+        <!-- Lapisan Kertas Kraft / Coklat Tua di Belakang (Efek Tumpukan Kertas Vintage) -->
         <div class="letter-backing" aria-hidden="true"></div>
 
-        <!-- L4 Kertas Surat Vintage -->
+        <!-- L4 Kertas Surat Vintage Realistis -->
         <article class="letter" aria-label="Undangan pernikahan Guswik dan Fitri">
-          <!-- Bingkai Ganda & Filigree Sudut Vintage -->
-          <div class="letter__frame" aria-hidden="true">
-            <svg class="letter__corner corner--tl" viewBox="0 0 40 40" fill="none">
-              <path d="M2 36V12C2 6.48 6.48 2 12 2H36" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M6 28V12.5C6 8.9 8.9 6 12.5 6H28" stroke="currentColor" stroke-width="0.7" opacity="0.7"/>
-              <path d="M2 16C7.5 16 16 7.5 16 2" stroke="currentColor" stroke-width="0.9"/>
-              <path d="M9 19C9 13.5 13.5 9 19 9" stroke="currentColor" stroke-width="0.65" opacity="0.75"/>
-              <circle cx="8" cy="8" r="1.8" fill="currentColor"/>
-            </svg>
-            <svg class="letter__corner corner--tr" viewBox="0 0 40 40" fill="none">
-              <path d="M2 36V12C2 6.48 6.48 2 12 2H36" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M6 28V12.5C6 8.9 8.9 6 12.5 6H28" stroke="currentColor" stroke-width="0.7" opacity="0.7"/>
-              <path d="M2 16C7.5 16 16 7.5 16 2" stroke="currentColor" stroke-width="0.9"/>
-              <path d="M9 19C9 13.5 13.5 9 19 9" stroke="currentColor" stroke-width="0.65" opacity="0.75"/>
-              <circle cx="8" cy="8" r="1.8" fill="currentColor"/>
-            </svg>
-            <svg class="letter__corner corner--bl" viewBox="0 0 40 40" fill="none">
-              <path d="M2 36V12C2 6.48 6.48 2 12 2H36" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M6 28V12.5C6 8.9 8.9 6 12.5 6H28" stroke="currentColor" stroke-width="0.7" opacity="0.7"/>
-              <path d="M2 16C7.5 16 16 7.5 16 2" stroke="currentColor" stroke-width="0.9"/>
-              <path d="M9 19C9 13.5 13.5 9 19 9" stroke="currentColor" stroke-width="0.65" opacity="0.75"/>
-              <circle cx="8" cy="8" r="1.8" fill="currentColor"/>
-            </svg>
-            <svg class="letter__corner corner--br" viewBox="0 0 40 40" fill="none">
-              <path d="M2 36V12C2 6.48 6.48 2 12 2H36" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M6 28V12.5C6 8.9 8.9 6 12.5 6H28" stroke="currentColor" stroke-width="0.7" opacity="0.7"/>
-              <path d="M2 16C7.5 16 16 7.5 16 2" stroke="currentColor" stroke-width="0.9"/>
-              <path d="M9 19C9 13.5 13.5 9 19 9" stroke="currentColor" stroke-width="0.65" opacity="0.75"/>
-              <circle cx="8" cy="8" r="1.8" fill="currentColor"/>
-            </svg>
-          </div>
-
-          <!-- Ornamen Mahkota Vintage Atas -->
-          <div class="letter__ornament" aria-hidden="true">
-            <svg viewBox="0 0 140 24" fill="none">
-              <path d="M10 12H48" stroke="currentColor" stroke-width="0.85" opacity="0.65"/>
-              <path d="M92 12H130" stroke="currentColor" stroke-width="0.85" opacity="0.65"/>
-              <path d="M70 3C73 8 76 10 81 12C76 14 73 16 70 21C67 16 64 14 59 12C64 10 67 8 70 3Z" fill="currentColor"/>
-              <path d="M51 12C54 8 56 16 51 12ZM89 12C86 8 84 16 89 12Z" fill="currentColor" opacity="0.8"/>
-              <circle cx="48" cy="12" r="1.3" fill="currentColor"/>
-              <circle cx="92" cy="12" r="1.3" fill="currentColor"/>
-            </svg>
-          </div>
+          <!-- Ornamen Bintang Emas Antik Atas -->
+          <div class="letter__ornament" aria-hidden="true">✦ &nbsp; ❖ &nbsp; ✦</div>
 
           <p class="letter__eyebrow">The Wedding of</p>
           <h1 class="letter__names">
@@ -236,15 +398,10 @@
           </h1>
           <p class="letter__tagline">Two hearts, one forever</p>
 
-          <!-- Garis Pemisah Klasik dengan Segel Medali Emas Antik -->
+          <!-- Garis Pemisah Klasik dengan Simbol Emas -->
           <div class="letter__divider" aria-hidden="true">
             <span class="letter__divider-line"></span>
-            <span class="letter__divider-crest">
-              <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1" opacity="0.75"/>
-                <path d="M12 5L14 10L19 12L14 14L12 19L10 14L5 12L10 10L12 5Z" fill="currentColor"/>
-              </svg>
-            </span>
+            <span class="letter__divider-symbol">❖</span>
             <span class="letter__divider-line"></span>
           </div>
 
