@@ -1581,10 +1581,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------------------
-  // 11. PANDAWA PRINTING ANIMATION REVEAL (EVENT & LOVE STORY SECTIONS)
+  // 11. PANDAWA PRINTING ANIMATION REVEAL (EVENT SECTION)
   // -------------------------------------------------------------------------
   function revealPandawaElements() {
-    const selector = '#event-section .inv-zoom-out, #event-section .inv-zoom-in, #event-section .inv-bawah, #event-section .inv-atas, #story-section .inv-zoom-in, #story-section .inv-bawah, #story-section .inv-atas, #story-section .inv-fade-in';
+    const selector = '#event-section .inv-zoom-out, #event-section .inv-zoom-in, #event-section .inv-bawah, #event-section .inv-atas';
     const elements = document.querySelectorAll(selector);
     const windowHeight = window.innerHeight;
     const elementVisible = 120;

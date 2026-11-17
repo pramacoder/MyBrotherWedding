@@ -776,35 +776,8 @@ body.locked {
 }
 
 /* ==========================================================================
-   SECTIONS DENGAN LATAR KHUSUS (Our Love Story: background1.jpg, RSVP: Redup)
+   SECTIONS DENGAN LATAR KHUSUS (RSVP: Redup)
    ========================================================================== */
-#story-section {
-  position: relative;
-  background-image: url('Image/background1.webp');
-  background-image: image-set(url('Image/background1.webp') type('image/webp'), url('Image/background1.jpg') type('image/jpeg'));
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  box-shadow: inset 0 20px 40px rgba(59, 42, 30, 0.12), inset 0 -20px 40px rgba(59, 42, 30, 0.12);
-  border-top: 1px solid rgba(197, 138, 60, 0.22);
-  border-bottom: 1px solid rgba(197, 138, 60, 0.22);
-  z-index: 5;
-}
-
-#story-section .pandawa-story-card {
-  padding-top: 55px;
-}
-
-#story-section .section-eyebrow {
-  color: #3b2a1e;
-  font-weight: 700;
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.9);
-}
-
-#story-section .pandawa-story-heading {
-  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9);
-}
-
 #rsvp-section {
   background: linear-gradient(180deg, #ede3d3 0%, #dfcfb9 50%, #ede3d3 100%);
   box-shadow: inset 0 20px 40px rgba(59, 42, 30, 0.08), inset 0 -20px 40px rgba(59, 42, 30, 0.08);
@@ -1852,53 +1825,46 @@ body.locked {
 }
 
 /* ==========================================================================
-   PANDAWA PRINTING ANIMATION STYLES (Diterapkan Khusus Section Event & Story)
+   PANDAWA PRINTING ANIMATION STYLES (Diterapkan Khusus Section Event)
    ========================================================================== */
-#event-section .inv-bawah,
-#story-section .inv-bawah {
+#event-section .inv-bawah {
   transform: translateY(-50%);
   opacity: 0;
   transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease;
 }
 
-#event-section .inv-bawah.active,
-#story-section .inv-bawah.active {
+#event-section .inv-bawah.active {
   transform: translateY(0px);
   opacity: 1;
 }
 
-#event-section .inv-zoom-in,
-#story-section .inv-zoom-in {
+#event-section .inv-zoom-in {
   transform: scale(0.9);
   opacity: 0;
   filter: blur(5px);
   transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease, filter 1.5s ease;
 }
 
-#event-section .inv-zoom-in.active,
-#story-section .inv-zoom-in.active {
+#event-section .inv-zoom-in.active {
   transform: scale(1);
   opacity: 1;
   filter: blur(0px);
 }
 
-#event-section .inv-zoom-out,
-#story-section .inv-zoom-out {
+#event-section .inv-zoom-out {
   transform: scale(1.08);
   opacity: 0;
   filter: blur(5px);
   transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease, filter 1.5s ease;
 }
 
-#event-section .inv-zoom-out.active,
-#story-section .inv-zoom-out.active {
+#event-section .inv-zoom-out.active {
   transform: scale(1);
   opacity: 1;
   filter: blur(0px);
 }
 
-#event-section .animated-slow,
-#story-section .animated-slow {
+#event-section .animated-slow {
   animation-duration: 2s;
 }
 
@@ -2974,110 +2940,6 @@ body.locked {
   color: #ffffff;
 }
 
-/* ==========================================================================
-   7. KISAH CINTA (LOVE STORY - GAYA PANDAWA PRINTING)
-   ========================================================================== */
-.pandawa-story-card {
-  padding-top: 36px;
-  padding-bottom: 40px;
-}
-
-.pandawa-story-heading {
-  font-family: 'Cormorant Upright', 'Cormorant Garamond', 'Playfair Display', serif;
-  font-size: 40px;
-  font-weight: 600;
-  color: #4b0f28;
-  text-align: center;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
-}
-
-.pandawa-timeline-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 38px;
-  margin: 25px auto 10px;
-  max-width: 440px;
-}
-
-.pandawa-story-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.4s ease;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(197, 138, 60, 0.32);
-  border-radius: 18px;
-  padding: 16px 14px 20px;
-  box-shadow: 0 10px 28px rgba(75, 15, 40, 0.1);
-}
-
-.pandawa-story-img-box {
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(75, 15, 40, 0.1);
-  background: #f5f0eb;
-}
-
-.pandawa-story-img {
-  width: 100%;
-  height: auto;
-  max-height: 270px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.pandawa-story-item:hover .pandawa-story-img {
-  transform: scale(1.03);
-}
-
-.pandawa-story-body {
-  padding: 20px 10px 0;
-  width: 100%;
-}
-
-.pandawa-story-item-title {
-  font-family: 'Arima', 'Cormorant Garamond', serif;
-  font-size: 19px;
-  font-weight: 700;
-  color: #4b0f28;
-  margin: 0 0 10px;
-  line-height: 1.35;
-}
-
-.pandawa-story-desc {
-  font-family: 'Arima', 'Poppins', sans-serif;
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: #5e5e5e;
-}
-
-.pandawa-story-desc b {
-  color: #4b0f28;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.pandawa-story-desc p {
-  margin: 0;
-  color: #666666;
-}
-
-.pandawa-story-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 17px;
-  color: var(--gold-700);
-  text-align: center;
-  margin-top: 30px;
-  font-weight: 600;
-}
 
 /* ==========================================================================
    GALERI KHUSUS UPACARA NGIDIH DI SULAWESI (MEMADIK)

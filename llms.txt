@@ -8,17 +8,11 @@
 
 ## Agenda Acara (Pawiwahan & Resepsi)
 - **Hari & Tanggal:** Jumat, 11 Desember 2026
-- **Waktu Pawiwahan:** 08.00 hingga 10.00 WITA
-- **Waktu Resepsi:** 10.00 WITA hingga selesai
+- **Waktu Pawiwahan:** 08.00 WITA - selesai
+- **Waktu Resepsi:** 15.00 WITA - selesai
 - **Lokasi:** 260m ke utara dari Balai Banjar Sembung Gede Kelod, Desa Sembung Gede, Kec. Kerambitan, Kab. Tabanan, Bali
 - **Google Maps:** https://www.google.com/maps/search/?api=1&query=Community+hall+of+Sembung+Gede+Kelod+Village
 - **Denah Lokasi:** /Image/denah.jpeg
-
-##Kisah Cinta (Love Story)
-- **2019 — It Started with a Simple Hello:** Awal perkenalan yang menjadi pembuka perjalanan bersama.
-- **2020 — Distance Became Part of Our Story:** Menjalani hubungan jarak jauh (LDR) dengan saling percaya dan mendukung.
-- **2024 — From "When Will We Meet?" to "When Will We Get Married?":** Memutuskan untuk melangkah ke jenjang pernikahan.
-- **2026 — No More Goodbyes at the Airport:** Bersatu dalam ikatan suci Wiwaha (Pawiwahan) pada 11 Desember 2026.
 
 ## Fitur & Endpoint Publik
 - **Halaman Utama Undangan:** `/`
